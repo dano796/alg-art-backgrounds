@@ -1,7 +1,31 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import "tailwindcss";
+
+@theme {
+  --color-bg:           #0c0c14;
+  --color-surface:      #13131f;
+  --color-surface-high: #181828;
+  --color-border:       #1e1e30;
+  --color-border-hover: rgba(217,119,87,0.35);
+  --color-accent:       #d97757;
+  --color-accent-soft:  rgba(217,119,87,0.1);
+  --color-accent-border:rgba(217,119,87,0.25);
+  --color-ink:          #e8e6dc;
+  --color-muted:        #6b6a78;
+  --color-faint:        #2a2a3e;
+  --color-blue:         #6a9bcc;
+  --color-green:        #788c5d;
+
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {
