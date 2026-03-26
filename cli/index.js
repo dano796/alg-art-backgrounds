@@ -214,15 +214,26 @@ async function cmdAdd(id, { force = false, dryRun = false } = {}) {
 
   const exportName = toExportName(id);
   log(`\nDone! Usage:\n`, "bold");
-  log(
-    `  // Adjust the import path relative to your file:\n` +
-      `  import { ${exportName} } from "./components/backgrounds/${exportName}";\n` +
-      `\n` +
-      `  <${exportName}\n` +
-      `    style={{ position: "absolute", inset: 0 }}\n` +
-      `  />\n`,
-    "cyan"
-  );
+
+  if (id === "background-studio") {
+    log(
+      `  // Adjust the import path relative to your file:\n` +
+        `  import { BackgroundStudio } from "./components/backgrounds/BackgroundStudio";\n` +
+        `\n` +
+        `  <BackgroundStudio />\n`,
+      "cyan"
+    );
+  } else {
+    log(
+      `  // Adjust the import path relative to your file:\n` +
+        `  import { ${exportName} } from "./components/backgrounds/${exportName}";\n` +
+        `\n` +
+        `  <${exportName}\n` +
+        `    style={{ position: "absolute", inset: 0 }}\n` +
+        `  />\n`,
+      "cyan"
+    );
+  }
 }
 
 async function cmdUpdate(id) {
@@ -305,12 +316,13 @@ const commands = {
 if (!command || command === "help" || command === "--help" || command === "-h") {
   log("\nkinetic-arcana — algorithmic background components\n", "bold");
   log("Commands:", "dim");
-  log("  list                  List all available backgrounds", "cyan");
-  log("  add <id>              Copy a background into your project", "cyan");
-  log("  add <id> --force      Overwrite existing files", "cyan");
-  log("  add <id> --dry-run    Preview which files would be written", "cyan");
-  log("  update <id>           Re-fetch a component, overwriting local files", "cyan");
-  log("  info <id>             Show details about a background\n", "cyan");
+  log("  list                       List all available backgrounds", "cyan");
+  log("  add <id>                   Copy a background into your project", "cyan");
+  log("  add background-studio      Install all backgrounds + the studio playground", "cyan");
+  log("  add <id> --force           Overwrite existing files", "cyan");
+  log("  add <id> --dry-run         Preview which files would be written", "cyan");
+  log("  update <id>                Re-fetch a component, overwriting local files", "cyan");
+  log("  info <id>                  Show details about a background\n", "cyan");
   process.exit(0);
 }
 

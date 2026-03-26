@@ -81,6 +81,58 @@
           "target": "components/backgrounds/utils/noise.ts"
         }
       ]
+    },
+    {
+      "id": "background-studio",
+      "name": "Background Studio",
+      "description": "Interactive playground to explore and configure all backgrounds with live preview and code export.",
+      "tags": ["studio", "playground", "dev-tool"],
+      "files": [
+        {
+          "source": "src/components/BackgroundStudio.tsx",
+          "target": "components/backgrounds/BackgroundStudio.tsx"
+        },
+        {
+          "source": "src/components/FlowCurrents.tsx",
+          "target": "components/backgrounds/FlowCurrents.tsx"
+        },
+        {
+          "source": "src/components/GravityStorm.tsx",
+          "target": "components/backgrounds/GravityStorm.tsx"
+        },
+        {
+          "source": "src/components/GeoPulse.tsx",
+          "target": "components/backgrounds/GeoPulse.tsx"
+        },
+        {
+          "source": "src/components/WaveEther.tsx",
+          "target": "components/backgrounds/WaveEther.tsx"
+        },
+        {
+          "source": "src/components/engines/flowCurrents.ts",
+          "target": "components/backgrounds/engines/flowCurrents.ts"
+        },
+        {
+          "source": "src/components/engines/gravityStorm.ts",
+          "target": "components/backgrounds/engines/gravityStorm.ts"
+        },
+        {
+          "source": "src/components/engines/geoPulse.ts",
+          "target": "components/backgrounds/engines/geoPulse.ts"
+        },
+        {
+          "source": "src/components/engines/waveEther.ts",
+          "target": "components/backgrounds/engines/waveEther.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
     }
   ]
 }

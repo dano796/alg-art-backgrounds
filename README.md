@@ -44,13 +44,32 @@ npx kinetic-arcana list                   # Browse all available backgrounds
 npx kinetic-arcana info <id>              # See files and description for a component
 npx kinetic-arcana add <id>               # Install a component
 npx kinetic-arcana add <id> --force       # Overwrite existing files
-npx kinetic-arcana add <id> --dry-run     # Preview which files would be written
-npx kinetic-arcana update <id>            # Re-fetch a component (with confirmation)
+npx kinetic-arcana add <id> --dry-run         # Preview which files would be written
+npx kinetic-arcana update <id>               # Re-fetch a component (with confirmation)
+npx kinetic-arcana add background-studio     # Install all components + the studio playground
 ```
 
 ---
 
 ## Components
+
+### `background-studio`
+
+Interactive playground to explore and configure all backgrounds with live preview and code export. Installs all four background components in one command.
+
+```bash
+npx kinetic-arcana add background-studio
+```
+
+```tsx
+import { BackgroundStudio } from "./components/backgrounds/BackgroundStudio";
+
+<BackgroundStudio />
+```
+
+> **Note:** BackgroundStudio is a dev tool — use it locally to discover parameters, then drop the individual background component into production.
+
+---
 
 ### `wave-ether`
 

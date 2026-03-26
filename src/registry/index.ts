@@ -100,6 +100,29 @@ export const registry: RegistryEntry[] = [
     description: "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
     tags: ["waves", "interference", "sine", "pixel"],
   },
+  {
+    id: "background-studio",
+    name: "Background Studio",
+    componentPath: "../components/BackgroundStudio",
+    exportName: "BackgroundStudio",
+    schema: [],
+    defaults: {},
+    files: [
+      "src/components/BackgroundStudio.tsx",
+      "src/components/FlowCurrents.tsx",
+      "src/components/GravityStorm.tsx",
+      "src/components/GeoPulse.tsx",
+      "src/components/WaveEther.tsx",
+      "src/components/engines/flowCurrents.ts",
+      "src/components/engines/gravityStorm.ts",
+      "src/components/engines/geoPulse.ts",
+      "src/components/engines/waveEther.ts",
+      "src/components/utils/noise.ts",
+      "src/components/schemas/index.ts",
+    ],
+    description: "Interactive playground to explore and configure all backgrounds with live preview and code export.",
+    tags: ["studio", "playground", "dev-tool"],
+  },
 ];
 
 /** Resolve a registry entry by id */
