@@ -1,35 +1,36 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initTideHarmonics,
-  drawTideHarmonics,
-  resetTideHarmonics,
-  type TideHarmonicsState,
-  type TideHarmonicsParams,
-} from "./engines/tideHarmonics";
+  initNeuralWeave,
+  drawNeuralWeave,
+  resetNeuralWeave,
+  type NeuralWeaveState,
+  type NeuralWeaveParams,
+} from "../engines/neuralWeave";
 
-export const tideHarmonicsDefaults: TideHarmonicsParams = {
-  seed: 8888,
-  waveCount: 5,
-  gridRows: 35,
-  frequency: 1.0,
-  amplitude: 45,
-  speed: 1.0,
+export const neuralWeaveDefaults: NeuralWeaveParams = {
+  seed: 6666,
+  nodeCount: 45,
+  connectionRadius: 180,
+  signalCount: 8,
+  signalSpeed: 1.2,
+  nodeSize: 5,
   bgColor: "#0a0e14",
-  colorA: "#50b8e8",
-  colorB: "#e850b8",
+  nodeColor: "#50b8e8",
+  edgeColor: "#50b8e8",
+  signalColor: "#e8b850",
 };
 
-export interface TideHarmonicsProps extends Partial<TideHarmonicsParams> {
+export interface NeuralWeaveProps extends Partial<NeuralWeaveParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function TideHarmonics(props: TideHarmonicsProps) {
+export function NeuralWeave(props: NeuralWeaveProps) {
   const { className, style, ...params } = props;
-  const merged = { ...tideHarmonicsDefaults, ...params };
+  const merged = { ...neuralWeaveDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<TideHarmonicsState | null>(null);
+  const stateRef = useRef<NeuralWeaveState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -48,17 +49,17 @@ export function TideHarmonics(props: TideHarmonicsProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initTideHarmonics(w, h, paramsRef.current);
+        stateRef.current = initNeuralWeave(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initTideHarmonics(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initNeuralWeave(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawTideHarmonics(ctx, stateRef.current, paramsRef.current);
+        drawNeuralWeave(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -76,7 +77,7 @@ export function TideHarmonics(props: TideHarmonicsProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetTideHarmonics(stateRef.current, merged);
+    resetNeuralWeave(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

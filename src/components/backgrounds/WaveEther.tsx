@@ -1,51 +1,52 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initGeoPulse,
-  drawGeoPulse,
-  resetGeoPulse,
-  type GeoPulseState,
-} from "./engines/geoPulse";
-
-export interface GeoPulseParams {
+  initWaveEther,
+  drawWaveEther,
+  resetWaveEther,
+  type WaveEtherState,
+} from "../engines/waveEther";
+export interface WaveEtherParams {
   seed?: number;
-  layers?: number;
-  sides?: number;
-  rotSpeed?: number;
-  pulse?: number;
-  connect?: number;
-  colorPrimary?: string;
-  colorSecondary?: string;
-  colorAccent?: string;
+  sources?: number;
+  frequency?: number;
+  amplitude?: number;
+  waveSpeed?: number;
+  resolution?: number;
+  colorCrest?: string;
+  colorTrough?: string;
+  colorMid?: string;
 }
 
-export const geoPulseDefaults: Required<GeoPulseParams> = {
-  seed: 42731, layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
-  colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
+export const waveEtherDefaults: Required<WaveEtherParams> = {
+  seed: 42731, sources: 3, frequency: 0.018, amplitude: 1.0,
+  waveSpeed: 0.025, resolution: 8,
+  colorCrest: "#00d4ff", colorTrough: "#0a0a2e", colorMid: "#7b2fff",
 };
 
-export interface GeoPulseProps extends GeoPulseParams {
+export interface WaveEtherProps extends WaveEtherParams {
   className?: string;
   style?: CSSProperties;
 }
 
 /**
- * GeoPulse — nested rotating parametric polygon background.
+ * WaveEther — multi-source interference wave background.
  *
  * @example
- * <GeoPulse
- *   layers={8}
- *   sides={6}
- *   pulse={0.15}
- *   colorPrimary="#d97757"
+ * <WaveEther
+ *   sources={4}
+ *   frequency={0.02}
+ *   colorCrest="#00d4ff"
+ *   colorTrough="#0a0a2e"
+ *   colorMid="#7b2fff"
  *   style={{ position: "absolute", inset: 0 }}
  * />
  */
-export function GeoPulse(props: GeoPulseProps) {
+export function WaveEther(props: WaveEtherProps) {
   const { className, style, ...params } = props;
-  const merged = { ...geoPulseDefaults, ...params };
+  const merged = { ...waveEtherDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<GeoPulseState | null>(null);
+  const stateRef = useRef<WaveEtherState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -64,19 +65,17 @@ export function GeoPulse(props: GeoPulseProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        ctx!.fillStyle = "rgb(10,10,18)";
-        ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initGeoPulse(w, h, paramsRef.current);
+        stateRef.current = initWaveEther(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initGeoPulse(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initWaveEther(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawGeoPulse(ctx, stateRef.current, paramsRef.current);
+        drawWaveEther(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -94,10 +93,11 @@ export function GeoPulse(props: GeoPulseProps) {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx || !stateRef.current) return;
-    stateRef.current = resetGeoPulse(ctx, stateRef.current, merged);
-  }, [merged.seed, merged.layers, merged.sides, merged.connect]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (!canvas || !stateRef.current) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    stateRef.current = resetWaveEther(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.sources]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

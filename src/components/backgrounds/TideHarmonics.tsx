@@ -1,35 +1,35 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initReactionDiffusion,
-  drawReactionDiffusion,
-  resetReactionDiffusion,
-  type ReactionDiffusionState,
-  type ReactionDiffusionParams,
-} from "./engines/reactionDiffusion";
+  initTideHarmonics,
+  drawTideHarmonics,
+  resetTideHarmonics,
+  type TideHarmonicsState,
+  type TideHarmonicsParams,
+} from "../engines/tideHarmonics";
 
-export const reactionDiffusionDefaults: ReactionDiffusionParams = {
-  seed: 1111,
-  Da: 1.0,
-  Db: 0.5,
-  f: 0.055,
-  k: 0.062,
-  stepsPerFrame: 10,
-  bgColor: "#0a0a0a",
-  colorA: "#1a1a2e",
-  colorB: "#00d4ff",
+export const tideHarmonicsDefaults: TideHarmonicsParams = {
+  seed: 8888,
+  waveCount: 5,
+  gridRows: 35,
+  frequency: 1.0,
+  amplitude: 45,
+  speed: 1.0,
+  bgColor: "#0a0e14",
+  colorA: "#50b8e8",
+  colorB: "#e850b8",
 };
 
-export interface ReactionDiffusionProps extends Partial<ReactionDiffusionParams> {
+export interface TideHarmonicsProps extends Partial<TideHarmonicsParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function ReactionDiffusion(props: ReactionDiffusionProps) {
+export function TideHarmonics(props: TideHarmonicsProps) {
   const { className, style, ...params } = props;
-  const merged = { ...reactionDiffusionDefaults, ...params };
+  const merged = { ...tideHarmonicsDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<ReactionDiffusionState | null>(null);
+  const stateRef = useRef<TideHarmonicsState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -48,17 +48,17 @@ export function ReactionDiffusion(props: ReactionDiffusionProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initReactionDiffusion(w, h, paramsRef.current);
+        stateRef.current = initTideHarmonics(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initReactionDiffusion(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initTideHarmonics(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawReactionDiffusion(ctx, stateRef.current, paramsRef.current);
+        drawTideHarmonics(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -76,7 +76,7 @@ export function ReactionDiffusion(props: ReactionDiffusionProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetReactionDiffusion(stateRef.current, merged);
+    resetTideHarmonics(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

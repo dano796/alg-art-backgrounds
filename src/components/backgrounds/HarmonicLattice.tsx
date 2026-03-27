@@ -1,51 +1,57 @@
 /**
- * Lissajous Weave
- * Harmonic phase tapestry
+ * Harmonic Lattice
+ * Two-dimensional standing wave interference patterns
  */
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initLissajousWeave,
-  drawLissajousWeave,
-  resetLissajousWeave,
-  type LissajousWeaveState,
-} from "./engines/lissajousWeave";
+  initHarmonicLattice,
+  drawHarmonicLattice,
+  resetHarmonicLattice,
+  type HarmonicLatticeState,
+} from "../engines/harmonicLattice";
 
-export interface LissajousWeaveParams {
+export interface HarmonicLatticeParams {
   seed?: number;
-  curveCount?: number;
-  freqMax?: number;
-  radius?: number;
-  phaseSpeed?: number;
+  modeCount?: number;
+  maxModeNumber?: number;
+  baseFrequency?: number;
+  timeSpeed?: number;
+  resolution?: number;
+  nodeThreshold?: number;
+  contrastPower?: number;
   bgColor?: string;
   colorA?: string;
   colorB?: string;
   colorC?: string;
 }
 
-export const lissajousWeaveDefaults: Required<LissajousWeaveParams> = {
+export const harmonicLatticeDefaults: Required<HarmonicLatticeParams> = {
   seed: 42731,
-  curveCount: 12,
-  freqMax: 5,
-  radius: 180,
-  phaseSpeed: 1.0,
+  modeCount: 6,
+  maxModeNumber: 5,
+  baseFrequency: 1.0,
+  timeSpeed: 1.0,
+  resolution: 80,
+  nodeThreshold: 0.15,
+  contrastPower: 1.5,
   bgColor: "#0a0a0a",
   colorA: "#ff6b35",
   colorB: "#f7931e",
   colorC: "#fdc830",
 };
 
-export interface LissajousWeaveProps extends LissajousWeaveParams {
+export interface HarmonicLatticeProps extends HarmonicLatticeParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function LissajousWeave(props: LissajousWeaveProps) {
+export function HarmonicLattice(props: HarmonicLatticeProps) {
   const { className, style, ...params } = props;
-  const merged = { ...lissajousWeaveDefaults, ...params };
+  const merged = { ...harmonicLatticeDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<LissajousWeaveState | null>(null);
+  const stateRef = useRef<HarmonicLatticeState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -65,17 +71,17 @@ export function LissajousWeave(props: LissajousWeaveProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initLissajousWeave(w, h, paramsRef.current);
+        stateRef.current = initHarmonicLattice(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initLissajousWeave(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initHarmonicLattice(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawLissajousWeave(ctx, stateRef.current, paramsRef.current);
+        drawHarmonicLattice(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -95,8 +101,8 @@ export function LissajousWeave(props: LissajousWeaveProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    resetLissajousWeave(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.curveCount, merged.freqMax]); // eslint-disable-line react-hooks/exhaustive-deps
+    resetHarmonicLattice(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.modeCount, merged.maxModeNumber]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

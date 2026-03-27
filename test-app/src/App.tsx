@@ -3,7 +3,7 @@ import { HeroSection } from "./components/HeroSection";
 import { GallerySection } from "./components/GallerySection";
 import { DocsSection } from "./components/DocsSection";
 import { Footer } from "./components/Footer";
-import { StudioPage } from "./pages/StudioPage";;
+import { StudioPage } from "./pages/StudioPage";
 import { useState, useEffect } from "react";
 
 export default function App() {

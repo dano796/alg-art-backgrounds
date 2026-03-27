@@ -1,37 +1,40 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initDoublePendulum,
-  drawDoublePendulum,
-  resetDoublePendulum,
-  type DoublePendulumState,
-  type DoublePendulumParams,
-} from "./engines/doublePendulum";
+  initFractalNoiseTerrain,
+  drawFractalNoiseTerrain,
+  resetFractalNoiseTerrain,
+  type FractalNoiseTerrainState,
+  type FractalNoiseTerrainParams,
+} from "../engines/fractalNoiseTerrain";
 
-export const doublePendulumDefaults: DoublePendulumParams = {
-  seed: 7777,
-  numPendulums: 9,
-  length1: 180,
-  length2: 180,
-  gravity: 1.2,
-  simSpeed: 1.5,
-  fadeRate: 8,
+export const fractalNoiseTerrainDefaults: FractalNoiseTerrainParams = {
+  seed: 3333,
+  octaves: 6,
+  persistence: 0.5,
+  lacunarity: 2.0,
+  scale: 4.0,
+  contrast: 1.2,
+  lighting: 2.5,
+  driftSpeed: 0.8,
+  resolution: 120,
   bgColor: "#0a0e14",
-  colorA: "#e8b850",
-  colorB: "#50e8b8",
-  colorC: "#b850e8",
+  colorA: "#1a2332",
+  colorB: "#2d4a5a",
+  colorC: "#5a7a6a",
+  colorD: "#d4e8e0",
 };
 
-export interface DoublePendulumProps extends Partial<DoublePendulumParams> {
+export interface FractalNoiseTerrainProps extends Partial<FractalNoiseTerrainParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function DoublePendulum(props: DoublePendulumProps) {
+export function FractalNoiseTerrain(props: FractalNoiseTerrainProps) {
   const { className, style, ...params } = props;
-  const merged = { ...doublePendulumDefaults, ...params };
+  const merged = { ...fractalNoiseTerrainDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<DoublePendulumState | null>(null);
+  const stateRef = useRef<FractalNoiseTerrainState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -50,17 +53,17 @@ export function DoublePendulum(props: DoublePendulumProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initDoublePendulum(w, h, paramsRef.current);
+        stateRef.current = initFractalNoiseTerrain(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initDoublePendulum(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initFractalNoiseTerrain(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawDoublePendulum(ctx, stateRef.current, paramsRef.current);
+        drawFractalNoiseTerrain(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -78,7 +81,7 @@ export function DoublePendulum(props: DoublePendulumProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetDoublePendulum(stateRef.current, merged);
+    resetFractalNoiseTerrain(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

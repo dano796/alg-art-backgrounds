@@ -1,41 +1,38 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initOrbitalResonance,
-  drawOrbitalResonance,
-  resetOrbitalResonance,
-  type OrbitalResonanceState,
-  type OrbitalResonanceParams,
-} from "./engines/orbitalResonance";
+  initDifferentialGrowth,
+  drawDifferentialGrowth,
+  resetDifferentialGrowth,
+  type DifferentialGrowthState,
+  type DifferentialGrowthParams,
+} from "../engines/differentialGrowth";
 
-export const orbitalResonanceDefaults: OrbitalResonanceParams = {
-  seed: 9999,
-  bodyCount: 5,
-  resonanceRatios: [1, 2, 3, 5, 8],
-  simSpeed: 1.0,
-  trailLength: 200,
-  trailWeight: 1.5,
-  bodySize: 8,
-  centerSize: 12,
-  fadeTrails: true,
-  fadeAmount: 8,
-  bgColor: "#0a0a0a",
-  colorA: "#ff6b35",
-  colorB: "#f7931e",
-  colorC: "#fdc830",
-  colorD: "#50b8e8",
+export const differentialGrowthDefaults: DifferentialGrowthParams = {
+  seed: 4242,
+  growthRate: 0.8,
+  repelRadius: 12,
+  repelStrength: 0.4,
+  maxEdge: 8,
+  maxNodes: 2800,
+  stepsPerFrame: 3,
+  fadeRate: 18,
+  lineWeight: 1.8,
+  bgColor: "#0a0e14",
+  colorA: "#50b8e8",
+  colorB: "#e850b8",
 };
 
-export interface OrbitalResonanceProps extends Partial<OrbitalResonanceParams> {
+export interface DifferentialGrowthProps extends Partial<DifferentialGrowthParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function OrbitalResonance(props: OrbitalResonanceProps) {
+export function DifferentialGrowth(props: DifferentialGrowthProps) {
   const { className, style, ...params } = props;
-  const merged = { ...orbitalResonanceDefaults, ...params };
+  const merged = { ...differentialGrowthDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<OrbitalResonanceState | null>(null);
+  const stateRef = useRef<DifferentialGrowthState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -54,17 +51,17 @@ export function OrbitalResonance(props: OrbitalResonanceProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initOrbitalResonance(w, h, paramsRef.current);
+        stateRef.current = initDifferentialGrowth(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initOrbitalResonance(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initDifferentialGrowth(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawOrbitalResonance(ctx, stateRef.current, paramsRef.current);
+        drawDifferentialGrowth(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -82,7 +79,7 @@ export function OrbitalResonance(props: OrbitalResonanceProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetOrbitalResonance(stateRef.current, merged);
+    resetDifferentialGrowth(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

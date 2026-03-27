@@ -1,39 +1,37 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initRecursiveSubdivision,
-  drawRecursiveSubdivision,
-  resetRecursiveSubdivision,
-  type RecursiveSubdivisionState,
-  type RecursiveSubdivisionParams,
-} from "./engines/recursiveSubdivision";
+  initDoublePendulum,
+  drawDoublePendulum,
+  resetDoublePendulum,
+  type DoublePendulumState,
+  type DoublePendulumParams,
+} from "../engines/doublePendulum";
 
-export const recursiveSubdivisionDefaults: RecursiveSubdivisionParams = {
-  seed: 2222,
-  maxDepth: 6,
-  splitProbability: 0.85,
-  minSize: 30,
-  maxStroke: 4,
-  minStroke: 0.5,
-  colorMode: 0,
-  animated: true,
-  animSpeed: 1.5,
+export const doublePendulumDefaults: DoublePendulumParams = {
+  seed: 7777,
+  numPendulums: 9,
+  length1: 180,
+  length2: 180,
+  gravity: 1.2,
+  simSpeed: 1.5,
+  fadeRate: 8,
   bgColor: "#0a0e14",
-  colorA: "#50b8e8",
-  colorB: "#e8b850",
-  colorC: "#e850b8",
+  colorA: "#e8b850",
+  colorB: "#50e8b8",
+  colorC: "#b850e8",
 };
 
-export interface RecursiveSubdivisionProps extends Partial<RecursiveSubdivisionParams> {
+export interface DoublePendulumProps extends Partial<DoublePendulumParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function RecursiveSubdivision(props: RecursiveSubdivisionProps) {
+export function DoublePendulum(props: DoublePendulumProps) {
   const { className, style, ...params } = props;
-  const merged = { ...recursiveSubdivisionDefaults, ...params };
+  const merged = { ...doublePendulumDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<RecursiveSubdivisionState | null>(null);
+  const stateRef = useRef<DoublePendulumState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -52,17 +50,17 @@ export function RecursiveSubdivision(props: RecursiveSubdivisionProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initRecursiveSubdivision(w, h, paramsRef.current);
+        stateRef.current = initDoublePendulum(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initRecursiveSubdivision(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initDoublePendulum(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawRecursiveSubdivision(ctx, stateRef.current, paramsRef.current);
+        drawDoublePendulum(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -80,7 +78,7 @@ export function RecursiveSubdivision(props: RecursiveSubdivisionProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetRecursiveSubdivision(stateRef.current, merged);
+    resetDoublePendulum(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

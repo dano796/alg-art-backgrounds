@@ -1,55 +1,51 @@
 /**
- * Phyllotaxis Dream
- * Golden angle spiral growth
+ * Lissajous Weave
+ * Harmonic phase tapestry
  */
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initPhyllotaxisDream,
-  drawPhyllotaxisDream,
-  resetPhyllotaxisDream,
-  type PhyllotaxisDreamState,
-} from "./engines/phyllotaxisDream";
+  initLissajousWeave,
+  drawLissajousWeave,
+  resetLissajousWeave,
+  type LissajousWeaveState,
+} from "../engines/lissajousWeave";
 
-export interface PhyllotaxisDreamParams {
+export interface LissajousWeaveParams {
   seed?: number;
-  numPoints?: number;
-  spread?: number;
-  angleScale?: number;
-  morph?: number;
-  rotSpeed?: number;
-  dotSize?: number;
+  curveCount?: number;
+  freqMax?: number;
+  radius?: number;
+  phaseSpeed?: number;
   bgColor?: string;
   colorA?: string;
   colorB?: string;
   colorC?: string;
 }
 
-export const phyllotaxisDreamDefaults: Required<PhyllotaxisDreamParams> = {
+export const lissajousWeaveDefaults: Required<LissajousWeaveParams> = {
   seed: 42731,
-  numPoints: 800,
-  spread: 4.5,
-  angleScale: 1.0,
-  morph: 1.0,
-  rotSpeed: 1.0,
-  dotSize: 6,
+  curveCount: 12,
+  freqMax: 5,
+  radius: 180,
+  phaseSpeed: 1.0,
   bgColor: "#0a0a0a",
   colorA: "#ff6b35",
   colorB: "#f7931e",
   colorC: "#fdc830",
 };
 
-export interface PhyllotaxisDreamProps extends PhyllotaxisDreamParams {
+export interface LissajousWeaveProps extends LissajousWeaveParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function PhyllotaxisDream(props: PhyllotaxisDreamProps) {
+export function LissajousWeave(props: LissajousWeaveProps) {
   const { className, style, ...params } = props;
-  const merged = { ...phyllotaxisDreamDefaults, ...params };
+  const merged = { ...lissajousWeaveDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<PhyllotaxisDreamState | null>(null);
+  const stateRef = useRef<LissajousWeaveState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -69,17 +65,17 @@ export function PhyllotaxisDream(props: PhyllotaxisDreamProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initPhyllotaxisDream(w, h, paramsRef.current);
+        stateRef.current = initLissajousWeave(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initPhyllotaxisDream(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initLissajousWeave(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawPhyllotaxisDream(ctx, stateRef.current, paramsRef.current);
+        drawLissajousWeave(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -99,8 +95,8 @@ export function PhyllotaxisDream(props: PhyllotaxisDreamProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    resetPhyllotaxisDream(stateRef.current, paramsRef.current);
-  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
+    resetLissajousWeave(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.curveCount, merged.freqMax]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

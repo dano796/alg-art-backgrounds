@@ -1,65 +1,60 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initVortexBloom,
-  drawVortexBloom,
-  resetVortexBloom,
-  type VortexBloomState,
-} from "./engines/vortexBloom";
+  initCrystallineDrift,
+  drawCrystallineDrift,
+  resetCrystallineDrift,
+  type CrystallineDriftState,
+} from "../engines/crystallineDrift";
 
-export interface VortexBloomParams {
+export interface CrystallineDriftParams {
   seed?: number;
-  vortexCount?: number;
-  particleCount?: number;
-  orbitStrength?: number;
-  spiralTightness?: number;
-  fadeRate?: number;
-  trailWeight?: number;
+  symmetry?: number;
+  maxDepth?: number;
+  angleVariance?: number;
+  segmentLength?: number;
+  branchInterval?: number;
   bgColor?: string;
-  colorA?: string;
-  colorB?: string;
-  colorC?: string;
+  crystalColor?: string;
+  glowColor?: string;
 }
 
-export const vortexBloomDefaults: Required<VortexBloomParams> = {
-  seed: 12345,
-  vortexCount: 4,
-  particleCount: 3000,
-  orbitStrength: 1.2,
-  spiralTightness: 0.9,
-  fadeRate: 4,
-  trailWeight: 0.7,
-  bgColor: "#080810",
-  colorA: "#d97757",
-  colorB: "#6a9bcc",
-  colorC: "#e8c46a",
+export const crystallineDriftDefaults: Required<CrystallineDriftParams> = {
+  seed: 7777,
+  symmetry: 6,
+  maxDepth: 7,
+  angleVariance: 0.5,
+  segmentLength: 6,
+  branchInterval: 12,
+  bgColor: "#050a14",
+  crystalColor: "#6ab8e8",
+  glowColor: "#c4e8ff",
 };
 
-export interface VortexBloomProps extends VortexBloomParams {
+export interface CrystallineDriftProps extends CrystallineDriftParams {
   className?: string;
   style?: CSSProperties;
 }
 
 /**
- * VortexBloom — Orbital crystallization background.
+ * CrystallineDrift — Symmetric dendrite growth background.
  *
- * Particles spiral under competing vortex attractors, accumulating into
- * mandala-like formations.
+ * Recursive branching arms grow from the center, guided by noise,
+ * forming snowflake-like crystal mandala structures.
  *
  * @example
- * <VortexBloom
- *   vortexCount={4}
- *   particleCount={3000}
- *   orbitStrength={1.2}
- *   spiralTightness={0.9}
+ * <CrystallineDrift
+ *   symmetry={6}
+ *   maxDepth={7}
+ *   crystalColor="#6ab8e8"
  *   style={{ position: "absolute", inset: 0 }}
  * />
  */
-export function VortexBloom(props: VortexBloomProps) {
+export function CrystallineDrift(props: CrystallineDriftProps) {
   const { className, style, ...params } = props;
-  const merged = { ...vortexBloomDefaults, ...params };
+  const merged = { ...crystallineDriftDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<VortexBloomState | null>(null);
+  const stateRef = useRef<CrystallineDriftState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -81,17 +76,20 @@ export function VortexBloom(props: VortexBloomProps) {
         const bg = paramsRef.current.bgColor;
         ctx!.fillStyle = bg;
         ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initVortexBloom(w, h, paramsRef.current);
+        stateRef.current = initCrystallineDrift(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initVortexBloom(canvas.width, canvas.height, paramsRef.current);
+    const bg = merged.bgColor;
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    stateRef.current = initCrystallineDrift(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawVortexBloom(ctx, stateRef.current, paramsRef.current);
+        drawCrystallineDrift(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -111,8 +109,8 @@ export function VortexBloom(props: VortexBloomProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    stateRef.current = resetVortexBloom(ctx, stateRef.current, merged);
-  }, [merged.seed, merged.vortexCount, merged.particleCount]); // eslint-disable-line react-hooks/exhaustive-deps
+    stateRef.current = resetCrystallineDrift(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.symmetry, merged.maxDepth]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

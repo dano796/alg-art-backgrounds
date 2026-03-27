@@ -4,7 +4,7 @@ import {
   drawAmbientMesh,
   resetAmbientMesh,
   type AmbientMeshState,
-} from "./engines/ambientMesh";
+} from "../engines/ambientMesh";
 
 export interface AmbientMeshParams {
   seed?: number;

@@ -1,40 +1,31 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initFractalNoiseTerrain,
-  drawFractalNoiseTerrain,
-  resetFractalNoiseTerrain,
-  type FractalNoiseTerrainState,
-  type FractalNoiseTerrainParams,
-} from "./engines/fractalNoiseTerrain";
+  initVoronoiMosaic,
+  drawVoronoiMosaic,
+  resetVoronoiMosaic,
+  type VoronoiMosaicState,
+  type VoronoiMosaicParams,
+} from "../engines/voronoiMosaic";
 
-export const fractalNoiseTerrainDefaults: FractalNoiseTerrainParams = {
-  seed: 3333,
-  octaves: 6,
-  persistence: 0.5,
-  lacunarity: 2.0,
-  scale: 4.0,
-  contrast: 1.2,
-  lighting: 2.5,
-  driftSpeed: 0.8,
-  resolution: 120,
+export const voronoiMosaicDefaults: VoronoiMosaicParams = {
+  seed: 4444,
+  seedCount: 25,
+  moveSpeed: 0.5,
+  edgeContrast: 1.2,
   bgColor: "#0a0e14",
-  colorA: "#1a2332",
-  colorB: "#2d4a5a",
-  colorC: "#5a7a6a",
-  colorD: "#d4e8e0",
 };
 
-export interface FractalNoiseTerrainProps extends Partial<FractalNoiseTerrainParams> {
+export interface VoronoiMosaicProps extends Partial<VoronoiMosaicParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function FractalNoiseTerrain(props: FractalNoiseTerrainProps) {
+export function VoronoiMosaic(props: VoronoiMosaicProps) {
   const { className, style, ...params } = props;
-  const merged = { ...fractalNoiseTerrainDefaults, ...params };
+  const merged = { ...voronoiMosaicDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<FractalNoiseTerrainState | null>(null);
+  const stateRef = useRef<VoronoiMosaicState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -53,17 +44,17 @@ export function FractalNoiseTerrain(props: FractalNoiseTerrainProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initFractalNoiseTerrain(w, h, paramsRef.current);
+        stateRef.current = initVoronoiMosaic(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initFractalNoiseTerrain(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initVoronoiMosaic(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawFractalNoiseTerrain(ctx, stateRef.current, paramsRef.current);
+        drawVoronoiMosaic(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -81,7 +72,7 @@ export function FractalNoiseTerrain(props: FractalNoiseTerrainProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetFractalNoiseTerrain(stateRef.current, merged);
+    resetVoronoiMosaic(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

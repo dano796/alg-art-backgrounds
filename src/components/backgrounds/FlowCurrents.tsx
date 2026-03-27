@@ -4,7 +4,7 @@ import {
   drawFlowCurrents,
   resetFlowCurrents,
   type FlowCurrentsState,
-} from "./engines/flowCurrents";
+} from "../engines/flowCurrents";
 
 export interface FlowCurrentsParams {
   seed?: number;

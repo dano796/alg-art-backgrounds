@@ -1,36 +1,35 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initNeuralWeave,
-  drawNeuralWeave,
-  resetNeuralWeave,
-  type NeuralWeaveState,
-  type NeuralWeaveParams,
-} from "./engines/neuralWeave";
+  initReactionDiffusion,
+  drawReactionDiffusion,
+  resetReactionDiffusion,
+  type ReactionDiffusionState,
+  type ReactionDiffusionParams,
+} from "../engines/reactionDiffusion";
 
-export const neuralWeaveDefaults: NeuralWeaveParams = {
-  seed: 6666,
-  nodeCount: 45,
-  connectionRadius: 180,
-  signalCount: 8,
-  signalSpeed: 1.2,
-  nodeSize: 5,
-  bgColor: "#0a0e14",
-  nodeColor: "#50b8e8",
-  edgeColor: "#50b8e8",
-  signalColor: "#e8b850",
+export const reactionDiffusionDefaults: ReactionDiffusionParams = {
+  seed: 1111,
+  Da: 1.0,
+  Db: 0.5,
+  f: 0.055,
+  k: 0.062,
+  stepsPerFrame: 10,
+  bgColor: "#0a0a0a",
+  colorA: "#1a1a2e",
+  colorB: "#00d4ff",
 };
 
-export interface NeuralWeaveProps extends Partial<NeuralWeaveParams> {
+export interface ReactionDiffusionProps extends Partial<ReactionDiffusionParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function NeuralWeave(props: NeuralWeaveProps) {
+export function ReactionDiffusion(props: ReactionDiffusionProps) {
   const { className, style, ...params } = props;
-  const merged = { ...neuralWeaveDefaults, ...params };
+  const merged = { ...reactionDiffusionDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<NeuralWeaveState | null>(null);
+  const stateRef = useRef<ReactionDiffusionState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -49,17 +48,17 @@ export function NeuralWeave(props: NeuralWeaveProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initNeuralWeave(w, h, paramsRef.current);
+        stateRef.current = initReactionDiffusion(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initNeuralWeave(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initReactionDiffusion(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawNeuralWeave(ctx, stateRef.current, paramsRef.current);
+        drawReactionDiffusion(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -77,7 +76,7 @@ export function NeuralWeave(props: NeuralWeaveProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetNeuralWeave(stateRef.current, merged);
+    resetReactionDiffusion(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

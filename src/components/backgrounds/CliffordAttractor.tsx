@@ -9,7 +9,7 @@ import {
   drawCliffordAttractor,
   resetCliffordAttractor,
   type CliffordAttractorState,
-} from "./engines/cliffordAttractor";
+} from "../engines/cliffordAttractor";
 
 export interface CliffordAttractorParams {
   seed?: number;

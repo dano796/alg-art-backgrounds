@@ -1,31 +1,41 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initVoronoiMosaic,
-  drawVoronoiMosaic,
-  resetVoronoiMosaic,
-  type VoronoiMosaicState,
-  type VoronoiMosaicParams,
-} from "./engines/voronoiMosaic";
+  initOrbitalResonance,
+  drawOrbitalResonance,
+  resetOrbitalResonance,
+  type OrbitalResonanceState,
+  type OrbitalResonanceParams,
+} from "../engines/orbitalResonance";
 
-export const voronoiMosaicDefaults: VoronoiMosaicParams = {
-  seed: 4444,
-  seedCount: 25,
-  moveSpeed: 0.5,
-  edgeContrast: 1.2,
-  bgColor: "#0a0e14",
+export const orbitalResonanceDefaults: OrbitalResonanceParams = {
+  seed: 9999,
+  bodyCount: 5,
+  resonanceRatios: [1, 2, 3, 5, 8],
+  simSpeed: 1.0,
+  trailLength: 200,
+  trailWeight: 1.5,
+  bodySize: 8,
+  centerSize: 12,
+  fadeTrails: true,
+  fadeAmount: 8,
+  bgColor: "#0a0a0a",
+  colorA: "#ff6b35",
+  colorB: "#f7931e",
+  colorC: "#fdc830",
+  colorD: "#50b8e8",
 };
 
-export interface VoronoiMosaicProps extends Partial<VoronoiMosaicParams> {
+export interface OrbitalResonanceProps extends Partial<OrbitalResonanceParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function VoronoiMosaic(props: VoronoiMosaicProps) {
+export function OrbitalResonance(props: OrbitalResonanceProps) {
   const { className, style, ...params } = props;
-  const merged = { ...voronoiMosaicDefaults, ...params };
+  const merged = { ...orbitalResonanceDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<VoronoiMosaicState | null>(null);
+  const stateRef = useRef<OrbitalResonanceState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -44,17 +54,17 @@ export function VoronoiMosaic(props: VoronoiMosaicProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initVoronoiMosaic(w, h, paramsRef.current);
+        stateRef.current = initOrbitalResonance(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initVoronoiMosaic(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initOrbitalResonance(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawVoronoiMosaic(ctx, stateRef.current, paramsRef.current);
+        drawOrbitalResonance(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -72,7 +82,7 @@ export function VoronoiMosaic(props: VoronoiMosaicProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetVoronoiMosaic(stateRef.current, merged);
+    resetOrbitalResonance(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -1,53 +1,55 @@
 /**
- * Spirograph
- * Hypotrochoid curves from rolling circles
+ * Phyllotaxis Dream
+ * Golden angle spiral growth
  */
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initSpirograph,
-  drawSpirograph,
-  resetSpirograph,
-  type SpirographState,
-} from "./engines/spirograph";
+  initPhyllotaxisDream,
+  drawPhyllotaxisDream,
+  resetPhyllotaxisDream,
+  type PhyllotaxisDreamState,
+} from "../engines/phyllotaxisDream";
 
-export interface SpirographParams {
+export interface PhyllotaxisDreamParams {
   seed?: number;
-  R?: number;
-  r?: number;
-  d?: number;
-  speed?: number;
-  lineWeight?: number;
+  numPoints?: number;
+  spread?: number;
+  angleScale?: number;
+  morph?: number;
+  rotSpeed?: number;
+  dotSize?: number;
   bgColor?: string;
   colorA?: string;
   colorB?: string;
   colorC?: string;
 }
 
-export const spirographDefaults: Required<SpirographParams> = {
+export const phyllotaxisDreamDefaults: Required<PhyllotaxisDreamParams> = {
   seed: 42731,
-  R: 120,
-  r: 45,
-  d: 70,
-  speed: 1.0,
-  lineWeight: 1.2,
+  numPoints: 800,
+  spread: 4.5,
+  angleScale: 1.0,
+  morph: 1.0,
+  rotSpeed: 1.0,
+  dotSize: 6,
   bgColor: "#0a0a0a",
   colorA: "#ff6b35",
   colorB: "#f7931e",
   colorC: "#fdc830",
 };
 
-export interface SpirographProps extends SpirographParams {
+export interface PhyllotaxisDreamProps extends PhyllotaxisDreamParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function Spirograph(props: SpirographProps) {
+export function PhyllotaxisDream(props: PhyllotaxisDreamProps) {
   const { className, style, ...params } = props;
-  const merged = { ...spirographDefaults, ...params };
+  const merged = { ...phyllotaxisDreamDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<SpirographState | null>(null);
+  const stateRef = useRef<PhyllotaxisDreamState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -67,17 +69,17 @@ export function Spirograph(props: SpirographProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initSpirograph(w, h, paramsRef.current);
+        stateRef.current = initPhyllotaxisDream(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initSpirograph(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initPhyllotaxisDream(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawSpirograph(ctx, stateRef.current, paramsRef.current);
+        drawPhyllotaxisDream(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -97,8 +99,8 @@ export function Spirograph(props: SpirographProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    resetSpirograph(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.R, merged.r, merged.d]); // eslint-disable-line react-hooks/exhaustive-deps
+    resetPhyllotaxisDream(stateRef.current, paramsRef.current);
+  }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

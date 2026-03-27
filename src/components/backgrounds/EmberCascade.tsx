@@ -9,7 +9,7 @@ import {
   drawEmberCascade,
   resetEmberCascade,
   type EmberCascadeState,
-} from "./engines/emberCascade";
+} from "../engines/emberCascade";
 
 export interface EmberCascadeParams {
   seed?: number;

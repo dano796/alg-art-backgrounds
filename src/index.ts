@@ -1,30 +1,30 @@
 // Public API — re-export everything consumers need
 
 // Components
-export { FlowCurrents } from "./components/FlowCurrents";
-export { GravityStorm } from "./components/GravityStorm";
-export { GeoPulse } from "./components/GeoPulse";
-export { WaveEther } from "./components/WaveEther";
-export { VortexBloom } from "./components/VortexBloom";
-export { CrystallineDrift } from "./components/CrystallineDrift";
-export { AmbientMesh } from "./components/AmbientMesh";
-export { EmberCascade } from "./components/EmberCascade";
-export { CliffordAttractor } from "./components/CliffordAttractor";
-export { HarmonicLattice } from "./components/HarmonicLattice";
-export { LissajousWeave } from "./components/LissajousWeave";
-export { PhyllotaxisDream } from "./components/PhyllotaxisDream";
-export { Spirograph } from "./components/Spirograph";
-export { DifferentialGrowth } from "./components/DifferentialGrowth";
-export { DoublePendulum } from "./components/DoublePendulum";
-export { FractalNoiseTerrain } from "./components/FractalNoiseTerrain";
-export { MoireLattice } from "./components/MoireLattice";
-export { NeuralWeave } from "./components/NeuralWeave";
-export { OrbitalResonance } from "./components/OrbitalResonance";
-export { ReactionDiffusion } from "./components/ReactionDiffusion";
-export { RecursiveSubdivision } from "./components/RecursiveSubdivision";
-export { TideHarmonics } from "./components/TideHarmonics";
-export { VoronoiMosaic } from "./components/VoronoiMosaic";
-export { BackgroundStudio } from "./components/BackgroundStudio";
+export { FlowCurrents } from "./components/backgrounds/FlowCurrents";
+export { GravityStorm } from "./components/backgrounds/GravityStorm";
+export { GeoPulse } from "./components/backgrounds/GeoPulse";
+export { WaveEther } from "./components/backgrounds/WaveEther";
+export { VortexBloom } from "./components/backgrounds/VortexBloom";
+export { CrystallineDrift } from "./components/backgrounds/CrystallineDrift";
+export { AmbientMesh } from "./components/backgrounds/AmbientMesh";
+export { EmberCascade } from "./components/backgrounds/EmberCascade";
+export { CliffordAttractor } from "./components/backgrounds/CliffordAttractor";
+export { HarmonicLattice } from "./components/backgrounds/HarmonicLattice";
+export { LissajousWeave } from "./components/backgrounds/LissajousWeave";
+export { PhyllotaxisDream } from "./components/backgrounds/PhyllotaxisDream";
+export { Spirograph } from "./components/backgrounds/Spirograph";
+export { DifferentialGrowth } from "./components/backgrounds/DifferentialGrowth";
+export { DoublePendulum } from "./components/backgrounds/DoublePendulum";
+export { FractalNoiseTerrain } from "./components/backgrounds/FractalNoiseTerrain";
+export { MoireLattice } from "./components/backgrounds/MoireLattice";
+export { NeuralWeave } from "./components/backgrounds/NeuralWeave";
+export { OrbitalResonance } from "./components/backgrounds/OrbitalResonance";
+export { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion";
+export { RecursiveSubdivision } from "./components/backgrounds/RecursiveSubdivision";
+export { TideHarmonics } from "./components/backgrounds/TideHarmonics";
+export { VoronoiMosaic } from "./components/backgrounds/VoronoiMosaic";
+export { BackgroundStudio } from "./BackgroundStudio";
 
 // Engines (for headless / custom renderer usage)
 export {

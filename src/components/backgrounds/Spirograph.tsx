@@ -1,57 +1,53 @@
 /**
- * Harmonic Lattice
- * Two-dimensional standing wave interference patterns
+ * Spirograph
+ * Hypotrochoid curves from rolling circles
  */
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initHarmonicLattice,
-  drawHarmonicLattice,
-  resetHarmonicLattice,
-  type HarmonicLatticeState,
-} from "./engines/harmonicLattice";
+  initSpirograph,
+  drawSpirograph,
+  resetSpirograph,
+  type SpirographState,
+} from "../engines/spirograph";
 
-export interface HarmonicLatticeParams {
+export interface SpirographParams {
   seed?: number;
-  modeCount?: number;
-  maxModeNumber?: number;
-  baseFrequency?: number;
-  timeSpeed?: number;
-  resolution?: number;
-  nodeThreshold?: number;
-  contrastPower?: number;
+  R?: number;
+  r?: number;
+  d?: number;
+  speed?: number;
+  lineWeight?: number;
   bgColor?: string;
   colorA?: string;
   colorB?: string;
   colorC?: string;
 }
 
-export const harmonicLatticeDefaults: Required<HarmonicLatticeParams> = {
+export const spirographDefaults: Required<SpirographParams> = {
   seed: 42731,
-  modeCount: 6,
-  maxModeNumber: 5,
-  baseFrequency: 1.0,
-  timeSpeed: 1.0,
-  resolution: 80,
-  nodeThreshold: 0.15,
-  contrastPower: 1.5,
+  R: 120,
+  r: 45,
+  d: 70,
+  speed: 1.0,
+  lineWeight: 1.2,
   bgColor: "#0a0a0a",
   colorA: "#ff6b35",
   colorB: "#f7931e",
   colorC: "#fdc830",
 };
 
-export interface HarmonicLatticeProps extends HarmonicLatticeParams {
+export interface SpirographProps extends SpirographParams {
   className?: string;
   style?: CSSProperties;
 }
 
-export function HarmonicLattice(props: HarmonicLatticeProps) {
+export function Spirograph(props: SpirographProps) {
   const { className, style, ...params } = props;
-  const merged = { ...harmonicLatticeDefaults, ...params };
+  const merged = { ...spirographDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<HarmonicLatticeState | null>(null);
+  const stateRef = useRef<SpirographState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -71,17 +67,17 @@ export function HarmonicLattice(props: HarmonicLatticeProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initHarmonicLattice(w, h, paramsRef.current);
+        stateRef.current = initSpirograph(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initHarmonicLattice(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initSpirograph(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawHarmonicLattice(ctx, stateRef.current, paramsRef.current);
+        drawSpirograph(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -101,8 +97,8 @@ export function HarmonicLattice(props: HarmonicLatticeProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    resetHarmonicLattice(stateRef.current, paramsRef.current);
-  }, [merged.seed, merged.modeCount, merged.maxModeNumber]); // eslint-disable-line react-hooks/exhaustive-deps
+    resetSpirograph(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.R, merged.r, merged.d]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

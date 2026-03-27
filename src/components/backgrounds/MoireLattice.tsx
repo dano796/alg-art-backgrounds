@@ -5,7 +5,7 @@ import {
   resetMoireLattice,
   type MoireLatticeState,
   type MoireLatticeParams,
-} from "./engines/moireLattice";
+} from "../engines/moireLattice";
 
 export const moireLatticeDefaults: MoireLatticeParams = {
   seed: 5555,

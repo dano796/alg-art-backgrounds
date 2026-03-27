@@ -8,29 +8,29 @@
  */
 
 import { useState, useCallback, type CSSProperties } from "react";
-import { FlowCurrents } from "./FlowCurrents";
-import { GravityStorm } from "./GravityStorm";
-import { GeoPulse } from "./GeoPulse";
-import { WaveEther } from "./WaveEther";
-import { VortexBloom } from "./VortexBloom";
-import { CrystallineDrift } from "./CrystallineDrift";
-import { AmbientMesh } from "./AmbientMesh";
-import { EmberCascade } from "./EmberCascade";
-import { CliffordAttractor } from "./CliffordAttractor";
-import { HarmonicLattice } from "./HarmonicLattice";
-import { LissajousWeave } from "./LissajousWeave";
-import { PhyllotaxisDream } from "./PhyllotaxisDream";
-import { Spirograph } from "./Spirograph";
-import { DifferentialGrowth } from "./DifferentialGrowth";
-import { DoublePendulum } from "./DoublePendulum";
-import { FractalNoiseTerrain } from "./FractalNoiseTerrain";
-import { MoireLattice } from "./MoireLattice";
-import { NeuralWeave } from "./NeuralWeave";
-import { OrbitalResonance } from "./OrbitalResonance";
-import { ReactionDiffusion } from "./ReactionDiffusion";
-import { RecursiveSubdivision } from "./RecursiveSubdivision";
-import { TideHarmonics } from "./TideHarmonics";
-import { VoronoiMosaic } from "./VoronoiMosaic";
+import { FlowCurrents } from "./components/backgrounds/FlowCurrents";
+import { GravityStorm } from "./components/backgrounds/GravityStorm";
+import { GeoPulse } from "./components/backgrounds/GeoPulse";
+import { WaveEther } from "./components/backgrounds/WaveEther";
+import { VortexBloom } from "./components/backgrounds/VortexBloom";
+import { CrystallineDrift } from "./components/backgrounds/CrystallineDrift";
+import { AmbientMesh } from "./components/backgrounds/AmbientMesh";
+import { EmberCascade } from "./components/backgrounds/EmberCascade";
+import { CliffordAttractor } from "./components/backgrounds/CliffordAttractor";
+import { HarmonicLattice } from "./components/backgrounds/HarmonicLattice";
+import { LissajousWeave } from "./components/backgrounds/LissajousWeave";
+import { PhyllotaxisDream } from "./components/backgrounds/PhyllotaxisDream";
+import { Spirograph } from "./components/backgrounds/Spirograph";
+import { DifferentialGrowth } from "./components/backgrounds/DifferentialGrowth";
+import { DoublePendulum } from "./components/backgrounds/DoublePendulum";
+import { FractalNoiseTerrain } from "./components/backgrounds/FractalNoiseTerrain";
+import { MoireLattice } from "./components/backgrounds/MoireLattice";
+import { NeuralWeave } from "./components/backgrounds/NeuralWeave";
+import { OrbitalResonance } from "./components/backgrounds/OrbitalResonance";
+import { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion";
+import { RecursiveSubdivision } from "./components/backgrounds/RecursiveSubdivision";
+import { TideHarmonics } from "./components/backgrounds/TideHarmonics";
+import { VoronoiMosaic } from "./components/backgrounds/VoronoiMosaic";
 import {
   flowCurrentsSchema,
   flowCurrentsDefaults,
@@ -79,7 +79,7 @@ import {
   voronoiMosaicSchema,
   voronoiMosaicDefaults,
   type ParamSchema,
-} from "./schemas";
+} from "./components/schemas";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -589,7 +589,7 @@ export function BackgroundStudio() {
           <div style={{ fontSize: 10, color: T.muted, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 10 }}>
             Background
           </div>
-          
+
           {/* Current selection display - clickable to toggle */}
           <div
             onClick={() => setDropdownOpen(!dropdownOpen)}

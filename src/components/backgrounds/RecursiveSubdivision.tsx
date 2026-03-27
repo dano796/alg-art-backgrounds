@@ -1,38 +1,39 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initDifferentialGrowth,
-  drawDifferentialGrowth,
-  resetDifferentialGrowth,
-  type DifferentialGrowthState,
-  type DifferentialGrowthParams,
-} from "./engines/differentialGrowth";
+  initRecursiveSubdivision,
+  drawRecursiveSubdivision,
+  resetRecursiveSubdivision,
+  type RecursiveSubdivisionState,
+  type RecursiveSubdivisionParams,
+} from "../engines/recursiveSubdivision";
 
-export const differentialGrowthDefaults: DifferentialGrowthParams = {
-  seed: 4242,
-  growthRate: 0.8,
-  repelRadius: 12,
-  repelStrength: 0.4,
-  maxEdge: 8,
-  maxNodes: 2800,
-  stepsPerFrame: 3,
-  fadeRate: 18,
-  lineWeight: 1.8,
+export const recursiveSubdivisionDefaults: RecursiveSubdivisionParams = {
+  seed: 2222,
+  maxDepth: 6,
+  splitProbability: 0.85,
+  minSize: 30,
+  maxStroke: 4,
+  minStroke: 0.5,
+  colorMode: 0,
+  animated: true,
+  animSpeed: 1.5,
   bgColor: "#0a0e14",
   colorA: "#50b8e8",
-  colorB: "#e850b8",
+  colorB: "#e8b850",
+  colorC: "#e850b8",
 };
 
-export interface DifferentialGrowthProps extends Partial<DifferentialGrowthParams> {
+export interface RecursiveSubdivisionProps extends Partial<RecursiveSubdivisionParams> {
   className?: string;
   style?: CSSProperties;
 }
 
-export function DifferentialGrowth(props: DifferentialGrowthProps) {
+export function RecursiveSubdivision(props: RecursiveSubdivisionProps) {
   const { className, style, ...params } = props;
-  const merged = { ...differentialGrowthDefaults, ...params };
+  const merged = { ...recursiveSubdivisionDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<DifferentialGrowthState | null>(null);
+  const stateRef = useRef<RecursiveSubdivisionState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -51,17 +52,17 @@ export function DifferentialGrowth(props: DifferentialGrowthProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        stateRef.current = initDifferentialGrowth(w, h, paramsRef.current);
+        stateRef.current = initRecursiveSubdivision(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initDifferentialGrowth(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initRecursiveSubdivision(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawDifferentialGrowth(ctx, stateRef.current, paramsRef.current);
+        drawRecursiveSubdivision(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -79,7 +80,7 @@ export function DifferentialGrowth(props: DifferentialGrowthProps) {
 
   useEffect(() => {
     if (!stateRef.current) return;
-    resetDifferentialGrowth(stateRef.current, merged);
+    resetRecursiveSubdivision(stateRef.current, merged);
   }, [merged.seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -81,12 +81,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "flow-currents",
     name: "Flow Currents",
-    componentPath: "../components/FlowCurrents",
+    componentPath: "../components/backgrounds/FlowCurrents",
     exportName: "FlowCurrents",
     schema: flowCurrentsSchema,
     defaults: flowCurrentsDefaults,
     files: [
-      "src/components/FlowCurrents.tsx",
+      "src/components/backgrounds/FlowCurrents.tsx",
       "src/components/engines/flowCurrents.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -97,12 +97,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "gravity-storm",
     name: "Gravity Storm",
-    componentPath: "../components/GravityStorm",
+    componentPath: "../components/backgrounds/GravityStorm",
     exportName: "GravityStorm",
     schema: gravityStormSchema,
     defaults: gravityStormDefaults,
     files: [
-      "src/components/GravityStorm.tsx",
+      "src/components/backgrounds/GravityStorm.tsx",
       "src/components/engines/gravityStorm.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -113,12 +113,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "geo-pulse",
     name: "Geo Pulse",
-    componentPath: "../components/GeoPulse",
+    componentPath: "../components/backgrounds/GeoPulse",
     exportName: "GeoPulse",
     schema: geoPulseSchema,
     defaults: geoPulseDefaults,
     files: [
-      "src/components/GeoPulse.tsx",
+      "src/components/backgrounds/GeoPulse.tsx",
       "src/components/engines/geoPulse.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -129,12 +129,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "wave-ether",
     name: "Wave Ether",
-    componentPath: "../components/WaveEther",
+    componentPath: "../components/backgrounds/WaveEther",
     exportName: "WaveEther",
     schema: waveEtherSchema,
     defaults: waveEtherDefaults,
     files: [
-      "src/components/WaveEther.tsx",
+      "src/components/backgrounds/WaveEther.tsx",
       "src/components/engines/waveEther.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -145,12 +145,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "vortex-bloom",
     name: "Vortex Bloom",
-    componentPath: "../components/VortexBloom",
+    componentPath: "../components/backgrounds/VortexBloom",
     exportName: "VortexBloom",
     schema: vortexBloomSchema,
     defaults: vortexBloomDefaults,
     files: [
-      "src/components/VortexBloom.tsx",
+      "src/components/backgrounds/VortexBloom.tsx",
       "src/components/engines/vortexBloom.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -161,12 +161,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "crystalline-drift",
     name: "Crystalline Drift",
-    componentPath: "../components/CrystallineDrift",
+    componentPath: "../components/backgrounds/CrystallineDrift",
     exportName: "CrystallineDrift",
     schema: crystallineDriftSchema,
     defaults: crystallineDriftDefaults,
     files: [
-      "src/components/CrystallineDrift.tsx",
+      "src/components/backgrounds/CrystallineDrift.tsx",
       "src/components/engines/crystallineDrift.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -177,12 +177,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "ambient-mesh",
     name: "Ambient Mesh",
-    componentPath: "../components/AmbientMesh",
+    componentPath: "../components/backgrounds/AmbientMesh",
     exportName: "AmbientMesh",
     schema: ambientMeshSchema,
     defaults: ambientMeshDefaults,
     files: [
-      "src/components/AmbientMesh.tsx",
+      "src/components/backgrounds/AmbientMesh.tsx",
       "src/components/engines/ambientMesh.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -193,12 +193,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "ember-cascade",
     name: "Ember Cascade",
-    componentPath: "../components/EmberCascade",
+    componentPath: "../components/backgrounds/EmberCascade",
     exportName: "EmberCascade",
     schema: emberCascadeSchema,
     defaults: emberCascadeDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/EmberCascade.tsx",
+      "src/components/backgrounds/EmberCascade.tsx",
       "src/components/engines/emberCascade.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -209,12 +209,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "clifford-attractor",
     name: "Clifford Attractor",
-    componentPath: "../components/CliffordAttractor",
+    componentPath: "../components/backgrounds/CliffordAttractor",
     exportName: "CliffordAttractor",
     schema: cliffordAttractorSchema,
     defaults: cliffordAttractorDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/CliffordAttractor.tsx",
+      "src/components/backgrounds/CliffordAttractor.tsx",
       "src/components/engines/cliffordAttractor.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -225,12 +225,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "harmonic-lattice",
     name: "Harmonic Lattice",
-    componentPath: "../components/HarmonicLattice",
+    componentPath: "../components/backgrounds/HarmonicLattice",
     exportName: "HarmonicLattice",
     schema: harmonicLatticeSchema,
     defaults: harmonicLatticeDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/HarmonicLattice.tsx",
+      "src/components/backgrounds/HarmonicLattice.tsx",
       "src/components/engines/harmonicLattice.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -241,12 +241,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "lissajous-weave",
     name: "Lissajous Weave",
-    componentPath: "../components/LissajousWeave",
+    componentPath: "../components/backgrounds/LissajousWeave",
     exportName: "LissajousWeave",
     schema: lissajousWeaveSchema,
     defaults: lissajousWeaveDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/LissajousWeave.tsx",
+      "src/components/backgrounds/LissajousWeave.tsx",
       "src/components/engines/lissajousWeave.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -257,12 +257,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "phyllotaxis-dream",
     name: "Phyllotaxis Dream",
-    componentPath: "../components/PhyllotaxisDream",
+    componentPath: "../components/backgrounds/PhyllotaxisDream",
     exportName: "PhyllotaxisDream",
     schema: phyllotaxisDreamSchema,
     defaults: phyllotaxisDreamDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/PhyllotaxisDream.tsx",
+      "src/components/backgrounds/PhyllotaxisDream.tsx",
       "src/components/engines/phyllotaxisDream.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -273,12 +273,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "spirograph",
     name: "Spirograph",
-    componentPath: "../components/Spirograph",
+    componentPath: "../components/backgrounds/Spirograph",
     exportName: "Spirograph",
     schema: spirographSchema,
     defaults: spirographDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/Spirograph.tsx",
+      "src/components/backgrounds/Spirograph.tsx",
       "src/components/engines/spirograph.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -289,12 +289,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "differential-growth",
     name: "Differential Growth",
-    componentPath: "../components/DifferentialGrowth",
+    componentPath: "../components/backgrounds/DifferentialGrowth",
     exportName: "DifferentialGrowth",
     schema: differentialGrowthSchema,
     defaults: differentialGrowthDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/DifferentialGrowth.tsx",
+      "src/components/backgrounds/DifferentialGrowth.tsx",
       "src/components/engines/differentialGrowth.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -305,12 +305,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "double-pendulum",
     name: "Double Pendulum",
-    componentPath: "../components/DoublePendulum",
+    componentPath: "../components/backgrounds/DoublePendulum",
     exportName: "DoublePendulum",
     schema: doublePendulumSchema,
     defaults: doublePendulumDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/DoublePendulum.tsx",
+      "src/components/backgrounds/DoublePendulum.tsx",
       "src/components/engines/doublePendulum.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -321,12 +321,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "fractal-noise-terrain",
     name: "Fractal Noise Terrain",
-    componentPath: "../components/FractalNoiseTerrain",
+    componentPath: "../components/backgrounds/FractalNoiseTerrain",
     exportName: "FractalNoiseTerrain",
     schema: fractalNoiseTerrainSchema,
     defaults: fractalNoiseTerrainDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/FractalNoiseTerrain.tsx",
+      "src/components/backgrounds/FractalNoiseTerrain.tsx",
       "src/components/engines/fractalNoiseTerrain.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -337,12 +337,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "moire-lattice",
     name: "Moire Lattice",
-    componentPath: "../components/MoireLattice",
+    componentPath: "../components/backgrounds/MoireLattice",
     exportName: "MoireLattice",
     schema: moireLatticeSchema,
     defaults: moireLatticeDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/MoireLattice.tsx",
+      "src/components/backgrounds/MoireLattice.tsx",
       "src/components/engines/moireLattice.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -353,12 +353,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "neural-weave",
     name: "Neural Weave",
-    componentPath: "../components/NeuralWeave",
+    componentPath: "../components/backgrounds/NeuralWeave",
     exportName: "NeuralWeave",
     schema: neuralWeaveSchema,
     defaults: neuralWeaveDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/NeuralWeave.tsx",
+      "src/components/backgrounds/NeuralWeave.tsx",
       "src/components/engines/neuralWeave.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -369,12 +369,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "orbital-resonance",
     name: "Orbital Resonance",
-    componentPath: "../components/OrbitalResonance",
+    componentPath: "../components/backgrounds/OrbitalResonance",
     exportName: "OrbitalResonance",
     schema: orbitalResonanceSchema,
     defaults: orbitalResonanceDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/OrbitalResonance.tsx",
+      "src/components/backgrounds/OrbitalResonance.tsx",
       "src/components/engines/orbitalResonance.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -385,12 +385,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "reaction-diffusion",
     name: "Reaction Diffusion",
-    componentPath: "../components/ReactionDiffusion",
+    componentPath: "../components/backgrounds/ReactionDiffusion",
     exportName: "ReactionDiffusion",
     schema: reactionDiffusionSchema,
     defaults: reactionDiffusionDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/ReactionDiffusion.tsx",
+      "src/components/backgrounds/ReactionDiffusion.tsx",
       "src/components/engines/reactionDiffusion.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -401,12 +401,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "recursive-subdivision",
     name: "Recursive Subdivision",
-    componentPath: "../components/RecursiveSubdivision",
+    componentPath: "../components/backgrounds/RecursiveSubdivision",
     exportName: "RecursiveSubdivision",
     schema: recursiveSubdivisionSchema,
     defaults: recursiveSubdivisionDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/RecursiveSubdivision.tsx",
+      "src/components/backgrounds/RecursiveSubdivision.tsx",
       "src/components/engines/recursiveSubdivision.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -417,12 +417,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "tide-harmonics",
     name: "Tide Harmonics",
-    componentPath: "../components/TideHarmonics",
+    componentPath: "../components/backgrounds/TideHarmonics",
     exportName: "TideHarmonics",
     schema: tideHarmonicsSchema,
     defaults: tideHarmonicsDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/TideHarmonics.tsx",
+      "src/components/backgrounds/TideHarmonics.tsx",
       "src/components/engines/tideHarmonics.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -433,12 +433,12 @@ export const registry: RegistryEntry[] = [
   {
     id: "voronoi-mosaic",
     name: "Voronoi Mosaic",
-    componentPath: "../components/VoronoiMosaic",
+    componentPath: "../components/backgrounds/VoronoiMosaic",
     exportName: "VoronoiMosaic",
     schema: voronoiMosaicSchema,
     defaults: voronoiMosaicDefaults as unknown as Record<string, unknown>,
     files: [
-      "src/components/VoronoiMosaic.tsx",
+      "src/components/backgrounds/VoronoiMosaic.tsx",
       "src/components/engines/voronoiMosaic.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
@@ -449,35 +449,35 @@ export const registry: RegistryEntry[] = [
   {
     id: "background-studio",
     name: "Background Studio",
-    componentPath: "../components/BackgroundStudio",
+    componentPath: "../components/backgrounds/BackgroundStudio",
     exportName: "BackgroundStudio",
     schema: [],
     defaults: {},
     files: [
-      "src/components/BackgroundStudio.tsx",
-      "src/components/FlowCurrents.tsx",
-      "src/components/GravityStorm.tsx",
-      "src/components/GeoPulse.tsx",
-      "src/components/WaveEther.tsx",
-      "src/components/VortexBloom.tsx",
-      "src/components/CrystallineDrift.tsx",
-      "src/components/AmbientMesh.tsx",
-      "src/components/EmberCascade.tsx",
-      "src/components/CliffordAttractor.tsx",
-      "src/components/HarmonicLattice.tsx",
-      "src/components/LissajousWeave.tsx",
-      "src/components/PhyllotaxisDream.tsx",
-      "src/components/Spirograph.tsx",
-      "src/components/DifferentialGrowth.tsx",
-      "src/components/DoublePendulum.tsx",
-      "src/components/FractalNoiseTerrain.tsx",
-      "src/components/MoireLattice.tsx",
-      "src/components/NeuralWeave.tsx",
-      "src/components/OrbitalResonance.tsx",
-      "src/components/ReactionDiffusion.tsx",
-      "src/components/RecursiveSubdivision.tsx",
-      "src/components/TideHarmonics.tsx",
-      "src/components/VoronoiMosaic.tsx",
+      "src/components/backgrounds/BackgroundStudio.tsx",
+      "src/components/backgrounds/FlowCurrents.tsx",
+      "src/components/backgrounds/GravityStorm.tsx",
+      "src/components/backgrounds/GeoPulse.tsx",
+      "src/components/backgrounds/WaveEther.tsx",
+      "src/components/backgrounds/VortexBloom.tsx",
+      "src/components/backgrounds/CrystallineDrift.tsx",
+      "src/components/backgrounds/AmbientMesh.tsx",
+      "src/components/backgrounds/EmberCascade.tsx",
+      "src/components/backgrounds/CliffordAttractor.tsx",
+      "src/components/backgrounds/HarmonicLattice.tsx",
+      "src/components/backgrounds/LissajousWeave.tsx",
+      "src/components/backgrounds/PhyllotaxisDream.tsx",
+      "src/components/backgrounds/Spirograph.tsx",
+      "src/components/backgrounds/DifferentialGrowth.tsx",
+      "src/components/backgrounds/DoublePendulum.tsx",
+      "src/components/backgrounds/FractalNoiseTerrain.tsx",
+      "src/components/backgrounds/MoireLattice.tsx",
+      "src/components/backgrounds/NeuralWeave.tsx",
+      "src/components/backgrounds/OrbitalResonance.tsx",
+      "src/components/backgrounds/ReactionDiffusion.tsx",
+      "src/components/backgrounds/RecursiveSubdivision.tsx",
+      "src/components/backgrounds/TideHarmonics.tsx",
+      "src/components/backgrounds/VoronoiMosaic.tsx",
       "src/components/engines/flowCurrents.ts",
       "src/components/engines/gravityStorm.ts",
       "src/components/engines/geoPulse.ts",
@@ -518,27 +518,27 @@ export function getBackground(id: string): RegistryEntry | undefined {
 export const backgroundIds = registry.map((e) => e.id);
 
 // Re-export components for convenience
-export { FlowCurrents } from "../components/FlowCurrents";
-export { GravityStorm } from "../components/GravityStorm";
-export { GeoPulse } from "../components/GeoPulse";
-export { WaveEther } from "../components/WaveEther";
-export { VortexBloom } from "../components/VortexBloom";
-export { CrystallineDrift } from "../components/CrystallineDrift";
-export { AmbientMesh } from "../components/AmbientMesh";
-export { EmberCascade } from "../components/EmberCascade";
-export { CliffordAttractor } from "../components/CliffordAttractor";
-export { HarmonicLattice } from "../components/HarmonicLattice";
-export { LissajousWeave } from "../components/LissajousWeave";
-export { PhyllotaxisDream } from "../components/PhyllotaxisDream";
-export { Spirograph } from "../components/Spirograph";
-export { DifferentialGrowth } from "../components/DifferentialGrowth";
-export { DoublePendulum } from "../components/DoublePendulum";
-export { FractalNoiseTerrain } from "../components/FractalNoiseTerrain";
-export { MoireLattice } from "../components/MoireLattice";
-export { NeuralWeave } from "../components/NeuralWeave";
-export { OrbitalResonance } from "../components/OrbitalResonance";
-export { ReactionDiffusion } from "../components/ReactionDiffusion";
-export { RecursiveSubdivision } from "../components/RecursiveSubdivision";
-export { TideHarmonics } from "../components/TideHarmonics";
-export { VoronoiMosaic } from "../components/VoronoiMosaic";
-export { BackgroundStudio } from "../components/BackgroundStudio";
+export { FlowCurrents } from "../components/backgrounds/FlowCurrents";
+export { GravityStorm } from "../components/backgrounds/GravityStorm";
+export { GeoPulse } from "../components/backgrounds/GeoPulse";
+export { WaveEther } from "../components/backgrounds/WaveEther";
+export { VortexBloom } from "../components/backgrounds/VortexBloom";
+export { CrystallineDrift } from "../components/backgrounds/CrystallineDrift";
+export { AmbientMesh } from "../components/backgrounds/AmbientMesh";
+export { EmberCascade } from "../components/backgrounds/EmberCascade";
+export { CliffordAttractor } from "../components/backgrounds/CliffordAttractor";
+export { HarmonicLattice } from "../components/backgrounds/HarmonicLattice";
+export { LissajousWeave } from "../components/backgrounds/LissajousWeave";
+export { PhyllotaxisDream } from "../components/backgrounds/PhyllotaxisDream";
+export { Spirograph } from "../components/backgrounds/Spirograph";
+export { DifferentialGrowth } from "../components/backgrounds/DifferentialGrowth";
+export { DoublePendulum } from "../components/backgrounds/DoublePendulum";
+export { FractalNoiseTerrain } from "../components/backgrounds/FractalNoiseTerrain";
+export { MoireLattice } from "../components/backgrounds/MoireLattice";
+export { NeuralWeave } from "../components/backgrounds/NeuralWeave";
+export { OrbitalResonance } from "../components/backgrounds/OrbitalResonance";
+export { ReactionDiffusion } from "../components/backgrounds/ReactionDiffusion";
+export { RecursiveSubdivision } from "../components/backgrounds/RecursiveSubdivision";
+export { TideHarmonics } from "../components/backgrounds/TideHarmonics";
+export { VoronoiMosaic } from "../components/backgrounds/VoronoiMosaic";
+export { BackgroundStudio } from "../BackgroundStudio";

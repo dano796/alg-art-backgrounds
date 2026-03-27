@@ -4,7 +4,7 @@ import {
   drawGravityStorm,
   resetGravityStorm,
   type GravityStormState,
-} from "./engines/gravityStorm";
+} from "../engines/gravityStorm";
 
 export interface GravityStormParams {
   seed?: number;
