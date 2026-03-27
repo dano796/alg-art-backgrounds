@@ -724,6 +724,58 @@
           "target": "components/backgrounds/HarmonicLattice.tsx"
         },
         {
+          "source": "src/components/LissajousWeave.tsx",
+          "target": "components/backgrounds/LissajousWeave.tsx"
+        },
+        {
+          "source": "src/components/PhyllotaxisDream.tsx",
+          "target": "components/backgrounds/PhyllotaxisDream.tsx"
+        },
+        {
+          "source": "src/components/Spirograph.tsx",
+          "target": "components/backgrounds/Spirograph.tsx"
+        },
+        {
+          "source": "src/components/DifferentialGrowth.tsx",
+          "target": "components/backgrounds/DifferentialGrowth.tsx"
+        },
+        {
+          "source": "src/components/DoublePendulum.tsx",
+          "target": "components/backgrounds/DoublePendulum.tsx"
+        },
+        {
+          "source": "src/components/FractalNoiseTerrain.tsx",
+          "target": "components/backgrounds/FractalNoiseTerrain.tsx"
+        },
+        {
+          "source": "src/components/MoireLattice.tsx",
+          "target": "components/backgrounds/MoireLattice.tsx"
+        },
+        {
+          "source": "src/components/NeuralWeave.tsx",
+          "target": "components/backgrounds/NeuralWeave.tsx"
+        },
+        {
+          "source": "src/components/OrbitalResonance.tsx",
+          "target": "components/backgrounds/OrbitalResonance.tsx"
+        },
+        {
+          "source": "src/components/ReactionDiffusion.tsx",
+          "target": "components/backgrounds/ReactionDiffusion.tsx"
+        },
+        {
+          "source": "src/components/RecursiveSubdivision.tsx",
+          "target": "components/backgrounds/RecursiveSubdivision.tsx"
+        },
+        {
+          "source": "src/components/TideHarmonics.tsx",
+          "target": "components/backgrounds/TideHarmonics.tsx"
+        },
+        {
+          "source": "src/components/VoronoiMosaic.tsx",
+          "target": "components/backgrounds/VoronoiMosaic.tsx"
+        },
+        {
           "source": "src/components/engines/flowCurrents.ts",
           "target": "components/backgrounds/engines/flowCurrents.ts"
         },
@@ -762,6 +814,58 @@
         {
           "source": "src/components/engines/harmonicLattice.ts",
           "target": "components/backgrounds/engines/harmonicLattice.ts"
+        },
+        {
+          "source": "src/components/engines/lissajousWeave.ts",
+          "target": "components/backgrounds/engines/lissajousWeave.ts"
+        },
+        {
+          "source": "src/components/engines/phyllotaxisDream.ts",
+          "target": "components/backgrounds/engines/phyllotaxisDream.ts"
+        },
+        {
+          "source": "src/components/engines/spirograph.ts",
+          "target": "components/backgrounds/engines/spirograph.ts"
+        },
+        {
+          "source": "src/components/engines/differentialGrowth.ts",
+          "target": "components/backgrounds/engines/differentialGrowth.ts"
+        },
+        {
+          "source": "src/components/engines/doublePendulum.ts",
+          "target": "components/backgrounds/engines/doublePendulum.ts"
+        },
+        {
+          "source": "src/components/engines/fractalNoiseTerrain.ts",
+          "target": "components/backgrounds/engines/fractalNoiseTerrain.ts"
+        },
+        {
+          "source": "src/components/engines/moireLattice.ts",
+          "target": "components/backgrounds/engines/moireLattice.ts"
+        },
+        {
+          "source": "src/components/engines/neuralWeave.ts",
+          "target": "components/backgrounds/engines/neuralWeave.ts"
+        },
+        {
+          "source": "src/components/engines/orbitalResonance.ts",
+          "target": "components/backgrounds/engines/orbitalResonance.ts"
+        },
+        {
+          "source": "src/components/engines/reactionDiffusion.ts",
+          "target": "components/backgrounds/engines/reactionDiffusion.ts"
+        },
+        {
+          "source": "src/components/engines/recursiveSubdivision.ts",
+          "target": "components/backgrounds/engines/recursiveSubdivision.ts"
+        },
+        {
+          "source": "src/components/engines/tideHarmonics.ts",
+          "target": "components/backgrounds/engines/tideHarmonics.ts"
+        },
+        {
+          "source": "src/components/engines/voronoiMosaic.ts",
+          "target": "components/backgrounds/engines/voronoiMosaic.ts"
         },
         {
           "source": "src/components/utils/noise.ts",
