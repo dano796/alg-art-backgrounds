@@ -1,23 +1,6 @@
 import { useState, useEffect } from "react";
 import { GitHubIcon } from "./GitHubIcon";
 
-function NavBtn({
-  children,
-  onClick,
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className="px-[14px] py-[7px] bg-transparent border-none text-muted text-[13px] cursor-pointer font-sans rounded-md hover:text-ink transition-colors"
-    >
-      {children}
-    </button>
-  );
-}
-
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
@@ -29,7 +12,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
-export function Navbar({ onStudioClick }: { onStudioClick: () => void }) {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -59,9 +42,9 @@ export function Navbar({ onStudioClick }: { onStudioClick: () => void }) {
 
       {/* Nav links */}
       <div className="flex items-center gap-0.5">
-        <NavBtn onClick={onStudioClick}>Studio</NavBtn>
-        <NavLink href="#gallery">Gallery</NavLink>
-        <NavLink href="#docs">Docs</NavLink>
+        <NavLink href="/Studio">Studio</NavLink>
+        <NavLink href="/#gallery">Gallery</NavLink>
+        <NavLink href="/#docs">Docs</NavLink>
         <a
           href="https://github.com/dano796/alg-art-backgrounds"
           target="_blank"

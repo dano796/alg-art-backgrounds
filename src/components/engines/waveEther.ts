@@ -6,7 +6,7 @@
  * constructive peaks — a three-color gradient maps the interference value.
  */
 
-import { SeededRandom, hexToRgb, lerp, rgba } from "../utils/noise";
+import { SeededRandom, hexToRgb, lerp } from "../utils/noise";
 import type { WaveEtherParams } from "../schemas";
 import { waveEtherDefaults } from "../schemas";
 

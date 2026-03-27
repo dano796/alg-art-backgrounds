@@ -1,45 +1,54 @@
-import { useEffect, useRef, CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initFlowCurrents,
-  drawFlowCurrents,
-  resetFlowCurrents,
-  type FlowCurrentsState,
-} from "./engines/flowCurrents";
-import type { FlowCurrentsParams } from "./schemas";
-import { flowCurrentsDefaults } from "./schemas";
+  initGeoPulse,
+  drawGeoPulse,
+  resetGeoPulse,
+  type GeoPulseState,
+} from "../engines/geoPulse";
 
-export interface FlowCurrentsProps extends FlowCurrentsParams {
+export interface GeoPulseParams {
+  seed?: number;
+  layers?: number;
+  sides?: number;
+  rotSpeed?: number;
+  pulse?: number;
+  connect?: number;
+  colorPrimary?: string;
+  colorSecondary?: string;
+  colorAccent?: string;
+}
+
+export const geoPulseDefaults: Required<GeoPulseParams> = {
+  seed: 42731, layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
+  colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
+};
+
+export interface GeoPulseProps extends GeoPulseParams {
   className?: string;
   style?: CSSProperties;
 }
 
 /**
- * FlowCurrents — Perlin-noise particle flow field background.
- *
- * Drop-in React component. Fills its container, handles resize, and
- * cleans up on unmount. Zero external dependencies beyond React.
+ * GeoPulse — nested rotating parametric polygon background.
  *
  * @example
- * <FlowCurrents
- *   speed={1.2}
- *   count={2500}
- *   colorWarm="#e8855a"
- *   colorCool="#5a9bcc"
- *   colorAccent="#a0c878"
+ * <GeoPulse
+ *   layers={8}
+ *   sides={6}
+ *   pulse={0.15}
+ *   colorPrimary="#d97757"
  *   style={{ position: "absolute", inset: 0 }}
  * />
  */
-export function FlowCurrents(props: FlowCurrentsProps) {
+export function GeoPulse(props: GeoPulseProps) {
   const { className, style, ...params } = props;
-  const merged = { ...flowCurrentsDefaults, ...params };
+  const merged = { ...geoPulseDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<FlowCurrentsState | null>(null);
-  // Always-current params ref — loop reads this, no restart needed
+  const stateRef = useRef<GeoPulseState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
-  // Bootstrap: create canvas context, start loop, handle resize
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -55,19 +64,19 @@ export function FlowCurrents(props: FlowCurrentsProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        ctx!.fillStyle = "rgb(12,12,20)";
+        ctx!.fillStyle = "rgb(10,10,18)";
         ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initFlowCurrents(w, h, paramsRef.current);
+        stateRef.current = initGeoPulse(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initFlowCurrents(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initGeoPulse(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawFlowCurrents(ctx, stateRef.current, paramsRef.current);
+        drawGeoPulse(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -81,15 +90,14 @@ export function FlowCurrents(props: FlowCurrentsProps) {
       cancelAnimationFrame(animId);
       ro.disconnect();
     };
-  }, []); // intentionally empty — loop reads paramsRef
+  }, []);
 
-  // Reinit on structural param changes
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    stateRef.current = resetFlowCurrents(ctx, stateRef.current, merged);
-  }, [merged.seed, merged.count]); // eslint-disable-line react-hooks/exhaustive-deps
+    stateRef.current = resetGeoPulse(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.layers, merged.sides, merged.connect]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

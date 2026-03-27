@@ -6,7 +6,12 @@
       "id": "flow-currents",
       "name": "Flow Currents",
       "description": "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
-      "tags": ["particles", "noise", "flow", "organic"],
+      "tags": [
+        "particles",
+        "noise",
+        "flow",
+        "organic"
+      ],
       "files": [
         {
           "source": "src/components/FlowCurrents.tsx",
@@ -19,6 +24,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -26,7 +35,12 @@
       "id": "gravity-storm",
       "name": "Gravity Storm",
       "description": "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
-      "tags": ["particles", "physics", "gravity", "orbits"],
+      "tags": [
+        "particles",
+        "physics",
+        "gravity",
+        "orbits"
+      ],
       "files": [
         {
           "source": "src/components/GravityStorm.tsx",
@@ -39,6 +53,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -46,7 +64,12 @@
       "id": "geo-pulse",
       "name": "Geo Pulse",
       "description": "Nested parametric polygons rotating at prime-ratio angular velocities.",
-      "tags": ["geometric", "polygons", "rotation", "mathematical"],
+      "tags": [
+        "geometric",
+        "polygons",
+        "rotation",
+        "mathematical"
+      ],
       "files": [
         {
           "source": "src/components/GeoPulse.tsx",
@@ -59,6 +82,10 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -66,7 +93,12 @@
       "id": "wave-ether",
       "name": "Wave Ether",
       "description": "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
-      "tags": ["waves", "interference", "sine", "pixel"],
+      "tags": [
+        "waves",
+        "interference",
+        "sine",
+        "pixel"
+      ],
       "files": [
         {
           "source": "src/components/WaveEther.tsx",
@@ -79,6 +111,561 @@
         {
           "source": "src/components/utils/noise.ts",
           "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "vortex-bloom",
+      "name": "Vortex Bloom",
+      "description": "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+      "tags": [
+        "particles",
+        "vortex",
+        "orbital",
+        "mandala"
+      ],
+      "files": [
+        {
+          "source": "src/components/VortexBloom.tsx",
+          "target": "components/backgrounds/VortexBloom.tsx"
+        },
+        {
+          "source": "src/components/engines/vortexBloom.ts",
+          "target": "components/backgrounds/engines/vortexBloom.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "crystalline-drift",
+      "name": "Crystalline Drift",
+      "description": "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+      "tags": [
+        "fractal",
+        "crystal",
+        "symmetry",
+        "dendrite"
+      ],
+      "files": [
+        {
+          "source": "src/components/CrystallineDrift.tsx",
+          "target": "components/backgrounds/CrystallineDrift.tsx"
+        },
+        {
+          "source": "src/components/engines/crystallineDrift.ts",
+          "target": "components/backgrounds/engines/crystallineDrift.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "ambient-mesh",
+      "name": "Ambient Mesh",
+      "description": "Nodes drift through noise fields, forming dynamic connections — a living network background.",
+      "tags": [
+        "network",
+        "nodes",
+        "mesh",
+        "subtle"
+      ],
+      "files": [
+        {
+          "source": "src/components/AmbientMesh.tsx",
+          "target": "components/backgrounds/AmbientMesh.tsx"
+        },
+        {
+          "source": "src/components/engines/ambientMesh.ts",
+          "target": "components/backgrounds/engines/ambientMesh.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "ember-cascade",
+      "name": "Ember Cascade",
+      "description": "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
+      "tags": [
+        "particles",
+        "fire",
+        "thermal",
+        "glow"
+      ],
+      "files": [
+        {
+          "source": "src/components/EmberCascade.tsx",
+          "target": "components/backgrounds/EmberCascade.tsx"
+        },
+        {
+          "source": "src/components/engines/emberCascade.ts",
+          "target": "components/backgrounds/engines/emberCascade.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "clifford-attractor",
+      "name": "Clifford Attractor",
+      "description": "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
+      "tags": [
+        "attractor",
+        "chaos",
+        "fractal",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/CliffordAttractor.tsx",
+          "target": "components/backgrounds/CliffordAttractor.tsx"
+        },
+        {
+          "source": "src/components/engines/cliffordAttractor.ts",
+          "target": "components/backgrounds/engines/cliffordAttractor.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "harmonic-lattice",
+      "name": "Harmonic Lattice",
+      "description": "Two-dimensional standing wave interference patterns with temporal evolution and nodal lines.",
+      "tags": [
+        "waves",
+        "interference",
+        "harmonic",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/HarmonicLattice.tsx",
+          "target": "components/backgrounds/HarmonicLattice.tsx"
+        },
+        {
+          "source": "src/components/engines/harmonicLattice.ts",
+          "target": "components/backgrounds/engines/harmonicLattice.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "lissajous-weave",
+      "name": "Lissajous Weave",
+      "description": "Multiple Lissajous curves with different frequency ratios morphing through shared phase offset.",
+      "tags": [
+        "parametric",
+        "harmonic",
+        "curves",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/LissajousWeave.tsx",
+          "target": "components/backgrounds/LissajousWeave.tsx"
+        },
+        {
+          "source": "src/components/engines/lissajousWeave.ts",
+          "target": "components/backgrounds/engines/lissajousWeave.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "phyllotaxis-dream",
+      "name": "Phyllotaxis Dream",
+      "description": "Golden angle spiral growth pattern inspired by sunflower seed arrangements and natural phyllotaxis.",
+      "tags": [
+        "spiral",
+        "golden-ratio",
+        "botanical",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/PhyllotaxisDream.tsx",
+          "target": "components/backgrounds/PhyllotaxisDream.tsx"
+        },
+        {
+          "source": "src/components/engines/phyllotaxisDream.ts",
+          "target": "components/backgrounds/engines/phyllotaxisDream.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "spirograph",
+      "name": "Spirograph",
+      "description": "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
+      "tags": [
+        "geometric",
+        "parametric",
+        "curves",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/Spirograph.tsx",
+          "target": "components/backgrounds/Spirograph.tsx"
+        },
+        {
+          "source": "src/components/engines/spirograph.ts",
+          "target": "components/backgrounds/engines/spirograph.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "differential-growth",
+      "name": "Differential Growth",
+      "description": "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
+      "tags": [
+        "organic",
+        "growth",
+        "simulation",
+        "biological"
+      ],
+      "files": [
+        {
+          "source": "src/components/DifferentialGrowth.tsx",
+          "target": "components/backgrounds/DifferentialGrowth.tsx"
+        },
+        {
+          "source": "src/components/engines/differentialGrowth.ts",
+          "target": "components/backgrounds/engines/differentialGrowth.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "double-pendulum",
+      "name": "Double Pendulum",
+      "description": "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
+      "tags": [
+        "chaos",
+        "physics",
+        "pendulum",
+        "mathematical"
+      ],
+      "files": [
+        {
+          "source": "src/components/DoublePendulum.tsx",
+          "target": "components/backgrounds/DoublePendulum.tsx"
+        },
+        {
+          "source": "src/components/engines/doublePendulum.ts",
+          "target": "components/backgrounds/engines/doublePendulum.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "fractal-noise-terrain",
+      "name": "Fractal Noise Terrain",
+      "description": "Layered octaves of Perlin noise creating procedural landscapes with elevation-based coloring.",
+      "tags": [
+        "fractal",
+        "terrain",
+        "noise",
+        "landscape"
+      ],
+      "files": [
+        {
+          "source": "src/components/FractalNoiseTerrain.tsx",
+          "target": "components/backgrounds/FractalNoiseTerrain.tsx"
+        },
+        {
+          "source": "src/components/engines/fractalNoiseTerrain.ts",
+          "target": "components/backgrounds/engines/fractalNoiseTerrain.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "moire-lattice",
+      "name": "Moire Lattice",
+      "description": "Rotating line grids creating interference patterns and moiré effects through overlapping parallel lines.",
+      "tags": [
+        "geometric",
+        "moire",
+        "interference",
+        "lines"
+      ],
+      "files": [
+        {
+          "source": "src/components/MoireLattice.tsx",
+          "target": "components/backgrounds/MoireLattice.tsx"
+        },
+        {
+          "source": "src/components/engines/moireLattice.ts",
+          "target": "components/backgrounds/engines/moireLattice.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "neural-weave",
+      "name": "Neural Weave",
+      "description": "Network of nodes with traveling signal pulses creating dynamic neural-like activation patterns.",
+      "tags": [
+        "network",
+        "neural",
+        "signals",
+        "nodes"
+      ],
+      "files": [
+        {
+          "source": "src/components/NeuralWeave.tsx",
+          "target": "components/backgrounds/NeuralWeave.tsx"
+        },
+        {
+          "source": "src/components/engines/neuralWeave.ts",
+          "target": "components/backgrounds/engines/neuralWeave.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "orbital-resonance",
+      "name": "Orbital Resonance",
+      "description": "Bodies orbit at resonant period ratios creating harmonic patterns and Lissajous-like trajectories.",
+      "tags": [
+        "orbital",
+        "resonance",
+        "harmonic",
+        "physics"
+      ],
+      "files": [
+        {
+          "source": "src/components/OrbitalResonance.tsx",
+          "target": "components/backgrounds/OrbitalResonance.tsx"
+        },
+        {
+          "source": "src/components/engines/orbitalResonance.ts",
+          "target": "components/backgrounds/engines/orbitalResonance.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "reaction-diffusion",
+      "name": "Reaction Diffusion",
+      "description": "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
+      "tags": [
+        "reaction-diffusion",
+        "organic",
+        "pattern",
+        "simulation"
+      ],
+      "files": [
+        {
+          "source": "src/components/ReactionDiffusion.tsx",
+          "target": "components/backgrounds/ReactionDiffusion.tsx"
+        },
+        {
+          "source": "src/components/engines/reactionDiffusion.ts",
+          "target": "components/backgrounds/engines/reactionDiffusion.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "recursive-subdivision",
+      "name": "Recursive Subdivision",
+      "description": "Binary space partitioning creating Mondrian-like compositions with golden ratio splits.",
+      "tags": [
+        "geometric",
+        "subdivision",
+        "mondrian",
+        "recursive"
+      ],
+      "files": [
+        {
+          "source": "src/components/RecursiveSubdivision.tsx",
+          "target": "components/backgrounds/RecursiveSubdivision.tsx"
+        },
+        {
+          "source": "src/components/engines/recursiveSubdivision.ts",
+          "target": "components/backgrounds/engines/recursiveSubdivision.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "tide-harmonics",
+      "name": "Tide Harmonics",
+      "description": "Multiple wave sources creating interference patterns along horizontal lines like ocean tides.",
+      "tags": [
+        "waves",
+        "interference",
+        "harmonic",
+        "ocean"
+      ],
+      "files": [
+        {
+          "source": "src/components/TideHarmonics.tsx",
+          "target": "components/backgrounds/TideHarmonics.tsx"
+        },
+        {
+          "source": "src/components/engines/tideHarmonics.ts",
+          "target": "components/backgrounds/engines/tideHarmonics.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "voronoi-mosaic",
+      "name": "Voronoi Mosaic",
+      "description": "Moving seed points creating dynamic Voronoi tessellation with edge-enhanced cells.",
+      "tags": [
+        "voronoi",
+        "tessellation",
+        "mosaic",
+        "geometric"
+      ],
+      "files": [
+        {
+          "source": "src/components/VoronoiMosaic.tsx",
+          "target": "components/backgrounds/VoronoiMosaic.tsx"
+        },
+        {
+          "source": "src/components/engines/voronoiMosaic.ts",
+          "target": "components/backgrounds/engines/voronoiMosaic.ts"
+        },
+        {
+          "source": "src/components/utils/noise.ts",
+          "target": "components/backgrounds/utils/noise.ts"
+        },
+        {
+          "source": "src/components/schemas/index.ts",
+          "target": "components/backgrounds/schemas/index.ts"
         }
       ]
     },
@@ -86,7 +673,11 @@
       "id": "background-studio",
       "name": "Background Studio",
       "description": "Interactive playground to explore and configure all backgrounds with live preview and code export.",
-      "tags": ["studio", "playground", "dev-tool"],
+      "tags": [
+        "studio",
+        "playground",
+        "dev-tool"
+      ],
       "files": [
         {
           "source": "src/components/BackgroundStudio.tsx",
@@ -109,6 +700,82 @@
           "target": "components/backgrounds/WaveEther.tsx"
         },
         {
+          "source": "src/components/VortexBloom.tsx",
+          "target": "components/backgrounds/VortexBloom.tsx"
+        },
+        {
+          "source": "src/components/CrystallineDrift.tsx",
+          "target": "components/backgrounds/CrystallineDrift.tsx"
+        },
+        {
+          "source": "src/components/AmbientMesh.tsx",
+          "target": "components/backgrounds/AmbientMesh.tsx"
+        },
+        {
+          "source": "src/components/EmberCascade.tsx",
+          "target": "components/backgrounds/EmberCascade.tsx"
+        },
+        {
+          "source": "src/components/CliffordAttractor.tsx",
+          "target": "components/backgrounds/CliffordAttractor.tsx"
+        },
+        {
+          "source": "src/components/HarmonicLattice.tsx",
+          "target": "components/backgrounds/HarmonicLattice.tsx"
+        },
+        {
+          "source": "src/components/LissajousWeave.tsx",
+          "target": "components/backgrounds/LissajousWeave.tsx"
+        },
+        {
+          "source": "src/components/PhyllotaxisDream.tsx",
+          "target": "components/backgrounds/PhyllotaxisDream.tsx"
+        },
+        {
+          "source": "src/components/Spirograph.tsx",
+          "target": "components/backgrounds/Spirograph.tsx"
+        },
+        {
+          "source": "src/components/DifferentialGrowth.tsx",
+          "target": "components/backgrounds/DifferentialGrowth.tsx"
+        },
+        {
+          "source": "src/components/DoublePendulum.tsx",
+          "target": "components/backgrounds/DoublePendulum.tsx"
+        },
+        {
+          "source": "src/components/FractalNoiseTerrain.tsx",
+          "target": "components/backgrounds/FractalNoiseTerrain.tsx"
+        },
+        {
+          "source": "src/components/MoireLattice.tsx",
+          "target": "components/backgrounds/MoireLattice.tsx"
+        },
+        {
+          "source": "src/components/NeuralWeave.tsx",
+          "target": "components/backgrounds/NeuralWeave.tsx"
+        },
+        {
+          "source": "src/components/OrbitalResonance.tsx",
+          "target": "components/backgrounds/OrbitalResonance.tsx"
+        },
+        {
+          "source": "src/components/ReactionDiffusion.tsx",
+          "target": "components/backgrounds/ReactionDiffusion.tsx"
+        },
+        {
+          "source": "src/components/RecursiveSubdivision.tsx",
+          "target": "components/backgrounds/RecursiveSubdivision.tsx"
+        },
+        {
+          "source": "src/components/TideHarmonics.tsx",
+          "target": "components/backgrounds/TideHarmonics.tsx"
+        },
+        {
+          "source": "src/components/VoronoiMosaic.tsx",
+          "target": "components/backgrounds/VoronoiMosaic.tsx"
+        },
+        {
           "source": "src/components/engines/flowCurrents.ts",
           "target": "components/backgrounds/engines/flowCurrents.ts"
         },
@@ -123,6 +790,82 @@
         {
           "source": "src/components/engines/waveEther.ts",
           "target": "components/backgrounds/engines/waveEther.ts"
+        },
+        {
+          "source": "src/components/engines/vortexBloom.ts",
+          "target": "components/backgrounds/engines/vortexBloom.ts"
+        },
+        {
+          "source": "src/components/engines/crystallineDrift.ts",
+          "target": "components/backgrounds/engines/crystallineDrift.ts"
+        },
+        {
+          "source": "src/components/engines/ambientMesh.ts",
+          "target": "components/backgrounds/engines/ambientMesh.ts"
+        },
+        {
+          "source": "src/components/engines/emberCascade.ts",
+          "target": "components/backgrounds/engines/emberCascade.ts"
+        },
+        {
+          "source": "src/components/engines/cliffordAttractor.ts",
+          "target": "components/backgrounds/engines/cliffordAttractor.ts"
+        },
+        {
+          "source": "src/components/engines/harmonicLattice.ts",
+          "target": "components/backgrounds/engines/harmonicLattice.ts"
+        },
+        {
+          "source": "src/components/engines/lissajousWeave.ts",
+          "target": "components/backgrounds/engines/lissajousWeave.ts"
+        },
+        {
+          "source": "src/components/engines/phyllotaxisDream.ts",
+          "target": "components/backgrounds/engines/phyllotaxisDream.ts"
+        },
+        {
+          "source": "src/components/engines/spirograph.ts",
+          "target": "components/backgrounds/engines/spirograph.ts"
+        },
+        {
+          "source": "src/components/engines/differentialGrowth.ts",
+          "target": "components/backgrounds/engines/differentialGrowth.ts"
+        },
+        {
+          "source": "src/components/engines/doublePendulum.ts",
+          "target": "components/backgrounds/engines/doublePendulum.ts"
+        },
+        {
+          "source": "src/components/engines/fractalNoiseTerrain.ts",
+          "target": "components/backgrounds/engines/fractalNoiseTerrain.ts"
+        },
+        {
+          "source": "src/components/engines/moireLattice.ts",
+          "target": "components/backgrounds/engines/moireLattice.ts"
+        },
+        {
+          "source": "src/components/engines/neuralWeave.ts",
+          "target": "components/backgrounds/engines/neuralWeave.ts"
+        },
+        {
+          "source": "src/components/engines/orbitalResonance.ts",
+          "target": "components/backgrounds/engines/orbitalResonance.ts"
+        },
+        {
+          "source": "src/components/engines/reactionDiffusion.ts",
+          "target": "components/backgrounds/engines/reactionDiffusion.ts"
+        },
+        {
+          "source": "src/components/engines/recursiveSubdivision.ts",
+          "target": "components/backgrounds/engines/recursiveSubdivision.ts"
+        },
+        {
+          "source": "src/components/engines/tideHarmonics.ts",
+          "target": "components/backgrounds/engines/tideHarmonics.ts"
+        },
+        {
+          "source": "src/components/engines/voronoiMosaic.ts",
+          "target": "components/backgrounds/engines/voronoiMosaic.ts"
         },
         {
           "source": "src/components/utils/noise.ts",

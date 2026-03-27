@@ -1,51 +1,51 @@
-import { useEffect, useRef, CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import {
-  initGeoPulse,
-  drawGeoPulse,
-  resetGeoPulse,
-  type GeoPulseState,
-} from "./engines/geoPulse";
+  initGravityStorm,
+  drawGravityStorm,
+  resetGravityStorm,
+  type GravityStormState,
+} from "../engines/gravityStorm";
 
-export interface GeoPulseParams {
+export interface GravityStormParams {
   seed?: number;
-  layers?: number;
-  sides?: number;
-  rotSpeed?: number;
-  pulse?: number;
-  connect?: number;
-  colorPrimary?: string;
-  colorSecondary?: string;
-  colorAccent?: string;
+  count?: number;
+  attractors?: number;
+  gravity?: number;
+  turbulence?: number;
+  orbitSpeed?: number;
+  colorCore?: string;
+  colorTrail?: string;
 }
 
-export const geoPulseDefaults: Required<GeoPulseParams> = {
-  seed: 42731, layers: 7, sides: 6, rotSpeed: 0.008, pulse: 0.12, connect: 0.4,
-  colorPrimary: "#d97757", colorSecondary: "#6a9bcc", colorAccent: "#e8d87a",
+export const gravityStormDefaults: Required<GravityStormParams> = {
+  seed: 42731, count: 1200, attractors: 3, gravity: 1.0,
+  turbulence: 0.5, orbitSpeed: 0.008,
+  colorCore: "#ff6b35", colorTrail: "#7b5ea7",
 };
 
-export interface GeoPulseProps extends GeoPulseParams {
+export interface GravityStormProps extends GravityStormParams {
   className?: string;
   style?: CSSProperties;
 }
 
 /**
- * GeoPulse — nested rotating parametric polygon background.
+ * GravityStorm — n-body attractor particle system background.
  *
  * @example
- * <GeoPulse
- *   layers={8}
- *   sides={6}
- *   pulse={0.15}
- *   colorPrimary="#d97757"
+ * <GravityStorm
+ *   attractors={4}
+ *   gravity={1.2}
+ *   colorCore="#ff6b35"
+ *   colorTrail="#7b5ea7"
  *   style={{ position: "absolute", inset: 0 }}
  * />
  */
-export function GeoPulse(props: GeoPulseProps) {
+export function GravityStorm(props: GravityStormProps) {
   const { className, style, ...params } = props;
-  const merged = { ...geoPulseDefaults, ...params };
+  const merged = { ...gravityStormDefaults, ...params };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef<GeoPulseState | null>(null);
+  const stateRef = useRef<GravityStormState | null>(null);
   const paramsRef = useRef(merged);
   paramsRef.current = merged;
 
@@ -64,19 +64,19 @@ export function GeoPulse(props: GeoPulseProps) {
       if (canvas!.width !== w || canvas!.height !== h) {
         canvas!.width = w;
         canvas!.height = h;
-        ctx!.fillStyle = "rgb(10,10,18)";
+        ctx!.fillStyle = "rgb(8,6,18)";
         ctx!.fillRect(0, 0, w, h);
-        stateRef.current = initGeoPulse(w, h, paramsRef.current);
+        stateRef.current = initGravityStorm(w, h, paramsRef.current);
       }
     }
 
     resizeCanvas();
-    stateRef.current = initGeoPulse(canvas.width, canvas.height, paramsRef.current);
+    stateRef.current = initGravityStorm(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
       if (!running) return;
       if (stateRef.current) {
-        drawGeoPulse(ctx, stateRef.current, paramsRef.current);
+        drawGravityStorm(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
@@ -96,8 +96,8 @@ export function GeoPulse(props: GeoPulseProps) {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx || !stateRef.current) return;
-    stateRef.current = resetGeoPulse(ctx, stateRef.current, merged);
-  }, [merged.seed, merged.layers, merged.sides, merged.connect]); // eslint-disable-line react-hooks/exhaustive-deps
+    stateRef.current = resetGravityStorm(ctx, stateRef.current, merged);
+  }, [merged.seed, merged.count, merged.attractors]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas

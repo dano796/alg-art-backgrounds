@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FlowCurrents } from "alg-art-backgrounds";
 
-export function HeroSection({ onStudioClick }: { onStudioClick: () => void }) {
+export function HeroSection() {
   const [copied, setCopied] = useState(false);
   const cmd = "npx alg-art-backgrounds add flow-currents";
 
@@ -57,19 +57,24 @@ export function HeroSection({ onStudioClick }: { onStudioClick: () => void }) {
           className="hero-sub text-muted font-sans font-light leading-[1.65] mx-auto mb-10 max-w-[540px]"
           style={{ fontSize: "clamp(16px, 2vw, 19px)" }}
         >
-          Four animated canvas backgrounds you own forever. Install with one
+          24 animated canvas backgrounds you own forever. Install with one
           command, customize every parameter, ship without adding a single npm
           dependency.
         </p>
 
         {/* CTA buttons */}
         <div className="hero-ctas flex gap-3 justify-center flex-wrap mb-7">
-          <button
-            onClick={onStudioClick}
-            className="px-[30px] py-[13px] bg-accent border-none rounded-[10px] text-white text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity"
+          <a
+            href="/Studio"
+            onClick={(e) => {
+              e.preventDefault();
+              window.history.pushState({}, "", "/Studio");
+              window.dispatchEvent(new PopStateEvent("popstate"));
+            }}
+            className="px-[30px] py-[13px] bg-accent border-none rounded-[10px] text-white text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity no-underline inline-block"
           >
             Open Studio →
-          </button>
+          </a>
           <a
             href="#gallery"
             className="px-7 py-[13px] bg-white/[0.04] border border-border rounded-[10px] text-ink text-[15px] font-medium cursor-pointer no-underline font-sans inline-block hover:bg-white/[0.07] transition-colors"

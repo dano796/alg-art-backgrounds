@@ -1,11 +1,10 @@
-import { useEffect, useRef, CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import {
   initWaveEther,
   drawWaveEther,
   resetWaveEther,
   type WaveEtherState,
-} from "./engines/waveEther";
-
+} from "../engines/waveEther";
 export interface WaveEtherParams {
   seed?: number;
   sources?: number;

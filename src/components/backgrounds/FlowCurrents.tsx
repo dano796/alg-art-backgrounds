@@ -1,10 +1,10 @@
-import { useEffect, useRef, CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import {
   initFlowCurrents,
   drawFlowCurrents,
   resetFlowCurrents,
   type FlowCurrentsState,
-} from "./engines/flowCurrents";
+} from "../engines/flowCurrents";
 
 export interface FlowCurrentsParams {
   seed?: number;

@@ -1,0 +1,108 @@
+/**
+ * Lissajous Weave
+ * Harmonic phase tapestry
+ */
+
+import { useEffect, useRef, type CSSProperties } from "react";
+import {
+  initLissajousWeave,
+  drawLissajousWeave,
+  resetLissajousWeave,
+  type LissajousWeaveState,
+} from "../engines/lissajousWeave";
+
+export interface LissajousWeaveParams {
+  seed?: number;
+  curveCount?: number;
+  freqMax?: number;
+  radius?: number;
+  phaseSpeed?: number;
+  bgColor?: string;
+  colorA?: string;
+  colorB?: string;
+  colorC?: string;
+}
+
+export const lissajousWeaveDefaults: Required<LissajousWeaveParams> = {
+  seed: 42731,
+  curveCount: 12,
+  freqMax: 5,
+  radius: 180,
+  phaseSpeed: 1.0,
+  bgColor: "#0a0a0a",
+  colorA: "#ff6b35",
+  colorB: "#f7931e",
+  colorC: "#fdc830",
+};
+
+export interface LissajousWeaveProps extends LissajousWeaveParams {
+  className?: string;
+  style?: CSSProperties;
+}
+
+export function LissajousWeave(props: LissajousWeaveProps) {
+  const { className, style, ...params } = props;
+  const merged = { ...lissajousWeaveDefaults, ...params };
+
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const stateRef = useRef<LissajousWeaveState | null>(null);
+  const paramsRef = useRef(merged);
+  paramsRef.current = merged;
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) return;
+
+    let animId: number;
+    let running = true;
+
+    function resizeCanvas() {
+      const w = canvas!.clientWidth * window.devicePixelRatio;
+      const h = canvas!.clientHeight * window.devicePixelRatio;
+      if (canvas!.width !== w || canvas!.height !== h) {
+        canvas!.width = w;
+        canvas!.height = h;
+        stateRef.current = initLissajousWeave(w, h, paramsRef.current);
+      }
+    }
+
+    resizeCanvas();
+    stateRef.current = initLissajousWeave(canvas.width, canvas.height, paramsRef.current);
+
+    const loop = () => {
+      if (!running) return;
+      if (stateRef.current) {
+        drawLissajousWeave(ctx, stateRef.current, paramsRef.current);
+      }
+      animId = requestAnimationFrame(loop);
+    };
+    animId = requestAnimationFrame(loop);
+
+    const ro = new ResizeObserver(resizeCanvas);
+    ro.observe(canvas);
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(animId);
+      ro.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx || !stateRef.current) return;
+    resetLissajousWeave(stateRef.current, paramsRef.current);
+  }, [merged.seed, merged.curveCount, merged.freqMax]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={{ display: "block", width: "100%", height: "100%", ...style }}
+    />
+  );
+}

@@ -1,24 +1,32 @@
-import { useRef } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { GallerySection } from "./components/GallerySection";
-import { StudioSection } from "./components/StudioSection";
 import { DocsSection } from "./components/DocsSection";
 import { Footer } from "./components/Footer";
+import { StudioPage } from "./pages/StudioPage";
+import { useState, useEffect } from "react";
 
 export default function App() {
-  const studioRef = useRef<HTMLDivElement>(null);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  const scrollToStudio = () => {
-    studioRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Simple client-side routing
+  if (currentPath === "/Studio") {
+    return <StudioPage />;
+  }
 
   return (
     <div className="bg-bg min-h-svh">
-      <Navbar onStudioClick={scrollToStudio} />
-      <HeroSection onStudioClick={scrollToStudio} />
+      <Navbar />
+      <HeroSection />
       <GallerySection />
-      <StudioSection studioRef={studioRef} />
       <DocsSection />
       <Footer />
     </div>
