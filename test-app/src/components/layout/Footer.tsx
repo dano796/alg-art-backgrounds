@@ -1,3 +1,5 @@
+import { CLI_PACKAGE } from "../../lib/constants";
+
 const META_TAGS = ["MIT License", "Zero dependencies", "Copy-paste install"];
 
 export function Footer() {
@@ -9,7 +11,7 @@ export function Footer() {
           A
         </div>
         <span className="text-[13px] text-muted font-display font-semibold">
-          alg-art-backgrounds
+          {CLI_PACKAGE}
         </span>
       </div>
 
