@@ -1,10 +1,10 @@
 import { useState, useCallback } from "react";
 import { DocsSidebar } from "./DocsSidebar";
 import { ControlsPanel } from "./ControlsPanel";
-import { IntroductionPage } from "./pages/IntroductionPage";
-import { InstallationPage } from "./pages/InstallationPage";
-import { BackgroundPage } from "./pages/BackgroundPage";
-import { DOC_REGISTRY } from "./docRegistry";
+import { IntroductionView } from "./IntroductionView";
+import { InstallationView } from "./InstallationView";
+import { BackgroundView } from "./BackgroundView";
+import { DOC_REGISTRY } from "./registry";
 
 export function DocsSection() {
   const [activePage, setActivePage] = useState("introduction");
@@ -26,27 +26,22 @@ export function DocsSection() {
     if (bgEntry) setParams({ ...bgEntry.defaults });
   }, [bgEntry]);
 
-  const cols = bgEntry
-    ? "260px minmax(0, 1fr) 292px"
-    : "260px minmax(0, 1fr)";
-
   return (
     <section
       id="docs"
-      style={{ minHeight: "calc(100vh - 58px)" }}
+      className="min-h-[calc(100vh-58px)]"
     >
-      <div style={{ display: "grid", gridTemplateColumns: cols }}>
+      <div className={`grid ${bgEntry ? "grid-cols-[260px_minmax(0,1fr)_292px]" : "grid-cols-[260px_minmax(0,1fr)]"}`}>
         <DocsSidebar activePage={activePage} onNavigate={handleNavigate} />
 
         <main
-          className="min-w-0"
-          style={{ padding: "40px 32px 96px", minHeight: "calc(100vh - 58px)" }}
+          className="min-w-0 pt-10 px-8 pb-24 min-h-[calc(100vh-58px)]"
         >
           <div key={activePage}>
-            {activePage === "introduction" && <IntroductionPage />}
-            {activePage === "installation" && <InstallationPage />}
+            {activePage === "introduction" && <IntroductionView />}
+            {activePage === "installation" && <InstallationView />}
             {bgEntry && (
-              <BackgroundPage
+              <BackgroundView
                 entry={bgEntry}
                 params={params}
                 onParamChange={handleParamChange}
