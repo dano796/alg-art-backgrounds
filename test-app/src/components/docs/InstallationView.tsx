@@ -1,24 +1,22 @@
-import { CodeBlock } from "../CodeBlock";
+import { CodeBlock } from "./CodeBlock";
+import { CLI_PACKAGE } from "../../lib/constants";
 
 const CLI_CODE = `# Add a single background
-npx alg-art-backgrounds add flow-currents
+npx ${CLI_PACKAGE} add flow-currents
 
 # Preview what files will be added (dry run)
-npx alg-art-backgrounds add flow-currents --dry-run
+npx ${CLI_PACKAGE} add flow-currents --dry-run
 
 # List all available backgrounds
-npx alg-art-backgrounds list
+npx ${CLI_PACKAGE} list
 
 # Add everything including the interactive studio
-npx alg-art-backgrounds add background-studio`;
+npx ${CLI_PACKAGE} add background-studio`;
 
-export function InstallationPage() {
+export function InstallationView() {
   return (
-    <div style={{ maxWidth: 680 }}>
-      <h1
-        className="docs-in font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-6"
-        style={{ fontSize: "clamp(32px, 5vw, 48px)" }}
-      >
+    <div className="max-w-170">
+      <h1 className="docs-in font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-6 text-[clamp(32px,5vw,48px)]">
         Installation
       </h1>
 
@@ -28,10 +26,7 @@ export function InstallationPage() {
         you own.
       </p>
 
-      <h2
-        className="docs-in-2 font-display font-bold text-ink tracking-[-0.03em] mb-4"
-        style={{ fontSize: "clamp(20px, 3vw, 28px)" }}
-      >
+      <h2 className="docs-in-2 font-display font-bold text-ink tracking-[-0.03em] mb-4 text-[clamp(20px,3vw,28px)]">
         CLI
       </h2>
 

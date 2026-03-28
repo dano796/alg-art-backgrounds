@@ -1,3 +1,5 @@
+import { CLI_PACKAGE } from "../../lib/constants";
+
 const PRINCIPLES = [
   {
     label: "For All",
@@ -24,18 +26,15 @@ const STATS = [
   { value: "MIT", label: "License" },
 ];
 
-export function IntroductionPage() {
+export function IntroductionView() {
   return (
-    <div style={{ maxWidth: 680 }}>
-      <h1
-        className="docs-in font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-8"
-        style={{ fontSize: "clamp(32px, 5vw, 48px)" }}
-      >
+    <div className="max-w-170">
+      <h1 className="docs-in font-display font-extrabold text-ink tracking-[-0.04em] leading-[1.05] mb-8 text-[clamp(32px,5vw,48px)]">
         Introduction
       </h1>
 
       <p className="docs-in-1 text-[15px] text-muted leading-[1.8] font-sans mb-5">
-        alg-art-backgrounds is an open-source collection of algorithmic art
+        {CLI_PACKAGE} is an open-source collection of algorithmic art
         React components that aim to enhance your web applications.
       </p>
 
@@ -49,15 +48,12 @@ export function IntroductionPage() {
         statement visually by adding a touch of creativity to your projects.
       </p>
 
-      <h2
-        className="docs-in-2 font-display font-bold text-ink tracking-[-0.03em] mb-5"
-        style={{ fontSize: "clamp(22px, 3vw, 32px)" }}
-      >
+      <h2 className="docs-in-2 font-display font-bold text-ink tracking-[-0.03em] mb-5 text-[clamp(22px,3vw,32px)]">
         Mission
       </h2>
 
       <p className="docs-in-2 text-[15px] text-muted leading-[1.8] font-sans mb-4">
-        The goal of alg-art-backgrounds is simple — provide flexible, visually
+        The goal of {CLI_PACKAGE} is simple — provide flexible, visually
         stunning, and most importantly, free components that take web projects
         to the next level.
       </p>
@@ -70,10 +66,7 @@ export function IntroductionPage() {
       <div className="docs-in-3 flex flex-col gap-3 mb-14">
         {PRINCIPLES.map((p) => (
           <div key={p.label} className="flex gap-2 items-start">
-            <span
-              className="font-bold font-sans shrink-0 mt-[2px]"
-              style={{ color: "var(--color-accent)", fontSize: 15 }}
-            >
+            <span className="font-bold font-sans shrink-0 mt-0.5 text-accent text-[15px]">
               ·
             </span>
             <span className="text-[14px] text-muted font-sans leading-[1.7]">
@@ -84,16 +77,13 @@ export function IntroductionPage() {
         ))}
       </div>
 
-      <div
-        className="docs-in-4 grid gap-3"
-        style={{ gridTemplateColumns: "repeat(4, 1fr)" }}
-      >
+      <div className="docs-in-4 grid gap-3 grid-cols-4">
         {STATS.map((stat) => (
           <div
             key={stat.label}
             className="bg-surface border border-border rounded-xl px-4 py-3 flex flex-col gap-1"
           >
-            <span className="font-display font-bold text-ink leading-none tracking-[-0.02em]" style={{ fontSize: 22 }}>
+            <span className="font-display font-bold text-ink leading-none tracking-[-0.02em] text-[22px]">
               {stat.value}
             </span>
             <span className="text-[12px] text-muted font-sans">

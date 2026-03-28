@@ -1,5 +1,5 @@
 import type { ParamSchema } from "alg-art-backgrounds";
-import type { DocEntry } from "./docRegistry";
+import type { DocEntry } from "./registry";
 
 type NumberParam  = Extract<ParamSchema, { type: "number" }>;
 type ColorParam   = Extract<ParamSchema, { type: "color" }>;
@@ -22,10 +22,7 @@ function SliderRow({ param, value, onChange }: {
     <div className="py-3 border-b border-border/30 last:border-0">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[12px] text-ink font-sans font-medium truncate mr-2">{param.label}</span>
-        <span
-          className="text-[11px] font-mono shrink-0 rounded px-1.5 py-0.5"
-          style={{ color: "var(--color-accent)", background: "var(--color-accent-soft)" }}
-        >
+        <span className="text-[11px] font-mono shrink-0 rounded px-1.5 py-0.5 text-accent bg-accent-soft">
           {displayVal}
         </span>
       </div>
@@ -36,8 +33,7 @@ function SliderRow({ param, value, onChange }: {
         step={param.step}
         value={value}
         onChange={(e) => onChange(param.name, parseFloat(e.target.value))}
-        className="w-full cursor-pointer"
-        style={{ accentColor: "var(--color-accent)" }}
+        className="w-full cursor-pointer accent-accent"
       />
     </div>
   );
@@ -53,16 +49,12 @@ function ColorRow({ param, value, onChange }: {
       <span className="text-[12px] text-ink font-sans font-medium truncate mr-2">{param.label}</span>
       <div className="flex items-center gap-2 shrink-0">
         <span className="text-[11px] text-muted font-mono">{value}</span>
-        <div
-          className="rounded-md border border-border/60 overflow-hidden cursor-pointer"
-          style={{ width: 24, height: 24 }}
-        >
+        <div className="w-6 h-6 rounded-md border border-border/60 overflow-hidden cursor-pointer">
           <input
             type="color"
             value={value}
             onChange={(e) => onChange(param.name, e.target.value)}
-            className="cursor-pointer border-0 block"
-            style={{ width: 32, height: 32, padding: 0, marginLeft: -4, marginTop: -4 }}
+            className="w-8 h-8 p-0 -ml-1 -mt-1 cursor-pointer border-0 block"
           />
         </div>
       </div>
@@ -80,16 +72,10 @@ function BooleanRow({ param, value, onChange }: {
       <span className="text-[12px] text-ink font-sans font-medium truncate mr-2">{param.label}</span>
       <button
         onClick={() => onChange(param.name, !value)}
-        className="relative rounded-full transition-colors duration-200 cursor-pointer border-0 shrink-0"
-        style={{
-          width: 32,
-          height: 18,
-          background: value ? "var(--color-accent)" : "var(--color-faint)",
-        }}
+        className={`relative w-8 h-4.5 rounded-full transition-colors duration-200 cursor-pointer border-0 shrink-0 ${value ? "bg-accent" : "bg-faint"}`}
       >
         <span
-          className="absolute rounded-full bg-white transition-transform duration-200"
-          style={{ width: 14, height: 14, top: 2, left: 2, transform: value ? "translateX(14px)" : "translateX(0)" }}
+          className={`absolute w-3.5 h-3.5 top-0.5 left-0.5 rounded-full bg-white transition-transform duration-200 ${value ? "translate-x-3.5" : "translate-x-0"}`}
         />
       </button>
     </div>
@@ -129,43 +115,22 @@ export function ControlsPanel({
   onReset: () => void;
 }) {
   return (
-    <aside
-      className="hidden lg:flex flex-col scrollbar-none"
-      style={{
-        position: "sticky",
-        top: 58,
-        height: "calc(100vh - 58px)",
-        overflowY: "auto",
-        background: "var(--color-bg)",
-        paddingRight: 16,
-      }}
-    >
+    <aside className="hidden lg:flex flex-col scrollbar-none sticky top-14.5 h-[calc(100vh-58px)] overflow-y-auto bg-bg pr-4">
       {/* Header */}
-      <div
-        className="flex items-center justify-between shrink-0"
-        style={{
-          padding: "14px 18px 14px 16px",
-          position: "sticky",
-          top: 0,
-          background: "var(--color-bg)",
-          zIndex: 1,
-          borderBottom: "1px solid var(--color-border)",
-        }}
-      >
+      <div className="flex items-center justify-between shrink-0 pt-3.5 pr-4.5 pb-3.5 pl-4 sticky top-0 bg-bg z-1 border-b border-border">
         <span className="text-[12px] font-mono font-semibold text-muted uppercase tracking-[0.14em]">
           Customize
         </span>
         <button
           onClick={onReset}
-          className="text-[12px] font-mono transition-colors cursor-pointer bg-transparent border-0 hover:text-ink"
-          style={{ color: "var(--color-muted)" }}
+          className="text-[12px] font-mono text-muted transition-colors cursor-pointer bg-transparent border-0 hover:text-ink"
         >
           Reset
         </button>
       </div>
 
       {/* Controls */}
-      <div style={{ padding: "4px 16px 28px 16px" }}>
+      <div className="pt-1 px-4 pb-7">
         {entry.schema.map((param) => {
           switch (param.type) {
             case "number":
