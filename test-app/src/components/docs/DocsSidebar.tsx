@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DOC_REGISTRY } from "./docRegistry";
+import { DOC_REGISTRY } from "./registry";
 
 function SidebarItem({
   label,
@@ -13,29 +13,11 @@ function SidebarItem({
   return (
     <button
       onClick={onClick}
-      className="w-full text-left text-[13px] font-sans cursor-pointer border-0 bg-transparent rounded-md flex items-center"
-      style={{
-        color: active ? "var(--color-ink)" : "var(--color-muted)",
-        fontWeight: active ? 500 : 400,
-        padding: active ? "5px 10px 5px 10px" : "5px 10px 5px 12px",
-        borderLeft: active
-          ? "2px solid var(--color-accent)"
-          : "2px solid transparent",
-        background: active ? "var(--color-accent-soft)" : "transparent",
-        transition: "color 0.15s ease, background 0.15s ease, transform 0.15s ease, padding-left 0.15s ease, border-color 0.15s ease",
-      }}
-      onMouseEnter={(e) => {
-        if (!active) {
-          (e.currentTarget as HTMLButtonElement).style.color = "var(--color-ink)";
-          (e.currentTarget as HTMLButtonElement).style.paddingLeft = "14px";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (!active) {
-          (e.currentTarget as HTMLButtonElement).style.color = "var(--color-muted)";
-          (e.currentTarget as HTMLButtonElement).style.paddingLeft = "12px";
-        }
-      }}
+      className={`w-full text-left text-[13px] font-sans cursor-pointer border-0 bg-transparent rounded-md flex items-center transition-[color,background,padding-left,border-color] duration-150 py-1.25 pr-2.5 border-l-2 ${
+        active
+          ? "text-ink font-medium pl-2.5 border-l-accent bg-accent-soft"
+          : "text-muted font-normal pl-3 border-l-transparent hover:text-ink hover:pl-3.5"
+      }`}
     >
       <span className="truncate">{label}</span>
     </button>
@@ -60,24 +42,12 @@ export function DocsSidebar({
     : DOC_REGISTRY;
 
   return (
-    <aside
-      className="hidden lg:flex flex-col scrollbar-none"
-      style={{
-        position: "sticky",
-        top: 58,
-        height: "calc(100vh - 58px)",
-        overflowY: "auto",
-        background: "var(--color-bg)",
-      }}
-    >
+    <aside className="hidden lg:flex flex-col scrollbar-none sticky top-14.5 h-[calc(100vh-58px)] overflow-y-auto bg-bg">
       {/* Search */}
-      <div
-        className="border-b border-border"
-        style={{ padding: "12px 16px 12px 32px" }}
-      >
+      <div className="border-b border-border pt-3 pr-4 pb-3 pl-8">
         <div className="relative flex items-center">
           <svg
-            className="absolute left-2.5 shrink-0"
+            className="absolute left-2.5 shrink-0 text-muted"
             width="12"
             height="12"
             viewBox="0 0 24 24"
@@ -86,7 +56,6 @@ export function DocsSidebar({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{ color: "var(--color-muted)" }}
           >
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -96,19 +65,12 @@ export function DocsSidebar({
             placeholder="Search..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full font-mono text-[12px] outline-none rounded-md"
-            style={{
-              background: "var(--color-surface)",
-              border: "1px solid var(--color-border)",
-              color: "var(--color-ink)",
-              padding: "6px 8px 6px 28px",
-            }}
+            className="w-full font-mono text-[12px] outline-none rounded-md bg-surface border border-border text-ink pt-1.5 pr-2 pb-1.5 pl-7"
           />
           {search && (
             <button
               onClick={() => setSearch("")}
-              className="absolute right-2 text-muted hover:text-ink transition-colors cursor-pointer bg-transparent border-0"
-              style={{ fontSize: 14, lineHeight: 1 }}
+              className="absolute right-2 text-sm leading-none text-muted hover:text-ink transition-colors cursor-pointer bg-transparent border-0"
             >
               ×
             </button>
@@ -116,14 +78,11 @@ export function DocsSidebar({
         </div>
       </div>
 
-      <div style={{ padding: "20px 16px 28px 32px" }}>
+      <div className="pt-5 pr-4 pb-7 pl-8">
         {/* Get Started group — hidden when searching */}
         {!search && (
           <div className="mb-5">
-            <div
-              className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2"
-              style={{ color: "var(--color-muted)", padding: "0 10px" }}
-            >
+            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2 text-muted px-2.5">
               Get Started
             </div>
             <SidebarItem
@@ -142,27 +101,15 @@ export function DocsSidebar({
         {/* Backgrounds group */}
         <div>
           {!search && (
-            <div
-              className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2"
-              style={{ color: "var(--color-muted)", padding: "0 10px" }}
-            >
+            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2 text-muted px-2.5">
               Backgrounds
-              <span
-                className="ml-2 px-2 py-0.5 font-mono text-[10px] rounded-xl"
-                style={{
-                  color: "var(--color-accent)",
-                  background: "var(--color-accent-soft)",
-                }}
-              >
+              <span className="ml-2 px-2 py-0.5 font-mono text-[10px] rounded-xl text-accent bg-accent-soft">
                 {DOC_REGISTRY.length}
               </span>
             </div>
           )}
           {search && filtered.length === 0 && (
-            <p
-              className="text-[12px] font-sans px-3 py-4 text-center"
-              style={{ color: "var(--color-muted)" }}
-            >
+            <p className="text-[12px] font-sans text-muted px-3 py-4 text-center">
               No results for "{search}"
             </p>
           )}
