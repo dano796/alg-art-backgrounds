@@ -34,8 +34,8 @@ export function IntroductionView() {
       </h1>
 
       <p className="docs-in-1 text-[15px] text-muted leading-[1.8] font-sans mb-5">
-        {CLI_PACKAGE} is an open-source collection of algorithmic art
-        React components that aim to enhance your web applications.
+        {CLI_PACKAGE} is an open-source collection of algorithmic art React
+        components that aim to enhance your web applications.
       </p>
 
       <p className="docs-in-1 text-[15px] text-muted leading-[1.8] font-sans mb-5">
@@ -70,8 +70,7 @@ export function IntroductionView() {
               ·
             </span>
             <span className="text-[14px] text-muted font-sans leading-[1.7]">
-              <span className="text-ink font-medium">{p.label}:</span>{" "}
-              {p.desc}
+              <span className="text-ink font-medium">{p.label}:</span> {p.desc}
             </span>
           </div>
         ))}

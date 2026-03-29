@@ -67,7 +67,11 @@ export function Navbar() {
 
       {/* Nav links */}
       <div className="flex items-center gap-0.5">
-        <NavLink href={ROUTES.studio} spa active={currentPath === ROUTES.studio}>
+        <NavLink
+          href={ROUTES.studio}
+          spa
+          active={currentPath === ROUTES.studio}
+        >
           Studio
         </NavLink>
         <NavLink href="/#gallery" active={currentPath === "/" && false}>

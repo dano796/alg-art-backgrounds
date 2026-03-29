@@ -8,7 +8,9 @@ import { navigate } from "../../lib/navigate";
 import { ROUTES } from "../../lib/constants";
 
 export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
-  const [params, setParams] = useState<Record<string, unknown>>(() => ({ ...entry.defaults }));
+  const [params, setParams] = useState<Record<string, unknown>>(() => ({
+    ...entry.defaults,
+  }));
   const [showContent, setShowContent] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [inView, setInView] = useState(false);
@@ -18,10 +20,9 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
   useEffect(() => {
     const el = cardRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setInView(e.isIntersecting),
-      { rootMargin: "200px" }
-    );
+    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), {
+      rootMargin: "200px",
+    });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
@@ -59,7 +60,12 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
           {inView && (
             <entry.Component
               {...params}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
             />
           )}
           {!inView && (
@@ -71,15 +77,12 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
           {/* With-content overlay */}
           {showContent && (
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-8">
-              <h2
-                className="font-display font-bold text-center text-ink text-[clamp(20px,4vw,28px)] [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]"
-              >
+              <h2 className="font-display font-bold text-center text-ink text-[clamp(20px,4vw,28px)] [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]">
                 Your Page Heading
               </h2>
-              <p
-                className="text-[14px] text-ink/80 text-center font-sans max-w-75 leading-[1.6] [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]"
-              >
-                Content layers naturally on top. The background fills the container behind it.
+              <p className="text-[14px] text-ink/80 text-center font-sans max-w-75 leading-[1.6] [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
+                Content layers naturally on top. The background fills the
+                container behind it.
               </p>
               <button className="px-5 py-2 bg-accent rounded-lg text-white text-[13px] font-semibold font-display hover:opacity-90 transition-opacity">
                 Call to Action
@@ -90,7 +93,9 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
 
         {/* Preview toggle */}
         <div className="flex items-center gap-1 px-4 py-3">
-          <span className="text-[11px] text-muted font-mono mr-2">Preview:</span>
+          <span className="text-[11px] text-muted font-mono mr-2">
+            Preview:
+          </span>
           {(["bare", "with content"] as const).map((mode) => {
             const active = mode === "bare" ? !showContent : showContent;
             return (
@@ -109,7 +114,9 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       {/* Controls */}
       <div className="border-b border-border">
         <div className="flex items-center justify-between px-5 pt-4 pb-1">
-          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">Customize</span>
+          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">
+            Customize
+          </span>
           <button
             onClick={handleReset}
             className="text-[11px] text-muted font-mono hover:text-ink transition-colors cursor-pointer bg-transparent border-0 px-0"
@@ -117,7 +124,11 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
             Reset to defaults
           </button>
         </div>
-        <ParamControls schema={entry.schema} params={params} onChange={handleChange} />
+        <ParamControls
+          schema={entry.schema}
+          params={params}
+          onChange={handleChange}
+        />
       </div>
 
       {/* Action row */}
@@ -148,7 +159,9 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       {/* Props table */}
       <div className="px-0 py-0">
         <div className="px-6 py-3 border-b border-border/50">
-          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">Props</span>
+          <span className="text-[11px] text-muted font-mono uppercase tracking-[0.08em]">
+            Props
+          </span>
         </div>
         <PropsTable schema={entry.schema} />
       </div>

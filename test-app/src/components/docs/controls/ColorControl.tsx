@@ -13,7 +13,9 @@ export function ColorControl({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[12px] text-ink font-sans font-medium flex-1 min-w-0 truncate">{param.label}</span>
+      <span className="text-[12px] text-ink font-sans font-medium flex-1 min-w-0 truncate">
+        {param.label}
+      </span>
       <div className="flex items-center gap-1.5 shrink-0">
         <input
           type="color"

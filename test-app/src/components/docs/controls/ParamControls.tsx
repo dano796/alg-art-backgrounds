@@ -19,7 +19,10 @@ export function ParamControls({
   onChange: (name: string, value: unknown) => void;
 }) {
   return (
-    <div className="grid gap-4 p-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))" }}>
+    <div
+      className="grid gap-4 p-5"
+      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))" }}
+    >
       {schema.map((param) => {
         switch (param.type) {
           case "number":

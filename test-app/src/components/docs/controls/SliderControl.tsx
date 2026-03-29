@@ -15,15 +15,17 @@ export function SliderControl({
     param.step < 0.01
       ? value.toFixed(4)
       : param.step < 0.1
-      ? value.toFixed(3)
-      : param.step < 1
-      ? value.toFixed(2)
-      : String(value);
+        ? value.toFixed(3)
+        : param.step < 1
+          ? value.toFixed(2)
+          : String(value);
 
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
-        <span className="text-[12px] text-ink font-sans font-medium">{param.label}</span>
+        <span className="text-[12px] text-ink font-sans font-medium">
+          {param.label}
+        </span>
         <span className="text-[11px] text-muted font-mono">{displayVal}</span>
       </div>
       <input

@@ -91,7 +91,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
+    description:
+      "Thousands of particles trace Perlin noise vector fields forming organic density maps.",
     tags: ["particles", "noise", "flow", "organic"],
   },
   {
@@ -107,7 +108,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
+    description:
+      "Multiple gravitational attractors pull a particle swarm into complex orbital dance.",
     tags: ["particles", "physics", "gravity", "orbits"],
   },
   {
@@ -123,7 +125,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Nested parametric polygons rotating at prime-ratio angular velocities.",
+    description:
+      "Nested parametric polygons rotating at prime-ratio angular velocities.",
     tags: ["geometric", "polygons", "rotation", "mathematical"],
   },
   {
@@ -139,7 +142,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
+    description:
+      "Sine waves from multiple drifting sources interfere to create standing waves and moiré patterns.",
     tags: ["waves", "interference", "sine", "pixel"],
   },
   {
@@ -155,7 +159,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
+    description:
+      "Particles spiral under competing vortex attractors, accumulating into mandala-like formations.",
     tags: ["particles", "vortex", "orbital", "mandala"],
   },
   {
@@ -171,7 +176,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
+    description:
+      "Recursive branching arms grow from the center, forming snowflake-like crystal mandala structures.",
     tags: ["fractal", "crystal", "symmetry", "dendrite"],
   },
   {
@@ -187,7 +193,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Nodes drift through noise fields, forming dynamic connections — a living network background.",
+    description:
+      "Nodes drift through noise fields, forming dynamic connections — a living network background.",
     tags: ["network", "nodes", "mesh", "subtle"],
   },
   {
@@ -203,7 +210,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
+    description:
+      "Thermal particles rise with turbulent motion, glowing through temperature-based color gradients.",
     tags: ["particles", "fire", "thermal", "glow"],
   },
   {
@@ -219,7 +227,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
+    description:
+      "Strange attractor density map revealing the fractal structure of chaotic orbital dynamics.",
     tags: ["attractor", "chaos", "fractal", "mathematical"],
   },
   {
@@ -235,7 +244,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Two-dimensional standing wave interference patterns with temporal evolution and nodal lines.",
+    description:
+      "Two-dimensional standing wave interference patterns with temporal evolution and nodal lines.",
     tags: ["waves", "interference", "harmonic", "mathematical"],
   },
   {
@@ -251,7 +261,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Multiple Lissajous curves with different frequency ratios morphing through shared phase offset.",
+    description:
+      "Multiple Lissajous curves with different frequency ratios morphing through shared phase offset.",
     tags: ["parametric", "harmonic", "curves", "mathematical"],
   },
   {
@@ -267,7 +278,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Golden angle spiral growth pattern inspired by sunflower seed arrangements and natural phyllotaxis.",
+    description:
+      "Golden angle spiral growth pattern inspired by sunflower seed arrangements and natural phyllotaxis.",
     tags: ["spiral", "golden-ratio", "botanical", "mathematical"],
   },
   {
@@ -283,7 +295,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
+    description:
+      "Hypotrochoid curves traced by rolling circles, creating intricate geometric rosettes and patterns.",
     tags: ["geometric", "parametric", "curves", "mathematical"],
   },
   {
@@ -299,7 +312,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
+    description:
+      "Organic growth simulation with spring forces, repulsion, and noise-guided expansion creating folded forms.",
     tags: ["organic", "growth", "simulation", "biological"],
   },
   {
@@ -315,7 +329,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
+    description:
+      "Chaotic dynamics visualization using RK4 integration showing diverging trajectories from similar initial conditions.",
     tags: ["chaos", "physics", "pendulum", "mathematical"],
   },
   {
@@ -331,7 +346,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Layered octaves of Perlin noise creating procedural landscapes with elevation-based coloring.",
+    description:
+      "Layered octaves of Perlin noise creating procedural landscapes with elevation-based coloring.",
     tags: ["fractal", "terrain", "noise", "landscape"],
   },
   {
@@ -347,7 +363,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Rotating line grids creating interference patterns and moiré effects through overlapping parallel lines.",
+    description:
+      "Rotating line grids creating interference patterns and moiré effects through overlapping parallel lines.",
     tags: ["geometric", "moire", "interference", "lines"],
   },
   {
@@ -363,7 +380,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Network of nodes with traveling signal pulses creating dynamic neural-like activation patterns.",
+    description:
+      "Network of nodes with traveling signal pulses creating dynamic neural-like activation patterns.",
     tags: ["network", "neural", "signals", "nodes"],
   },
   {
@@ -379,7 +397,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Bodies orbit at resonant period ratios creating harmonic patterns and Lissajous-like trajectories.",
+    description:
+      "Bodies orbit at resonant period ratios creating harmonic patterns and Lissajous-like trajectories.",
     tags: ["orbital", "resonance", "harmonic", "physics"],
   },
   {
@@ -395,7 +414,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
+    description:
+      "Gray-Scott model creating organic pattern formation through chemical reaction simulation.",
     tags: ["reaction-diffusion", "organic", "pattern", "simulation"],
   },
   {
@@ -404,14 +424,18 @@ export const registry: RegistryEntry[] = [
     componentPath: "../components/backgrounds/RecursiveSubdivision",
     exportName: "RecursiveSubdivision",
     schema: recursiveSubdivisionSchema,
-    defaults: recursiveSubdivisionDefaults as unknown as Record<string, unknown>,
+    defaults: recursiveSubdivisionDefaults as unknown as Record<
+      string,
+      unknown
+    >,
     files: [
       "src/components/backgrounds/RecursiveSubdivision.tsx",
       "src/components/engines/recursiveSubdivision.ts",
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Binary space partitioning creating Mondrian-like compositions with golden ratio splits.",
+    description:
+      "Binary space partitioning creating Mondrian-like compositions with golden ratio splits.",
     tags: ["geometric", "subdivision", "mondrian", "recursive"],
   },
   {
@@ -427,7 +451,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Multiple wave sources creating interference patterns along horizontal lines like ocean tides.",
+    description:
+      "Multiple wave sources creating interference patterns along horizontal lines like ocean tides.",
     tags: ["waves", "interference", "harmonic", "ocean"],
   },
   {
@@ -443,7 +468,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Moving seed points creating dynamic Voronoi tessellation with edge-enhanced cells.",
+    description:
+      "Moving seed points creating dynamic Voronoi tessellation with edge-enhanced cells.",
     tags: ["voronoi", "tessellation", "mosaic", "geometric"],
   },
   {
@@ -504,7 +530,8 @@ export const registry: RegistryEntry[] = [
       "src/components/utils/noise.ts",
       "src/components/schemas/index.ts",
     ],
-    description: "Interactive playground to explore and configure all backgrounds with live preview and code export.",
+    description:
+      "Interactive playground to explore and configure all backgrounds with live preview and code export.",
     tags: ["studio", "playground", "dev-tool"],
   },
 ];
@@ -541,4 +568,3 @@ export { ReactionDiffusion } from "../components/backgrounds/ReactionDiffusion";
 export { RecursiveSubdivision } from "../components/backgrounds/RecursiveSubdivision";
 export { TideHarmonics } from "../components/backgrounds/TideHarmonics";
 export { VoronoiMosaic } from "../components/backgrounds/VoronoiMosaic";
-export { BackgroundStudio } from "../BackgroundStudio";

@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg:           #0c0c14;
-  --color-surface:      #13131f;
+  --color-bg: #0c0c14;
+  --color-surface: #13131f;
   --color-surface-high: #181828;
-  --color-border:       #1e1e30;
-  --color-border-hover: rgba(217,119,87,0.35);
-  --color-accent:       #d97757;
-  --color-accent-soft:  rgba(217,119,87,0.1);
-  --color-accent-border:rgba(217,119,87,0.25);
-  --color-ink:          #e8e6dc;
-  --color-muted:        #6b6a78;
-  --color-faint:        #2a2a3e;
-  --color-blue:         #6a9bcc;
-  --color-green:        #788c5d;
+  --color-border: #1e1e30;
+  --color-border-hover: rgba(217, 119, 87, 0.35);
+  --color-accent: #d97757;
+  --color-accent-soft: rgba(217, 119, 87, 0.1);
+  --color-accent-border: rgba(217, 119, 87, 0.25);
+  --color-ink: #e8e6dc;
+  --color-muted: #6b6a78;
+  --color-faint: #2a2a3e;
+  --color-blue: #6a9bcc;
+  --color-green: #788c5d;
 
-  --font-sans:  'DM Sans', system-ui, sans-serif;
-  --font-display: 'Syne', sans-serif;
-  --font-mono:  'JetBrains Mono', monospace;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -35,7 +37,7 @@ html {
 body {
   background: #0c0c14;
   color: #e8e6dc;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -51,7 +53,7 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 14px;          /* tall hit area so thumb stays vertically centered */
+  height: 14px; /* tall hit area so thumb stays vertically centered */
   background: transparent;
   outline: none;
   cursor: pointer;
@@ -71,7 +73,7 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   border: 2px solid var(--color-bg);
   box-shadow: 0 0 0 1px var(--color-accent);
-  margin-top: -5px;      /* center thumb on the 4px track: (14-4)/2 = 5 */
+  margin-top: -5px; /* center thumb on the 4px track: (14-4)/2 = 5 */
 }
 input[type="range"]::-moz-range-track {
   height: 4px;
@@ -116,28 +118,64 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
-.hero-badge { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
-.hero-h1    { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
-.hero-sub   { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
-.hero-ctas  { animation: fadeUp 0.6s ease both; animation-delay: 0.52s; }
-.hero-cmd   { animation: fadeUp 0.6s ease both; animation-delay: 0.62s; }
-.hero-scroll{ animation: fadeUp 0.6s ease both; animation-delay: 0.8s; }
+.hero-badge {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.1s;
+}
+.hero-h1 {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.25s;
+}
+.hero-sub {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.4s;
+}
+.hero-ctas {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.52s;
+}
+.hero-cmd {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.62s;
+}
+.hero-scroll {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.8s;
+}
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(6px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
 }
 
 /* Gallery card entrance */
 @keyframes cardIn {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Pulse dot */
 @keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.7); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
 }
 
 /* Hide scrollbar but keep scrollability */
@@ -150,13 +188,54 @@ input[type="range"]::-moz-range-thumb {
 
 /* Docs page content entrance */
 @keyframes docsIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.docs-in   { animation: docsIn 0.4s ease both; }
-.docs-in-1 { animation: docsIn 0.4s ease both; animation-delay: 0.06s; }
-.docs-in-2 { animation: docsIn 0.4s ease both; animation-delay: 0.13s; }
-.docs-in-3 { animation: docsIn 0.4s ease both; animation-delay: 0.2s; }
-.docs-in-4 { animation: docsIn 0.4s ease both; animation-delay: 0.28s; }
-.docs-in-5 { animation: docsIn 0.4s ease both; animation-delay: 0.36s; }
+.docs-in {
+  animation: docsIn 0.4s ease both;
+}
+.docs-in-1 {
+  animation: docsIn 0.4s ease both;
+  animation-delay: 0.06s;
+}
+.docs-in-2 {
+  animation: docsIn 0.4s ease both;
+  animation-delay: 0.13s;
+}
+.docs-in-3 {
+  animation: docsIn 0.4s ease both;
+  animation-delay: 0.2s;
+}
+.docs-in-4 {
+  animation: docsIn 0.4s ease both;
+  animation-delay: 0.28s;
+}
+.docs-in-5 {
+  animation: docsIn 0.4s ease both;
+  animation-delay: 0.36s;
+}
+
+/* Studio entrance animations */
+@keyframes studioSideIn {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.studio-side-in {
+  animation: studioSideIn 0.45s ease both;
+}
+.studio-in-1 {
+  animation: docsIn 0.45s ease both;
+  animation-delay: 0.08s;
+}
+.studio-in-2 {
+  animation: docsIn 0.45s ease both;
+  animation-delay: 0.18s;
+}
