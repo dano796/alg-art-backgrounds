@@ -5,10 +5,10 @@
   --color-surface: #13131f;
   --color-surface-high: #181828;
   --color-border: #1e1e30;
-  --color-border-hover: rgba(217, 119, 87, 0.35);
-  --color-accent: #d97757;
-  --color-accent-soft: rgba(217, 119, 87, 0.1);
-  --color-accent-border: rgba(217, 119, 87, 0.25);
+  --color-border-hover: #d5ff0b;
+  --color-accent: #d5ff0b;
+  --color-accent-soft: rgba(126, 141, 164, 0.16);
+  --color-accent-border: rgb(213, 255, 11);
   --color-ink: #e8e6dc;
   --color-muted: #6b6a78;
   --color-faint: #2a2a3e;
@@ -16,7 +16,7 @@
   --color-green: #788c5d;
 
   --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-display: "Syne", sans-serif;
+  --font-display: "Chakra Petch", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
@@ -88,6 +88,24 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   border: 2px solid var(--color-bg);
   box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+/* Remove default color-input inner chrome that can create hairline seams */
+input[type="color"] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+input[type="color"]::-moz-color-swatch {
+  border: none;
 }
 
 /* Scrollbar */

@@ -5,7 +5,7 @@ export function CodeBlock({ code, label }: { code: string; label: string }) {
 
   return (
     <div className="mb-7">
-      <div className="flex items-center justify-between px-4 py-[9px] bg-faint rounded-t-[9px] border-b border-border">
+      <div className="flex items-center justify-between px-4 py-2.25 bg-faint rounded-t-[9px] border-b border-border">
         <span className="text-[12px] text-muted font-mono">{label}</span>
         <button
           onClick={() => {

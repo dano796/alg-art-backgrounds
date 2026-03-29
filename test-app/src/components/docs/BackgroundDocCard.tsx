@@ -135,7 +135,7 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       <div className="flex items-center gap-3 px-6 py-4 border-b border-border">
         <button
           onClick={() => navigate(ROUTES.studio)}
-          className="flex items-center gap-1.5 px-4 py-2 bg-accent rounded-lg text-white text-[13px] font-semibold font-display hover:opacity-90 transition-opacity cursor-pointer border-0"
+          className="flex items-center gap-1.5 px-4 py-2 bg-accent rounded-lg text-[#1a1a1a] text-[13px] font-semibold font-display hover:opacity-90 transition-opacity cursor-pointer border-0"
         >
           Open in Studio
           <span className="text-[11px] opacity-80">↗</span>

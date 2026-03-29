@@ -57,7 +57,7 @@ export function Navbar() {
         onClick={() => navigate(ROUTES.home)}
         className="flex items-center gap-2.5 cursor-pointer bg-transparent border-0"
       >
-        <div className="w-7 h-7 rounded-[7px] bg-accent flex items-center justify-center text-[13px] font-bold text-white font-display shrink-0">
+        <div className="w-7 h-7 rounded-[7px] bg-accent flex items-center justify-center text-[13px] font-bold text-[#1a1a1a] font-display shrink-0">
           A
         </div>
         <span className="font-display font-bold text-[14px] text-ink tracking-[-0.01em]">
@@ -84,7 +84,7 @@ export function Navbar() {
           href={GITHUB_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 ml-2.5 px-4 py-1.75 bg-accent rounded-lg text-white no-underline text-[13px] font-semibold font-display tracking-[0.01em] whitespace-nowrap hover:opacity-90 transition-opacity"
+          className="flex items-center gap-1.5 ml-2.5 px-4 py-1.75 bg-accent rounded-lg text-[#1a1a1a] no-underline text-[13px] font-semibold font-display tracking-[0.01em] whitespace-nowrap hover:opacity-90 transition-opacity"
         >
           <GitHubIcon /> GitHub
         </a>

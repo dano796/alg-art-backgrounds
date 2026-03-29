@@ -65,7 +65,7 @@ export function ColorRow({
             type="color"
             value={value}
             onChange={(e) => onChange(param.name, e.target.value)}
-            className="w-8 h-8 p-0 -ml-1 -mt-1 cursor-pointer border-0 block"
+            className="w-full h-full p-0 cursor-pointer border-0 block appearance-none bg-transparent"
           />
         </div>
       </div>

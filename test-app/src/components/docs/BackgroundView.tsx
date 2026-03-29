@@ -98,7 +98,7 @@ export function BackgroundView({
             sessionStorage.setItem("studio-initial-bg", entry.id);
             navigate(ROUTES.studio);
           }}
-          className="flex items-center gap-1 px-2.5 py-1.25 text-[12px] rounded-md text-white font-semibold font-display bg-accent hover:opacity-90 transition-opacity cursor-pointer border-0 mb-px"
+          className="flex items-center gap-1 px-2.5 py-1.25 text-[12px] rounded-md text-[#1a1a1a] font-semibold font-display bg-accent hover:opacity-90 transition-opacity cursor-pointer border-0 mb-px"
         >
           Open in Studio
         </button>

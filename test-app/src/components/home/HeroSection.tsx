@@ -65,7 +65,7 @@ export function HeroSection() {
               e.preventDefault();
               navigate(ROUTES.studio);
             }}
-            className="px-7.5 py-3.25 bg-accent border-none rounded-[10px] text-white text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity no-underline inline-block"
+            className="px-7.5 py-3.25 bg-accent border-none rounded-[10px] text-[#1a1a1a] text-[15px] font-bold cursor-pointer font-display tracking-[0.01em] hover:opacity-90 transition-opacity no-underline inline-block"
           >
             Open Studio →
           </a>

@@ -4,7 +4,7 @@ export function DemoContentOverlay() {
       {/* Fake navbar */}
       <div className="h-12 flex items-center justify-between px-5 shrink-0 bg-[rgba(12,12,20,0.35)] backdrop-blur-sm border-b border-white/6">
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-md flex items-center justify-center text-white font-bold font-display shrink-0 bg-accent text-[10px]">
+          <div className="w-5 h-5 rounded-md flex items-center justify-center text-[#1a1a1a] font-bold font-display shrink-0 bg-accent text-[10px]">
             A
           </div>
           <span className="text-[12px] font-display font-semibold text-ink">
@@ -34,7 +34,7 @@ export function DemoContentOverlay() {
           at your fingertips.
         </h2>
         <div className="flex items-center gap-3">
-          <button className="py-2.25 px-5.5 text-[13px] rounded-lg text-white font-semibold font-display cursor-default border-0 bg-accent">
+          <button className="py-2.25 px-5.5 text-[13px] rounded-lg text-[#1a1a1a] font-semibold font-display cursor-default border-0 bg-accent">
             Get Started
           </button>
           <button className="py-2.25 px-5.5 text-[13px] rounded-lg font-semibold font-display cursor-default text-[rgba(232,230,220,0.85)] bg-white/8 border border-white/[0.14]">

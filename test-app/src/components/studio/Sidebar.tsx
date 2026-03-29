@@ -39,7 +39,6 @@ export function Sidebar({
   onSearchChange,
   onParamChange,
   onReset,
-  onRandomSeed,
   onExport,
 }: SidebarProps) {
   return (
@@ -93,7 +92,7 @@ export function Sidebar({
                     onClick={() => onSelectBg(b.id)}
                     className={`w-full text-left px-3 py-2 text-[12px] cursor-pointer transition-colors border-b border-border last:border-0 ${
                       activeId === b.id
-                        ? "bg-accent text-white font-semibold"
+                        ? "bg-accent text-[#1a1a1a] font-semibold"
                         : "text-ink hover:bg-faint"
                     }`}
                   >
@@ -183,7 +182,7 @@ export function Sidebar({
 
         <button
           onClick={onExport}
-          className="w-full bg-accent border-none rounded-lg text-white text-[13px] font-semibold py-2.5 cursor-pointer hover:opacity-90 transition-opacity font-display flex items-center justify-center gap-1.5"
+          className="w-full bg-accent border-none rounded-lg text-[#1a1a1a] text-[13px] font-semibold py-2.5 cursor-pointer hover:opacity-90 transition-opacity font-display flex items-center justify-center gap-1.5"
         >
           ↗ Export Code
         </button>
