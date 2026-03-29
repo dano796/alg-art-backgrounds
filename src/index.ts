@@ -24,8 +24,6 @@ export { ReactionDiffusion } from "./components/backgrounds/ReactionDiffusion";
 export { RecursiveSubdivision } from "./components/backgrounds/RecursiveSubdivision";
 export { TideHarmonics } from "./components/backgrounds/TideHarmonics";
 export { VoronoiMosaic } from "./components/backgrounds/VoronoiMosaic";
-export { BackgroundStudio } from "./BackgroundStudio";
-
 // Engines (for headless / custom renderer usage)
 export {
   initFlowCurrents,
@@ -244,4 +242,12 @@ export {
 export { registry, getBackground, backgroundIds } from "./registry";
 
 // Utils (exposed for custom backgrounds)
-export { PerlinNoise, SeededRandom, hexToRgb, lerp, clamp, map, rgba } from "./components/utils/noise";
+export {
+  PerlinNoise,
+  SeededRandom,
+  hexToRgb,
+  lerp,
+  clamp,
+  map,
+  rgba,
+} from "./components/utils/noise";

@@ -1,4 +1,4 @@
-import { BackgroundStudio } from "alg-art-backgrounds";
+import { BackgroundStudio } from "../components/studio/BackgroundStudio";
 
 export function StudioPage() {
   const initialBg = sessionStorage.getItem("studio-initial-bg") ?? undefined;
