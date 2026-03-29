@@ -27,16 +27,13 @@ export function DocsSection() {
   }, [bgEntry]);
 
   return (
-    <section
-      id="docs"
-      className="min-h-[calc(100vh-58px)]"
-    >
-      <div className={`grid ${bgEntry ? "grid-cols-[260px_minmax(0,1fr)_292px]" : "grid-cols-[260px_minmax(0,1fr)]"}`}>
+    <section id="docs" className="min-h-[calc(100vh-58px)]">
+      <div
+        className={`grid ${bgEntry ? "grid-cols-[260px_minmax(0,1fr)_292px]" : "grid-cols-[260px_minmax(0,1fr)]"}`}
+      >
         <DocsSidebar activePage={activePage} onNavigate={handleNavigate} />
 
-        <main
-          className="min-w-0 pt-10 px-8 pb-24 min-h-[calc(100vh-58px)]"
-        >
+        <main className="min-w-0 pt-1 px-8 pb-24 min-h-[calc(100vh-58px)]">
           <div key={activePage}>
             {activePage === "introduction" && <IntroductionView />}
             {activePage === "installation" && <InstallationView />}

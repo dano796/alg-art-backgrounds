@@ -17,7 +17,12 @@ export function HeroSection() {
     <section className="relative h-svh min-h-150 flex items-center justify-center overflow-hidden">
       {/* Live canvas background */}
       <FlowCurrents
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+        }}
         count={2200}
         speed={0.75}
         colorWarm="#d97757"

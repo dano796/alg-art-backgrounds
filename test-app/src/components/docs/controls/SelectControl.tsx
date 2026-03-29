@@ -13,7 +13,9 @@ export function SelectControl({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[12px] text-ink font-sans font-medium flex-1 min-w-0 truncate">{param.label}</span>
+      <span className="text-[12px] text-ink font-sans font-medium flex-1 min-w-0 truncate">
+        {param.label}
+      </span>
       <select
         value={value}
         onChange={(e) => onChange(param.name, e.target.value)}

@@ -11,7 +11,7 @@ export function idToComponentName(id: string): string {
 export function generateSnippet(
   id: string,
   schema: ParamSchema[],
-  params: Record<string, unknown>
+  params: Record<string, unknown>,
 ): string {
   const componentName = idToComponentName(id);
 
@@ -19,7 +19,8 @@ export function generateSnippet(
     .filter((s) => params[s.name] !== s.default)
     .map((s) => {
       const val = params[s.name];
-      if (s.type === "color" || s.type === "select") return `  ${s.name}="${val}"`;
+      if (s.type === "color" || s.type === "select")
+        return `  ${s.name}="${val}"`;
       return `  ${s.name}={${val}}`;
     });
 
@@ -44,13 +45,14 @@ export function generateSnippet(
 export function generateFullSnippet(
   id: string,
   schema: ParamSchema[],
-  params: Record<string, unknown>
+  params: Record<string, unknown>,
 ): string {
   const componentName = idToComponentName(id);
 
   const allProps = schema.map((s) => {
     const val = params[s.name];
-    if (s.type === "color" || s.type === "select") return `  ${s.name}="${val}"`;
+    if (s.type === "color" || s.type === "select")
+      return `  ${s.name}="${val}"`;
     return `  ${s.name}={${val}}`;
   });
 

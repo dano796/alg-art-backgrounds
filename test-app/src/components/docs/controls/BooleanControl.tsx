@@ -13,7 +13,9 @@ export function BooleanControl({
 }) {
   return (
     <div className="flex items-center justify-between gap-2">
-      <span className="text-[12px] text-ink font-sans font-medium">{param.label}</span>
+      <span className="text-[12px] text-ink font-sans font-medium">
+        {param.label}
+      </span>
       <button
         onClick={() => onChange(param.name, !value)}
         className="relative w-9 h-5 rounded-full transition-colors duration-200 shrink-0 cursor-pointer border-0"

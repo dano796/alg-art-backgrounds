@@ -13,7 +13,7 @@ function SidebarItem({
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left text-[13px] font-sans cursor-pointer border-0 bg-transparent rounded-md flex items-center transition-[color,background,padding-left,border-color] duration-150 py-1.25 pr-2.5 border-l-2 ${
+      className={`w-full text-left text-[13px] font-sans cursor-pointer border-0 bg-transparent rounded-md flex items-center transition-[color,background,padding-left,border-color] duration-150 py-1.5 mb-1 pr-2.5 border-l-2 ${
         active
           ? "text-ink font-medium pl-2.5 border-l-accent bg-accent-soft"
           : "text-muted font-normal pl-3 border-l-transparent hover:text-ink hover:pl-3.5"
@@ -37,14 +37,14 @@ export function DocsSidebar({
     ? DOC_REGISTRY.filter(
         (e) =>
           e.name.toLowerCase().includes(search.toLowerCase()) ||
-          e.tag.toLowerCase().includes(search.toLowerCase())
+          e.tag.toLowerCase().includes(search.toLowerCase()),
       )
     : DOC_REGISTRY;
 
   return (
     <aside className="hidden lg:flex flex-col scrollbar-none sticky top-14.5 h-[calc(100vh-58px)] overflow-y-auto bg-bg">
       {/* Search */}
-      <div className="border-b border-border pt-3 pr-4 pb-3 pl-8">
+      <div className="border-b border-border pt-3 pb-3 pl-8">
         <div className="relative flex items-center">
           <svg
             className="absolute left-2.5 shrink-0 text-muted"
@@ -78,11 +78,11 @@ export function DocsSidebar({
         </div>
       </div>
 
-      <div className="pt-5 pr-4 pb-7 pl-8">
+      <div className="pt-6 pr-4 pb-8 pl-8">
         {/* Get Started group — hidden when searching */}
         {!search && (
-          <div className="mb-5">
-            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2 text-muted px-2.5">
+          <div className="mb-6">
+            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-3 text-muted px-2.5">
               Get Started
             </div>
             <SidebarItem
@@ -101,7 +101,7 @@ export function DocsSidebar({
         {/* Backgrounds group */}
         <div>
           {!search && (
-            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-2 text-muted px-2.5">
+            <div className="text-[12px] font-mono font-semibold uppercase tracking-[0.14em] mb-3 text-muted px-2.5">
               Backgrounds
               <span className="ml-2 px-2 py-0.5 font-mono text-[10px] rounded-xl text-accent bg-accent-soft">
                 {DOC_REGISTRY.length}
