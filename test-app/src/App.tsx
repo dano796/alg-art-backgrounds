@@ -6,6 +6,7 @@ import { StudioPage } from "./pages/StudioPage";
 import { DocsPage } from "./pages/DocsPage";
 import { useState, useEffect } from "react";
 import { ROUTES } from "./lib/constants";
+import { matchRoute } from "./lib/routing";
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -18,12 +19,15 @@ export default function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  if (currentPath === ROUTES.studio) {
-    return <StudioPage />;
+  const studioMatch = matchRoute(ROUTES.studioBackground, currentPath);
+  const docsMatch   = matchRoute(ROUTES.docsBackground, currentPath);
+
+  if (currentPath === ROUTES.studio || currentPath === "/Studio" || studioMatch) {
+    return <StudioPage key={currentPath} backgroundId={studioMatch?.id} />;
   }
 
-  if (currentPath === ROUTES.docs) {
-    return <DocsPage />;
+  if (currentPath === ROUTES.docs || docsMatch) {
+    return <DocsPage key={currentPath} backgroundId={docsMatch?.id} />;
   }
 
   return (

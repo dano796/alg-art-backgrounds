@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import type { DocEntry } from "./registry";
 import { navigate } from "../../lib/navigate";
-import { ROUTES, CLI_PACKAGE } from "../../lib/constants";
+import { studioRoute, CLI_PACKAGE } from "../../lib/constants";
 import { PropsTable } from "./PropsTable";
 import { CodeBlock } from "./CodeBlock";
 import { generateFullSnippet } from "./generateSnippet";
@@ -94,10 +94,7 @@ export function BackgroundView({
           ))}
         </div>
         <button
-          onClick={() => {
-            sessionStorage.setItem("studio-initial-bg", entry.id);
-            navigate(ROUTES.studio);
-          }}
+          onClick={() => navigate(studioRoute(entry.id))}
           className="flex items-center gap-1 px-2.5 py-1.25 text-[12px] rounded-md text-[#1a1a1a] font-semibold font-display bg-accent hover:opacity-90 transition-opacity cursor-pointer border-0 mb-px"
         >
           Open in Studio

@@ -5,7 +5,7 @@ import { PropsTable } from "./PropsTable";
 import { CodeBlock } from "./CodeBlock";
 import { generateSnippet } from "./generateSnippet";
 import { navigate } from "../../lib/navigate";
-import { ROUTES } from "../../lib/constants";
+import { studioRoute } from "../../lib/constants";
 
 export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
   const [params, setParams] = useState<Record<string, unknown>>(() => ({
@@ -134,7 +134,7 @@ export function BackgroundDocCard({ entry }: { entry: DocEntry }) {
       {/* Action row */}
       <div className="flex items-center gap-3 px-6 py-4 border-b border-border">
         <button
-          onClick={() => navigate(ROUTES.studio)}
+          onClick={() => navigate(studioRoute(entry.id))}
           className="flex items-center gap-1.5 px-4 py-2 bg-accent rounded-lg text-[#1a1a1a] text-[13px] font-semibold font-display hover:opacity-90 transition-opacity cursor-pointer border-0"
         >
           Open in Studio

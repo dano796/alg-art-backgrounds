@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { ParamSchema } from "alg-art-backgrounds";
 import type { BackgroundEntry, AnyParams, BackgroundId } from "./types";
 import {
@@ -43,6 +44,8 @@ export function Sidebar({
   onReset,
   onExport,
 }: SidebarProps) {
+  const [copied, setCopied] = useState(false);
+
   return (
     <aside
       aria-disabled={isDisabled}
@@ -178,10 +181,14 @@ export function Sidebar({
             ↺ Reset
           </button>
           <button
-            onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="flex-1 flex items-center justify-center gap-1 bg-transparent border border-border rounded-lg text-[12px] text-muted py-2 cursor-pointer hover:text-ink hover:border-border-hover transition-colors font-sans"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              setCopied(true);
+              setTimeout(() => setCopied(false), 1500);
+            }}
+            className={`flex-1 flex items-center justify-center gap-1 bg-transparent border border-border rounded-lg text-[12px] py-2 cursor-pointer hover:border-border-hover transition-colors font-sans ${copied ? "text-green" : "text-muted hover:text-ink"}`}
           >
-            ⤴ Share
+            {copied ? "copied ✓" : "⤴ Share"}
           </button>
         </div>
 

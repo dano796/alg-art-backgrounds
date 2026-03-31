@@ -1,11 +1,9 @@
 import { BackgroundStudio } from "../components/studio/BackgroundStudio";
 
-export function StudioPage() {
-  const initialBg = sessionStorage.getItem("studio-initial-bg") ?? undefined;
-
+export function StudioPage({ backgroundId }: { backgroundId?: string }) {
   return (
     <div className="w-screen h-screen overflow-hidden">
-      <BackgroundStudio initialBg={initialBg} />
+      <BackgroundStudio initialBg={backgroundId} />
     </div>
   );
 }

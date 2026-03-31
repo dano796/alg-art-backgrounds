@@ -5,10 +5,16 @@ import { IntroductionView } from "./IntroductionView";
 import { InstallationView } from "./InstallationView";
 import { BackgroundView } from "./BackgroundView";
 import { DOC_REGISTRY } from "./registry";
+import { navigate } from "../../lib/navigate";
+import { docsRoute, ROUTES } from "../../lib/constants";
 
-export function DocsSection() {
-  const [activePage, setActivePage] = useState("introduction");
-  const [params, setParams] = useState<Record<string, unknown>>({});
+export function DocsSection({ backgroundId }: { backgroundId?: string }) {
+  const initialPage = backgroundId ? `bg-${backgroundId}` : "introduction";
+  const [activePage, setActivePage] = useState(initialPage);
+  const initialEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === initialPage);
+  const [params, setParams] = useState<Record<string, unknown>>(
+    initialEntry ? { ...initialEntry.defaults } : {}
+  );
 
   const bgEntry = DOC_REGISTRY.find((e) => `bg-${e.id}` === activePage);
 
@@ -16,6 +22,8 @@ export function DocsSection() {
     const entry = DOC_REGISTRY.find((e) => `bg-${e.id}` === page);
     setActivePage(page);
     setParams(entry ? { ...entry.defaults } : {});
+    const bgId = page.startsWith("bg-") ? page.slice(3) : null;
+    navigate(bgId ? docsRoute(bgId) : ROUTES.docs + "/" + page);
   }, []);
 
   const handleParamChange = useCallback((name: string, value: unknown) => {

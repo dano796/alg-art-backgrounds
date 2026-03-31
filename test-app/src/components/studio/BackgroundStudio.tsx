@@ -14,6 +14,8 @@ import { useCanvasExport } from "./useCanvasExport";
 import { CanvasExportTabs } from "./CanvasExportTabs";
 import { Navbar } from "../layout/Navbar";
 import { DemoContentOverlay } from "../shared/DemoContentOverlay";
+import { navigate } from "../../lib/navigate";
+import { studioRoute } from "../../lib/constants";
 
 export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
   const [activeId, setActiveId] = useState<BackgroundId>(
@@ -61,6 +63,7 @@ export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
     setActiveId(id);
     setDropdownOpen(false);
     setSearchQuery("");
+    navigate(studioRoute(id));
   };
 
   const filtered = BACKGROUNDS.filter(
