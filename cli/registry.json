@@ -15,7 +15,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/FlowCurrents.tsx",
-          "target": "components/backgrounds/backgrounds/FlowCurrents.tsx"
+          "target": "components/backgrounds/FlowCurrents.tsx"
         },
         {
           "source": "src/components/engines/flowCurrents.ts",
@@ -44,7 +44,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/GravityStorm.tsx",
-          "target": "components/backgrounds/backgrounds/GravityStorm.tsx"
+          "target": "components/backgrounds/GravityStorm.tsx"
         },
         {
           "source": "src/components/engines/gravityStorm.ts",
@@ -73,7 +73,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/GeoPulse.tsx",
-          "target": "components/backgrounds/backgrounds/GeoPulse.tsx"
+          "target": "components/backgrounds/GeoPulse.tsx"
         },
         {
           "source": "src/components/engines/geoPulse.ts",
@@ -102,7 +102,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/WaveEther.tsx",
-          "target": "components/backgrounds/backgrounds/WaveEther.tsx"
+          "target": "components/backgrounds/WaveEther.tsx"
         },
         {
           "source": "src/components/engines/waveEther.ts",
@@ -131,7 +131,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/VortexBloom.tsx",
-          "target": "components/backgrounds/backgrounds/VortexBloom.tsx"
+          "target": "components/backgrounds/VortexBloom.tsx"
         },
         {
           "source": "src/components/engines/vortexBloom.ts",
@@ -160,7 +160,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/CrystallineDrift.tsx",
-          "target": "components/backgrounds/backgrounds/CrystallineDrift.tsx"
+          "target": "components/backgrounds/CrystallineDrift.tsx"
         },
         {
           "source": "src/components/engines/crystallineDrift.ts",
@@ -189,7 +189,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/AmbientMesh.tsx",
-          "target": "components/backgrounds/backgrounds/AmbientMesh.tsx"
+          "target": "components/backgrounds/AmbientMesh.tsx"
         },
         {
           "source": "src/components/engines/ambientMesh.ts",
@@ -218,7 +218,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/EmberCascade.tsx",
-          "target": "components/backgrounds/backgrounds/EmberCascade.tsx"
+          "target": "components/backgrounds/EmberCascade.tsx"
         },
         {
           "source": "src/components/engines/emberCascade.ts",
@@ -247,7 +247,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/CliffordAttractor.tsx",
-          "target": "components/backgrounds/backgrounds/CliffordAttractor.tsx"
+          "target": "components/backgrounds/CliffordAttractor.tsx"
         },
         {
           "source": "src/components/engines/cliffordAttractor.ts",
@@ -276,7 +276,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/HarmonicLattice.tsx",
-          "target": "components/backgrounds/backgrounds/HarmonicLattice.tsx"
+          "target": "components/backgrounds/HarmonicLattice.tsx"
         },
         {
           "source": "src/components/engines/harmonicLattice.ts",
@@ -305,7 +305,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/LissajousWeave.tsx",
-          "target": "components/backgrounds/backgrounds/LissajousWeave.tsx"
+          "target": "components/backgrounds/LissajousWeave.tsx"
         },
         {
           "source": "src/components/engines/lissajousWeave.ts",
@@ -334,7 +334,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/PhyllotaxisDream.tsx",
-          "target": "components/backgrounds/backgrounds/PhyllotaxisDream.tsx"
+          "target": "components/backgrounds/PhyllotaxisDream.tsx"
         },
         {
           "source": "src/components/engines/phyllotaxisDream.ts",
@@ -363,7 +363,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/Spirograph.tsx",
-          "target": "components/backgrounds/backgrounds/Spirograph.tsx"
+          "target": "components/backgrounds/Spirograph.tsx"
         },
         {
           "source": "src/components/engines/spirograph.ts",
@@ -392,7 +392,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/DifferentialGrowth.tsx",
-          "target": "components/backgrounds/backgrounds/DifferentialGrowth.tsx"
+          "target": "components/backgrounds/DifferentialGrowth.tsx"
         },
         {
           "source": "src/components/engines/differentialGrowth.ts",
@@ -421,7 +421,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/DoublePendulum.tsx",
-          "target": "components/backgrounds/backgrounds/DoublePendulum.tsx"
+          "target": "components/backgrounds/DoublePendulum.tsx"
         },
         {
           "source": "src/components/engines/doublePendulum.ts",
@@ -450,7 +450,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/FractalNoiseTerrain.tsx",
-          "target": "components/backgrounds/backgrounds/FractalNoiseTerrain.tsx"
+          "target": "components/backgrounds/FractalNoiseTerrain.tsx"
         },
         {
           "source": "src/components/engines/fractalNoiseTerrain.ts",
@@ -479,7 +479,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/MoireLattice.tsx",
-          "target": "components/backgrounds/backgrounds/MoireLattice.tsx"
+          "target": "components/backgrounds/MoireLattice.tsx"
         },
         {
           "source": "src/components/engines/moireLattice.ts",
@@ -508,7 +508,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/NeuralWeave.tsx",
-          "target": "components/backgrounds/backgrounds/NeuralWeave.tsx"
+          "target": "components/backgrounds/NeuralWeave.tsx"
         },
         {
           "source": "src/components/engines/neuralWeave.ts",
@@ -537,7 +537,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/OrbitalResonance.tsx",
-          "target": "components/backgrounds/backgrounds/OrbitalResonance.tsx"
+          "target": "components/backgrounds/OrbitalResonance.tsx"
         },
         {
           "source": "src/components/engines/orbitalResonance.ts",
@@ -566,7 +566,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/ReactionDiffusion.tsx",
-          "target": "components/backgrounds/backgrounds/ReactionDiffusion.tsx"
+          "target": "components/backgrounds/ReactionDiffusion.tsx"
         },
         {
           "source": "src/components/engines/reactionDiffusion.ts",
@@ -595,7 +595,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/RecursiveSubdivision.tsx",
-          "target": "components/backgrounds/backgrounds/RecursiveSubdivision.tsx"
+          "target": "components/backgrounds/RecursiveSubdivision.tsx"
         },
         {
           "source": "src/components/engines/recursiveSubdivision.ts",
@@ -624,7 +624,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/TideHarmonics.tsx",
-          "target": "components/backgrounds/backgrounds/TideHarmonics.tsx"
+          "target": "components/backgrounds/TideHarmonics.tsx"
         },
         {
           "source": "src/components/engines/tideHarmonics.ts",
@@ -653,7 +653,7 @@
       "files": [
         {
           "source": "src/components/backgrounds/VoronoiMosaic.tsx",
-          "target": "components/backgrounds/backgrounds/VoronoiMosaic.tsx"
+          "target": "components/backgrounds/VoronoiMosaic.tsx"
         },
         {
           "source": "src/components/engines/voronoiMosaic.ts",
@@ -681,99 +681,99 @@
       "files": [
         {
           "source": "src/components/backgrounds/BackgroundStudio.tsx",
-          "target": "components/backgrounds/backgrounds/BackgroundStudio.tsx"
+          "target": "components/backgrounds/BackgroundStudio.tsx"
         },
         {
           "source": "src/components/backgrounds/FlowCurrents.tsx",
-          "target": "components/backgrounds/backgrounds/FlowCurrents.tsx"
+          "target": "components/backgrounds/FlowCurrents.tsx"
         },
         {
           "source": "src/components/backgrounds/GravityStorm.tsx",
-          "target": "components/backgrounds/backgrounds/GravityStorm.tsx"
+          "target": "components/backgrounds/GravityStorm.tsx"
         },
         {
           "source": "src/components/backgrounds/GeoPulse.tsx",
-          "target": "components/backgrounds/backgrounds/GeoPulse.tsx"
+          "target": "components/backgrounds/GeoPulse.tsx"
         },
         {
           "source": "src/components/backgrounds/WaveEther.tsx",
-          "target": "components/backgrounds/backgrounds/WaveEther.tsx"
+          "target": "components/backgrounds/WaveEther.tsx"
         },
         {
           "source": "src/components/backgrounds/VortexBloom.tsx",
-          "target": "components/backgrounds/backgrounds/VortexBloom.tsx"
+          "target": "components/backgrounds/VortexBloom.tsx"
         },
         {
           "source": "src/components/backgrounds/CrystallineDrift.tsx",
-          "target": "components/backgrounds/backgrounds/CrystallineDrift.tsx"
+          "target": "components/backgrounds/CrystallineDrift.tsx"
         },
         {
           "source": "src/components/backgrounds/AmbientMesh.tsx",
-          "target": "components/backgrounds/backgrounds/AmbientMesh.tsx"
+          "target": "components/backgrounds/AmbientMesh.tsx"
         },
         {
           "source": "src/components/backgrounds/EmberCascade.tsx",
-          "target": "components/backgrounds/backgrounds/EmberCascade.tsx"
+          "target": "components/backgrounds/EmberCascade.tsx"
         },
         {
           "source": "src/components/backgrounds/CliffordAttractor.tsx",
-          "target": "components/backgrounds/backgrounds/CliffordAttractor.tsx"
+          "target": "components/backgrounds/CliffordAttractor.tsx"
         },
         {
           "source": "src/components/backgrounds/HarmonicLattice.tsx",
-          "target": "components/backgrounds/backgrounds/HarmonicLattice.tsx"
+          "target": "components/backgrounds/HarmonicLattice.tsx"
         },
         {
           "source": "src/components/backgrounds/LissajousWeave.tsx",
-          "target": "components/backgrounds/backgrounds/LissajousWeave.tsx"
+          "target": "components/backgrounds/LissajousWeave.tsx"
         },
         {
           "source": "src/components/backgrounds/PhyllotaxisDream.tsx",
-          "target": "components/backgrounds/backgrounds/PhyllotaxisDream.tsx"
+          "target": "components/backgrounds/PhyllotaxisDream.tsx"
         },
         {
           "source": "src/components/backgrounds/Spirograph.tsx",
-          "target": "components/backgrounds/backgrounds/Spirograph.tsx"
+          "target": "components/backgrounds/Spirograph.tsx"
         },
         {
           "source": "src/components/backgrounds/DifferentialGrowth.tsx",
-          "target": "components/backgrounds/backgrounds/DifferentialGrowth.tsx"
+          "target": "components/backgrounds/DifferentialGrowth.tsx"
         },
         {
           "source": "src/components/backgrounds/DoublePendulum.tsx",
-          "target": "components/backgrounds/backgrounds/DoublePendulum.tsx"
+          "target": "components/backgrounds/DoublePendulum.tsx"
         },
         {
           "source": "src/components/backgrounds/FractalNoiseTerrain.tsx",
-          "target": "components/backgrounds/backgrounds/FractalNoiseTerrain.tsx"
+          "target": "components/backgrounds/FractalNoiseTerrain.tsx"
         },
         {
           "source": "src/components/backgrounds/MoireLattice.tsx",
-          "target": "components/backgrounds/backgrounds/MoireLattice.tsx"
+          "target": "components/backgrounds/MoireLattice.tsx"
         },
         {
           "source": "src/components/backgrounds/NeuralWeave.tsx",
-          "target": "components/backgrounds/backgrounds/NeuralWeave.tsx"
+          "target": "components/backgrounds/NeuralWeave.tsx"
         },
         {
           "source": "src/components/backgrounds/OrbitalResonance.tsx",
-          "target": "components/backgrounds/backgrounds/OrbitalResonance.tsx"
+          "target": "components/backgrounds/OrbitalResonance.tsx"
         },
         {
           "source": "src/components/backgrounds/ReactionDiffusion.tsx",
-          "target": "components/backgrounds/backgrounds/ReactionDiffusion.tsx"
+          "target": "components/backgrounds/ReactionDiffusion.tsx"
         },
         {
           "source": "src/components/backgrounds/RecursiveSubdivision.tsx",
-          "target": "components/backgrounds/backgrounds/RecursiveSubdivision.tsx"
+          "target": "components/backgrounds/RecursiveSubdivision.tsx"
         },
         {
           "source": "src/components/backgrounds/TideHarmonics.tsx",
-          "target": "components/backgrounds/backgrounds/TideHarmonics.tsx"
+          "target": "components/backgrounds/TideHarmonics.tsx"
         },
         {
           "source": "src/components/backgrounds/VoronoiMosaic.tsx",
-          "target": "components/backgrounds/backgrounds/VoronoiMosaic.tsx"
+          "target": "components/backgrounds/VoronoiMosaic.tsx"
         },
         {
           "source": "src/components/engines/flowCurrents.ts",

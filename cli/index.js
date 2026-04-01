@@ -88,6 +88,52 @@ function toExportName(id) {
     .join("");
 }
 
+/**
+ * Rewrite relative imports in a downloaded file so they point to the correct
+ * installed locations instead of the monorepo source layout.
+ *
+ * For every `import`/`export … from "./…"` or `"../…"` statement the function:
+ *   1. Resolves the specifier relative to the SOURCE file's directory.
+ *   2. Looks up the resolved path in the source→target map.
+ *   3. If found, computes a new relative path from the TARGET file's directory
+ *      to the dependency's target path and replaces the specifier.
+ *   4. Non-relative or unmapped imports are left untouched.
+ *
+ * @param {string} content   - Downloaded source text
+ * @param {string} srcFile   - Registry source path  (e.g. "src/components/backgrounds/WaveEther.tsx")
+ * @param {string} tgtFile   - Install target path   (e.g. "components/backgrounds/WaveEther.tsx")
+ * @param {Array}  allFiles  - Full comp.files array  [{source, target}, …]
+ * @returns {string}         - Content with corrected import paths
+ */
+function rewriteImports(content, srcFile, tgtFile, allFiles) {
+  const posix = (p) => p.replace(/\\/g, "/");
+  const stripExt = (p) => p.replace(/\.(tsx?|jsx?)$/, "");
+
+  const srcDir = path.posix.dirname(posix(srcFile));
+  const tgtDir = path.posix.dirname(posix(tgtFile));
+
+  // Build a map: stripped-source-path → stripped-target-path
+  const depMap = new Map();
+  for (const f of allFiles) {
+    depMap.set(stripExt(posix(f.source)), stripExt(posix(f.target)));
+  }
+
+  // Matches: import … from "./…" | export … from "../…" | import("…")
+  const importRe = /((?:import|export)[^'"]*?from\s*|import\s*)(['"])(\.\.?\/[^'"]+)(\2)/g;
+
+  return content.replace(importRe, (match, kw, q, importPath, _q2) => {
+    const resolved = stripExt(
+      path.posix.normalize(path.posix.join(srcDir, importPath))
+    );
+    const targetDep = depMap.get(resolved);
+    if (!targetDep) return match; // not one of our files — leave unchanged
+
+    let rel = path.posix.relative(tgtDir, targetDep);
+    if (!rel.startsWith(".")) rel = "." + path.posix.sep + rel;
+    return `${kw}${q}${rel}${q}`;
+  });
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Commands
 // ─────────────────────────────────────────────────────────────────────────────
@@ -181,7 +227,8 @@ async function cmdAdd(id, { force = false, dryRun = false } = {}) {
 
     try {
       log(`  Downloading ${file.source}...`, "dim");
-      const content = await fetchText(sourceUrl);
+      let content = await fetchText(sourceUrl);
+      content = rewriteImports(content, file.source, file.target, comp.files);
       ensureDir(targetPath);
       fs.writeFileSync(targetPath, content, "utf-8");
       written.push(targetPath);
@@ -276,7 +323,8 @@ async function cmdUpdate(id) {
 
     try {
       log(`  Downloading ${file.source}...`, "dim");
-      const content = await fetchText(sourceUrl);
+      let content = await fetchText(sourceUrl);
+      content = rewriteImports(content, file.source, file.target, comp.files);
       ensureDir(targetPath);
       fs.writeFileSync(targetPath, content, "utf-8");
       written.push(targetPath);

@@ -130,8 +130,15 @@ if (entries.length === 0) {
 // ─── Output ────────────────────────────────────────────────────────────────
 
 // Source paths in the TypeScript registry use the pattern:
-//   src/components/X  →  components/backgrounds/X  (install target)
+//   src/components/backgrounds/X  →  components/backgrounds/X  (no doubling)
+//   src/components/engines/X      →  components/backgrounds/engines/X
+//   src/components/utils/X        →  components/backgrounds/utils/X
+//   src/components/schemas/X      →  components/backgrounds/schemas/X
 function sourceToTarget(sourcePath) {
+  // Handle backgrounds/ subdirectory first to avoid doubling
+  if (sourcePath.startsWith("src/components/backgrounds/")) {
+    return sourcePath.replace(/^src\/components\/backgrounds\//, "components/backgrounds/");
+  }
   return sourcePath.replace(/^src\/components\//, "components/backgrounds/");
 }
 
