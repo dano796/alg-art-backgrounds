@@ -64,6 +64,7 @@ export function FlowCurrents(props: FlowCurrentsProps) {
 
     let animId: number;
     let running = true;
+    let isVisible = false;
 
     function resizeCanvas() {
       const w = canvas!.clientWidth * window.devicePixelRatio;
@@ -81,13 +82,24 @@ export function FlowCurrents(props: FlowCurrentsProps) {
     stateRef.current = initFlowCurrents(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
-      if (!running) return;
+      if (!running || !isVisible) return;
       if (stateRef.current) {
         drawFlowCurrents(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
-    animId = requestAnimationFrame(loop);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          if (typeof animId !== "undefined") {
+            cancelAnimationFrame(animId);
+          }
+          animId = requestAnimationFrame(loop);
+        }
+      });
+    });
+    io.observe(canvas);
 
     const ro = new ResizeObserver(resizeCanvas);
     ro.observe(canvas);
@@ -96,6 +108,7 @@ export function FlowCurrents(props: FlowCurrentsProps) {
       running = false;
       cancelAnimationFrame(animId);
       ro.disconnect();
+      io.disconnect();
     };
   }, []); // intentionally empty — loop reads paramsRef
 

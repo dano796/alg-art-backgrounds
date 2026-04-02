@@ -60,6 +60,7 @@ export function EmberCascade(props: EmberCascadeProps) {
 
     let animId: number;
     let running = true;
+    let isVisible = false;
 
     function resizeCanvas() {
       const w = canvas!.clientWidth * window.devicePixelRatio;
@@ -77,13 +78,24 @@ export function EmberCascade(props: EmberCascadeProps) {
     stateRef.current = initEmberCascade(canvas.width, canvas.height, paramsRef.current);
 
     const loop = () => {
-      if (!running) return;
+      if (!running || !isVisible) return;
       if (stateRef.current) {
         drawEmberCascade(ctx, stateRef.current, paramsRef.current);
       }
       animId = requestAnimationFrame(loop);
     };
-    animId = requestAnimationFrame(loop);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          if (typeof animId !== "undefined") {
+            cancelAnimationFrame(animId);
+          }
+          animId = requestAnimationFrame(loop);
+        }
+      });
+    });
+    io.observe(canvas);
 
     const ro = new ResizeObserver(resizeCanvas);
     ro.observe(canvas);
@@ -92,6 +104,7 @@ export function EmberCascade(props: EmberCascadeProps) {
       running = false;
       cancelAnimationFrame(animId);
       ro.disconnect();
+      io.disconnect();
     };
   }, []);
 
