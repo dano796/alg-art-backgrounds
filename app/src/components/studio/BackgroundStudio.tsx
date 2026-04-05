@@ -1,0 +1,190 @@
+/**
+ * BackgroundStudio — interactive playground for ReArt.
+ *
+ * Thin orchestrator: owns all state, delegates rendering to Sidebar,
+ * the canvas preview, and ExportModal.
+ */
+
+import { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
+import type { BackgroundId, AnyParams } from "./types";
+import { BACKGROUNDS, buildInitialParamMap } from "./backgrounds";
+import { Sidebar } from "./Sidebar";
+import { ExportModal } from "./ExportModal";
+import { useCanvasExport } from "./useCanvasExport";
+import { CanvasExportTabs } from "./CanvasExportTabs";
+import { Navbar } from "../layout/Navbar";
+import { DemoContentOverlay } from "../shared/DemoContentOverlay";
+import { navigate } from "../../lib/navigate";
+import { studioRoute } from "../../lib/constants";
+
+export function BackgroundStudio({ initialBg }: { initialBg?: string } = {}) {
+  const [activeId, setActiveId] = useState<BackgroundId>(
+    (initialBg && BACKGROUNDS.some((b) => b.id === initialBg)
+      ? initialBg
+      : "flow-currents") as BackgroundId,
+  );
+  const [paramMap, setParamMap] =
+    useState<Record<string, AnyParams>>(buildInitialParamMap);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [exportOpen, setExportOpen] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("sidebar-open", isSidebarOpen);
+    return () => document.body.classList.remove("sidebar-open");
+  }, [isSidebarOpen]);
+
+  const bg = BACKGROUNDS.find((b) => b.id === activeId)!;
+  const params = paramMap[activeId];
+  const {
+    previewRef,
+    isDownloadingImage,
+    isRecordingVideo,
+    recordingCountdown,
+    handleDownloadImage,
+    handleVideoAction,
+  } = useCanvasExport(bg.id, params.seed as number | string | undefined);
+
+  const handleParamChange = useCallback(
+    (name: string, value: number | string | boolean) => {
+      setParamMap((prev) => ({
+        ...prev,
+        [activeId]: { ...prev[activeId], [name]: value },
+      }));
+    },
+    [activeId],
+  );
+
+  const handleReset = useCallback(() => {
+    setParamMap((prev) => ({ ...prev, [activeId]: { ...bg.defaults } }));
+  }, [activeId, bg.defaults]);
+
+  const handleRandomSeed = useCallback(() => {
+    handleParamChange("seed", Math.floor(Math.random() * 999999) + 1);
+  }, [handleParamChange]);
+
+  const handleSelectBg = (id: BackgroundId) => {
+    setActiveId(id);
+    setDropdownOpen(false);
+    setSearchQuery("");
+    setIsSidebarOpen(false);
+    navigate(studioRoute(id));
+  };
+
+  const filtered = BACKGROUNDS.filter(
+    (b) =>
+      b.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      b.description.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  return (
+    <div className="bg-bg font-sans text-ink overflow-hidden h-screen">
+      <Navbar />
+
+      {/* Mobile backdrop */}
+      {isSidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-30 bg-black/60"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Main content row — offset below fixed navbar */}
+      <div className="flex mt-14.5 h-[calc(100vh-3.625rem)] overflow-hidden">
+        <Sidebar
+          bg={bg}
+          params={params}
+          isDisabled={isRecordingVideo}
+          activeId={activeId}
+          dropdownOpen={dropdownOpen}
+          searchQuery={searchQuery}
+          filtered={filtered}
+          onSelectBg={handleSelectBg}
+          onToggleDropdown={() => setDropdownOpen((o) => !o)}
+          onSearchChange={setSearchQuery}
+          onParamChange={handleParamChange}
+          onReset={handleReset}
+          onRandomSeed={handleRandomSeed}
+          onExport={() => setExportOpen(true)}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
+
+        {/* Canvas area */}
+        <div className="flex-1 flex flex-col overflow-hidden pt-2 p-4 gap-3 md:mr-4">
+          {/* Mobile sidebar toggle */}
+          <button
+            className="md:hidden self-start flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-border text-[12px] text-muted font-sans touch-manipulation"
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open controls"
+          >
+            <Menu size={14} aria-hidden="true" /> Controls
+          </button>
+          {/* Canvas card */}
+          <motion.div
+            ref={previewRef}
+            className="flex-1 relative overflow-hidden rounded-xl"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.08 }}
+          >
+            <bg.Component
+              {...params}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            />
+            {showContent && <DemoContentOverlay />}
+          </motion.div>
+
+          {/* Bottom bar: tabs left, demo toggle right */}
+          <motion.div
+            className="shrink-0 flex items-center justify-between px-1"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 0.18 }}
+          >
+            <CanvasExportTabs
+              isDownloadingImage={isDownloadingImage}
+              isRecordingVideo={isRecordingVideo}
+              recordingCountdown={recordingCountdown}
+              onDownloadImage={handleDownloadImage}
+              onVideoAction={handleVideoAction}
+            />
+
+            <div className="flex items-center gap-2.5">
+              <span className="text-[12px] font-sans text-muted">
+                Demo Content
+              </span>
+              <button
+                onClick={() => setShowContent((v) => !v)}
+                className={`relative w-9 h-5 rounded-full transition-colors duration-200 cursor-pointer border-0 shrink-0 ${showContent ? "bg-accent" : "bg-faint"}`}
+              >
+                <motion.span
+                  className="absolute w-3.5 h-3.5 top-0.75 left-0.75 rounded-full bg-white"
+                  animate={{ x: showContent ? 16 : 0 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                />
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {exportOpen && (
+        <ExportModal
+          bg={bg}
+          params={params}
+          onClose={() => setExportOpen(false)}
+        />
+      )}
+    </div>
+  );
+}
