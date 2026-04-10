@@ -1,5 +1,6 @@
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
+import { SEOHead } from "./components/layout/SEOHead";
 import { HeroSection } from "./components/home/HeroSection";
 import { GallerySection } from "./components/home/GallerySection";
 import { StudioPage } from "./pages/StudioPage";
@@ -27,15 +28,34 @@ export default function App() {
     currentPath === "/Studio" ||
     studioMatch
   ) {
-    return <StudioPage key="studio" backgroundId={studioMatch?.id} />;
+    return (
+      <>
+        <SEOHead
+          title="Studio"
+          description="Interactively customize and preview 20+ generative art backgrounds for React. Tweak parameters in real time and export ready-to-use code."
+          path={currentPath}
+        />
+        <StudioPage key="studio" backgroundId={studioMatch?.id} />
+      </>
+    );
   }
 
   if (currentPath === ROUTES.docs || docsMatch) {
-    return <DocsPage key="docs" backgroundId={docsMatch?.id} />;
+    return (
+      <>
+        <SEOHead
+          title="Documentation"
+          description="Full API reference and usage guide for ReArt's algorithmic art components. Learn how to install, configure, and customize each background."
+          path={currentPath}
+        />
+        <DocsPage key="docs" backgroundId={docsMatch?.id} />
+      </>
+    );
   }
 
   return (
     <div className="bg-bg min-h-svh">
+      <SEOHead path="/" />
       <Navbar />
       <HeroSection />
       <GallerySection />

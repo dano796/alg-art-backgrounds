@@ -10,4 +10,17 @@ export default defineConfig({
       'react-algo': path.resolve(__dirname, '../src/index.ts'),
     },
   },
+  build: {
+    target: 'es2015',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+          ogl: ['ogl'],
+        },
+      },
+    },
+  },
 })

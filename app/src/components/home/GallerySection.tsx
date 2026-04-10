@@ -44,7 +44,7 @@ function GalleryCard({
           {item.tag}
         </div>
         {/* Hover overlay — responds to card-level hover */}
-        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/[0.03] transition-colors duration-300 pointer-events-none" />
+        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/3 transition-colors duration-300 pointer-events-none" />
       </div>
 
       {/* Card body */}
