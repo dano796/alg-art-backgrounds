@@ -2,23 +2,110 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/reart-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ReArt — Algorithmic Art Backgrounds for React</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/realgo-icon.webp" />
+    <link rel="apple-touch-icon" href="/realgo-icon.webp" />
+
+    <!-- Primary SEO -->
+    <title>ReAlgo — Algorithmic Art Backgrounds for React</title>
     <meta
       name="description"
-      content="Animated canvas backgrounds for React. Copy-paste ready, fully customizable."
+      content="Discover ReAlgo: a React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project."
     />
+    <meta
+      name="keywords"
+      content="react generative art, algorithmic backgrounds react, react canvas animations, generative art library, react background components, procedural art react, animated backgrounds"
+    />
+    <meta name="author" content="ReAlgo" />
+    <meta name="theme-color" content="#08060d" />
+    <link rel="canonical" href="https://react-algo.vercel.app/" />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ReAlgo" />
+    <meta property="og:title" content="ReAlgo — Algorithmic Art Backgrounds for React" />
+    <meta
+      property="og:description"
+      content="Discover ReAlgo: a React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project."
+    />
+    <meta property="og:url" content="https://react-algo.vercel.app/" />
+    <meta property="og:image" content="https://react-algo.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ReAlgo — Algorithmic Art Backgrounds for React" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ReAlgo — Algorithmic Art Backgrounds for React" />
+    <meta
+      name="twitter:description"
+      content="Discover ReAlgo: a React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project."
+    />
+    <meta name="twitter:image" content="https://react-algo.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="ReAlgo — Algorithmic Art Backgrounds for React" />
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ReAlgo",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "A React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project.",
+      "url": "https://react-algo.vercel.app/",
+      "downloadUrl": "https://www.npmjs.com/package/react-algo",
+      "codeRepository": "https://github.com/dano796/react-algo",
+      "license": "https://opensource.org/licenses/MIT",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ReAlgo",
+      "url": "https://react-algo.vercel.app/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://react-algo.vercel.app/docs?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Fonts — non-blocking: text renders immediately with system fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { MenuIcon, XIcon } from "../shared/Icons";
 import { GitHubIcon } from "./GitHubIcon";
 import { navigate } from "../../lib/navigate";
 import { ROUTES, GITHUB_URL } from "../../lib/constants";
@@ -70,8 +69,11 @@ export function Navbar() {
           className="flex items-center gap-2.5 cursor-pointer bg-transparent border-0"
         >
           <img
-            src="/reart-icon.png"
+            src="/realgo-icon-32x32.webp"
             alt="React Algo"
+            width={28}
+            height={28}
+            fetchPriority="low"
             className="w-7 h-7 rounded-[7px] shrink-0 mix-blend-screen"
           />
           <span className="font-display font-bold text-[14px] text-ink">
@@ -110,97 +112,72 @@ export function Navbar() {
           onClick={() => setMenuOpen((o) => !o)}
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
         >
-          <AnimatePresence mode="wait" initial={false}>
-            {menuOpen ? (
-              <motion.span
-                key="x"
-                initial={{ opacity: 0, rotate: -45 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 45 }}
-                transition={{ duration: 0.15 }}
-              >
-                <X size={20} />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="menu"
-                initial={{ opacity: 0, rotate: 45 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -45 }}
-                transition={{ duration: 0.15 }}
-              >
-                <Menu size={20} />
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <span className="relative w-5 h-5 flex items-center justify-center">
+            <span
+              className={`absolute transition-all duration-150 ${menuOpen ? "opacity-100 rotate-0" : "opacity-0 rotate-45 pointer-events-none"}`}
+            >
+              <XIcon size={20} />
+            </span>
+            <span
+              className={`absolute transition-all duration-150 ${menuOpen ? "opacity-0 -rotate-45 pointer-events-none" : "opacity-100 rotate-0"}`}
+            >
+              <MenuIcon size={20} />
+            </span>
+          </span>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <>
-            <motion.div
-              key="backdrop"
-              className="md:hidden fixed inset-0 z-198 bg-black/50"
-              onClick={() => setMenuOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.div
-              key="drawer"
-              className="md:hidden fixed top-14.5 left-0 right-0 z-199 bg-bg border-b border-border overflow-hidden"
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            >
-              <div className="px-4 py-2 flex flex-col">
-                <a
-                  href={ROUTES.studio}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setMenuOpen(false);
-                    navigate(ROUTES.studio);
-                  }}
-                  className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.studio ? "text-ink font-semibold" : "text-muted"}`}
-                >
-                  Studio
-                </a>
-                <a
-                  href="/#gallery"
-                  onClick={() => setMenuOpen(false)}
-                  className="py-3.5 text-[13px] font-sans text-muted no-underline border-b border-border/40"
-                >
-                  Gallery
-                </a>
-                <a
-                  href={ROUTES.docs}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setMenuOpen(false);
-                    navigate(ROUTES.docs);
-                  }}
-                  className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.docs ? "text-ink font-semibold" : "text-muted"}`}
-                >
-                  Docs
-                </a>
-                <a
-                  href={GITHUB_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMenuOpen(false)}
-                  className="mt-3.5 mb-2 flex items-center justify-center gap-2 py-2.5 bg-accent rounded-lg text-[#1a1a1a] text-[13px] font-semibold font-display no-underline hover:opacity-90 transition-opacity"
-                >
-                  <GitHubIcon /> GitHub
-                </a>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {menuOpen && (
+        <>
+          <div
+            className="md:hidden fixed inset-0 z-198 bg-black/50 animate-[fadeIn_0.2s_ease]"
+            onClick={() => setMenuOpen(false)}
+          />
+          <div className="md:hidden fixed top-14.5 left-0 right-0 z-199 bg-bg border-b border-border overflow-hidden animate-[slideDown_0.2s_ease]">
+            <div className="px-4 py-2 flex flex-col">
+              <a
+                href={ROUTES.studio}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  navigate(ROUTES.studio);
+                }}
+                className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.studio ? "text-ink font-semibold" : "text-muted"}`}
+              >
+                Studio
+              </a>
+              <a
+                href="/#gallery"
+                onClick={() => setMenuOpen(false)}
+                className="py-3.5 text-[13px] font-sans text-muted no-underline border-b border-border/40"
+              >
+                Gallery
+              </a>
+              <a
+                href={ROUTES.docs}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  navigate(ROUTES.docs);
+                }}
+                className={`py-3.5 text-[13px] font-sans no-underline border-b border-border/40 ${currentPath === ROUTES.docs ? "text-ink font-semibold" : "text-muted"}`}
+              >
+                Docs
+              </a>
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="mt-3.5 mb-2 flex items-center justify-center gap-2 py-2.5 bg-accent rounded-lg text-[#1a1a1a] text-[13px] font-semibold font-display no-underline hover:opacity-90 transition-opacity"
+              >
+                <GitHubIcon /> GitHub
+              </a>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
