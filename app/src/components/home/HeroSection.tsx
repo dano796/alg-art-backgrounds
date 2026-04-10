@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
-import { RecursiveTunnel } from "react-algo";
+import { RecursiveTunnel } from "../../../../src/components/backgrounds/RecursiveTunnel";
+import { CopyIcon, CheckIcon } from "../shared/Icons";
 import { navigate } from "../../lib/navigate";
 import { CLI_PACKAGE, studioRoute } from "../../lib/constants";
 
@@ -92,10 +92,10 @@ export function HeroSection() {
               className={`shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
             >
               {copied ? (
-                <Check size={13} aria-hidden="true" />
-              ) : (
-                <Copy size={13} aria-hidden="true" />
-              )}
+              <CheckIcon size={13} />
+            ) : (
+              <CopyIcon size={13} />
+            )}
             </span>
           </button>
         </div>

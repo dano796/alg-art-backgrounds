@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { CopyIcon, CheckIcon } from "../shared/Icons";
 import { DOC_REGISTRY } from "../docs/registry";
 import { CLI_PACKAGE, docsRoute } from "../../lib/constants";
 import { navigate } from "../../lib/navigate";
@@ -12,10 +12,29 @@ function GalleryCard({
   index: number;
 }) {
   const [copied, setCopied] = useState(false);
+  const [canvasReady, setCanvasReady] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   const cmd = `npx ${CLI_PACKAGE} add ${item.id}`;
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCanvasReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "120px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
+      ref={cardRef}
       className="group bg-surface border border-border rounded-[18px] overflow-hidden hover:border-accent transition-[border-color] duration-300 ease-out animate-[cardIn_0.5s_ease_both]"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
@@ -28,15 +47,19 @@ function GalleryCard({
         aria-label={`View docs for ${item.name}`}
         onKeyDown={(e) => e.key === "Enter" && navigate(docsRoute(item.id))}
       >
-        <item.Component
-          {...item.galleryProps}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        />
+        {canvasReady ? (
+          <item.Component
+            {...item.galleryProps}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        ) : (
+          <div className="absolute inset-0 bg-bg" />
+        )}
         {/* Bottom fade-out */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-surface to-transparent pointer-events-none" />
         {/* Tag chip */}
@@ -76,9 +99,9 @@ function GalleryCard({
             className={`shrink-0 transition-colors duration-200 ${copied ? "text-green" : "text-muted"}`}
           >
             {copied ? (
-              <Check size={13} aria-hidden="true" />
+              <CheckIcon size={13} />
             ) : (
-              <Copy size={13} aria-hidden="true" />
+              <CopyIcon size={13} />
             )}
           </span>
         </button>

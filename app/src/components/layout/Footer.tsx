@@ -1,6 +1,6 @@
 import { ROUTES, GITHUB_URL } from "../../lib/constants";
 import { navigate } from "../../lib/navigate";
-import { Copyright } from "lucide-react";
+import { CopyrightIcon } from "../shared/Icons";
 
 function FooterLink({
   href,
@@ -37,8 +37,11 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2.5">
             <img
-              src="/reart-icon.png"
+              src="/realgo-icon-32x32.webp"
               alt="React Algo"
+              width={24}
+              height={24}
+              loading="lazy"
               className="w-6 h-6 rounded-md mix-blend-screen"
             />
             <span className="text-[14px] text-ink font-display font-semibold">
@@ -70,7 +73,7 @@ export function Footer() {
             </a>
           </nav>
           <span className="inline-flex items-center gap-1.5 text-[13px] text-muted py-1">
-            <Copyright size={12} /> {new Date().getFullYear()} React Algo
+            <CopyrightIcon size={12} /> {new Date().getFullYear()} React Algo
           </span>
         </div>
       </div>
