@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 const SITE_URL = "https://react-algo.vercel.app";
-const DEFAULT_TITLE = "ReAlgo — Algorithmic Art Backgrounds for React";
+const DEFAULT_TITLE = "React Algo — Algorithmic Art Backgrounds for React";
 const DEFAULT_DESCRIPTION =
-  "Discover ReAlgo: a React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project.";
+  "Discover React Algo: a React library with 20+ stunning generative art backgrounds. Copy-paste ready, fully customizable canvas animations for any React project.";
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
 interface SEOHeadProps {
@@ -40,7 +40,7 @@ export function SEOHead({
   image = DEFAULT_IMAGE,
 }: SEOHeadProps) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | ReAlgo` : DEFAULT_TITLE;
+    const fullTitle = title ? `${title} | React Algo` : DEFAULT_TITLE;
     const canonical = `${SITE_URL}${path}`;
 
     document.title = fullTitle;

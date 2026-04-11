@@ -37,7 +37,7 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2.5">
             <img
-              src="/realgo-icon-32x32.webp"
+              src="/react-algo-icon-32x32.webp"
               alt="React Algo"
               width={24}
               height={24}

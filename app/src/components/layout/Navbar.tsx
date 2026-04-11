@@ -69,7 +69,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 cursor-pointer bg-transparent border-0"
         >
           <img
-            src="/realgo-icon-32x32.webp"
+            src="/react-algo-icon-32x32.webp"
             alt="React Algo"
             width={28}
             height={28}
