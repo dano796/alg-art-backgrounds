@@ -11,8 +11,14 @@
   <sub>Stand out with 20+ free customizable backgrounds.</sub>
 	<br>
 	<br>
-  <a href="https://www.npmjs.com/package/react-algo"><img alt="License" src="https://img.shields.io/npm/v/react-algo"></a>
+  <a href="https://www.npmjs.com/package/react-algo"><img alt="npm version" src="https://img.shields.io/npm/v/react-algo"></a>
+  <a href="https://www.npmjs.com/package/react-algo"><img alt="npm downloads" src="https://img.shields.io/npm/dm/react-algo"></a>
+  <a href="https://github.com/dano796/react-algo/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dano796/react-algo?style=social"></a>
+  <a href="https://github.com/dano796/react-algo/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/dano796/react-algo?style=social"></a>
+  <br>
   <a href="https://github.com/dano796/react-algo/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT+Commons_Clause-green"></a>
+  <a href="https://github.com/dano796/react-algo/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/dano796/react-algo"></a>
+  <a href="https://github.com/dano796/react-algo/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/dano796/react-algo"></a>
   <br>
   <br>
 </div>

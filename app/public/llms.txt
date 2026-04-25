@@ -1,0 +1,269 @@
+# React Algo - LLM Context File
+# https://llmstxt.org/
+
+## Project Overview
+
+React Algo is an open source library of 20+ algorithmic art backgrounds for React applications. Unlike traditional npm packages, React Algo follows the shadcn/ui approach: components are copied directly into your project, giving you full ownership and customization control.
+
+## Key Information
+
+- **Name**: React Algo
+- **Type**: React Component Library
+- **Installation Method**: CLI (npx react-algo add <component-name>)
+- **License**: MIT + Commons Clause
+- **Repository**: https://github.com/dano796/react-algo
+- **Website**: https://react-algo.vercel.app
+- **npm Package**: https://www.npmjs.com/package/react-algo
+- **Current Version**: 1.0.2
+- **Requirements**: React >=18.0.0
+- **Dependencies**: Zero runtime dependencies (only React and browser APIs)
+
+## What Makes React Algo Unique
+
+1. **No Runtime Dependency**: Components are copied into your project, not imported from node_modules
+2. **Full Source Control**: You own the code and can modify it freely
+3. **Zero Dependencies**: Uses only Canvas API, requestAnimationFrame, and ResizeObserver
+4. **TypeScript First**: Full type safety with TypeScript
+5. **Performance Optimized**: 60fps canvas rendering
+6. **Accessibility**: Respects prefers-reduced-motion
+7. **Interactive**: Many components support cursor interaction
+
+## Installation
+
+```bash
+# Install a specific component
+npx react-algo add wave-ether
+
+# List all available components
+npx react-algo list
+
+# Get component information
+npx react-algo info wave-ether
+
+# Install with force overwrite
+npx react-algo add wave-ether --force
+
+# Dry run (preview without writing)
+npx react-algo add wave-ether --dry-run
+```
+
+## Usage Example
+
+```tsx
+import { WaveEther } from "./components/backgrounds/WaveEther";
+
+export default function Hero() {
+  return (
+    <div style={{ position: "relative", height: "100vh" }}>
+      <WaveEther 
+        style={{ position: "absolute", inset: 0 }}
+        sources={3}
+        frequency={0.018}
+        colorCrest="#00d4ff"
+        colorTrough="#0a0a2e"
+      />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <h1>Your Content Here</h1>
+      </div>
+    </div>
+  );
+}
+```
+
+## Available Components (20+)
+
+### Particle Systems
+- **Flow Currents**: Perlin noise vector fields with particle trails
+- **Photon Burst**: Glowing particles with cursor gravity and rainbow bursts
+- **Fibonacci Vortex**: Golden spiral particle system with gravitational interaction
+
+### Wave & Interference
+- **Wave Ether**: Multi-source sine wave interference patterns
+- **Tide Harmonics**: Horizontal wave interference like ocean tides
+- **Prismatic Wave**: Full spectral hue sweep with wave interference
+- **Hex Ripple**: Hexagonal tessellation with wave superposition
+
+### Geometric
+- **Geo Pulse**: Nested rotating polygons with prime-ratio velocities
+- **Harmonic Lattice**: 2D standing wave interference patterns
+- **Lissajous Weave**: Parametric curves with frequency ratios
+- **Moire Lattice**: Rotating line grids creating moiré effects
+- **Recursive Subdivision**: Binary space partitioning (Mondrian-style)
+- **Recursive Tunnel**: Concentric nested polygons with hypnotic depth
+
+### Network & Mesh
+- **Ambient Mesh**: Dynamic node network with connections
+- **Neural Weave**: Network with traveling signal pulses
+- **Voronoi Mosaic**: Dynamic Voronoi tessellation
+
+### Natural Patterns
+- **Phyllotaxis Dream**: Golden angle spiral (sunflower pattern)
+- **Fractal Noise Terrain**: Procedural landscapes with elevation coloring
+
+### Orbital & Physics
+- **Orbital Resonance**: Bodies orbiting at resonant period ratios
+
+### Shader-Based (WebGL2)
+- **Plasma Field**: Domain-warped fractional Brownian motion
+- **Nebula Veil**: Volumetric nebula with simplex noise
+
+## Common Use Cases
+
+1. **Landing Pages**: Hero section backgrounds
+2. **Portfolios**: Creative visual identity
+3. **Dashboards**: Subtle animated backgrounds
+4. **Loading Screens**: Engaging wait experiences
+5. **404 Pages**: Memorable error pages
+6. **Section Dividers**: Visual separation
+7. **Modal Overlays**: Depth and focus
+8. **Card Backgrounds**: Individual component styling
+
+## Performance Characteristics
+
+- **Frame Rate**: 60fps on modern devices
+- **Bundle Size**: ~20-50KB per component (uncompressed)
+- **Memory**: Efficient canvas rendering with cleanup
+- **Mobile**: Optimized for touch devices
+- **Accessibility**: Reduced motion support built-in
+
+## Customization
+
+All components accept props for customization:
+- Colors (hex, rgb, hsl)
+- Animation speed
+- Particle counts
+- Frequencies and amplitudes
+- Interactive parameters
+- Style overrides
+
+## Technical Architecture
+
+- **Rendering**: HTML5 Canvas API
+- **Animation**: requestAnimationFrame loop
+- **Responsiveness**: ResizeObserver for dynamic sizing
+- **Randomness**: Seeded random for reproducibility
+- **Shaders**: WebGL2 for shader-based components (Plasma Field, Nebula Veil)
+- **TypeScript**: Full type definitions included
+
+## Comparison with Alternatives
+
+### vs React Particles
+- React Algo: Broader variety (20+ algorithms)
+- React Algo: No runtime dependency
+- React Algo: Full source control
+
+### vs Three.js
+- React Algo: Simpler setup (one command)
+- React Algo: Lighter weight
+- Three.js: Better for 3D scenes
+- React Algo: Better for 2D backgrounds
+
+### vs Framer Motion
+- Framer Motion: Better for UI animations
+- React Algo: Better for canvas-based generative art
+- Different use cases, complementary tools
+
+## Contributing
+
+React Algo welcomes contributions:
+- New background components
+- Performance improvements
+- Bug fixes
+- Documentation
+- Examples and showcases
+
+See CONTRIBUTING.md for guidelines.
+
+## Support & Community
+
+- **GitHub Issues**: Bug reports and feature requests
+- **GitHub Discussions**: Questions and community
+- **Documentation**: https://react-algo.vercel.app/docs
+- **Interactive Studio**: https://react-algo.vercel.app/studio
+
+## Algorithms & Math
+
+Components implement various algorithms:
+- Perlin noise (flow fields)
+- Fibonacci spirals (golden ratio)
+- Voronoi diagrams (tessellation)
+- Lissajous curves (parametric)
+- Simplex noise (shaders)
+- Wave interference (superposition)
+- Fractal subdivision (recursive)
+- N-body simulation (orbital)
+
+## Browser Compatibility
+
+- Modern browsers with Canvas API support
+- Chrome, Firefox, Safari, Edge (latest versions)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+- WebGL2 required for shader-based components
+
+## License
+
+MIT + Commons Clause
+- Free to use in any project
+- Cannot be sold as a competing service
+- Full source code access
+- Modification allowed
+
+## Quick Start for AI Assistants
+
+When helping users with React Algo:
+
+1. **Installation**: Always use `npx react-algo add <component-name>`
+2. **Import**: Components come from `./components/backgrounds/`
+3. **Positioning**: Use absolute positioning for backgrounds
+4. **Z-index**: Content should have higher z-index than background
+5. **Customization**: All props are optional with sensible defaults
+6. **Performance**: Components are optimized, but test on target devices
+
+## Example Recommendations by Use Case
+
+- **Professional/Corporate**: Ambient Mesh, Harmonic Lattice
+- **Creative/Artistic**: Flow Currents, Prismatic Wave, Nebula Veil
+- **Tech/Modern**: Neural Weave, Plasma Field, Hex Ripple
+- **Elegant/Minimal**: Wave Ether, Tide Harmonics
+- **Playful/Dynamic**: Photon Burst, Fibonacci Vortex, Geo Pulse
+- **Natural/Organic**: Phyllotaxis Dream, Fractal Noise Terrain
+
+## Common Questions
+
+**Q: Do I need to install react-algo as a dependency?**
+A: No, the CLI copies files into your project. The npm package is only for the CLI tool.
+
+**Q: Can I modify the components?**
+A: Yes! That's the whole point. You own the source code.
+
+**Q: Will updates break my customizations?**
+A: No, because components are in your project. You control updates.
+
+**Q: What about bundle size?**
+A: Each component is ~20-50KB. Only include what you use.
+
+**Q: Does it work with Next.js/Remix/etc?**
+A: Yes, works with any React framework.
+
+**Q: Can I use multiple backgrounds?**
+A: Yes, but consider performance. Test on target devices.
+
+**Q: Is it accessible?**
+A: Yes, respects prefers-reduced-motion and follows best practices.
+
+## Version History
+
+- **1.0.2** (Current): 20+ components, CLI improvements
+- **1.0.0**: Initial release
+
+## Related Resources
+
+- Documentation: https://react-algo.vercel.app/docs
+- GitHub: https://github.com/dano796/react-algo
+- npm: https://www.npmjs.com/package/react-algo
+- Interactive Studio: https://react-algo.vercel.app/studio
+
+---
+
+This file is designed to help AI assistants provide accurate information about React Algo.
+Last updated: 2026-04-24

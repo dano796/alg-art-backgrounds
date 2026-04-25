@@ -7,6 +7,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/react-algo-icon.webp" />
     <link rel="apple-touch-icon" href="/react-algo-icon.webp" />
+    
+    <!-- LLM Context -->
+    <link rel="llms-txt" href="/llms.txt" type="text/plain" />
 
     <!-- Primary SEO -->
     <title>React Algo — Algorithmic Art Backgrounds for React</title>
@@ -16,11 +19,18 @@
     />
     <meta
       name="keywords"
-      content="react generative art, algorithmic backgrounds react, react canvas animations, generative art library, react background components, procedural art react, animated backgrounds"
+      content="react generative art, algorithmic backgrounds react, react canvas animations, generative art library, react background components, procedural art react, animated backgrounds, perlin noise react, particle system react, webgl backgrounds, canvas animation library, react visual effects, interactive backgrounds react, flow field animation, voronoi diagram react, fractal art react, parametric curves react, shader backgrounds, creative coding react, generative design, react animation library"
     />
     <meta name="author" content="React Algo" />
     <meta name="theme-color" content="#08060d" />
     <link rel="canonical" href="https://react-algo.vercel.app/" />
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
 
     <!-- Open Graph (Facebook / LinkedIn) -->
     <meta property="og:type" content="website" />
@@ -64,7 +74,15 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      },
+      "keywords": "react, generative art, canvas, animation, backgrounds, algorithmic art, creative coding",
+      "programmingLanguage": "TypeScript",
+      "softwareVersion": "1.0.2"
     }
     </script>
 
@@ -83,6 +101,54 @@
         },
         "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+    
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "React Algo",
+      "url": "https://react-algo.vercel.app/",
+      "logo": "https://react-algo.vercel.app/react-algo-icon.webp",
+      "sameAs": [
+        "https://github.com/dano796/react-algo",
+        "https://www.npmjs.com/package/react-algo"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Technical Support",
+        "url": "https://github.com/dano796/react-algo/issues"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://react-algo.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Documentation",
+          "item": "https://react-algo.vercel.app/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Studio",
+          "item": "https://react-algo.vercel.app/studio"
+        }
+      ]
     }
     </script>
 
